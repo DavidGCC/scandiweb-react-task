@@ -1,29 +1,28 @@
 import React from "react";
 
+import { CurrencyContext } from "../../context/CurrencyContext";
 
 class CurrencySelector extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { selectedCurrency: "USD" }
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(e) {
-        e.preventDefault();
-        this.setState({
-            selectedCurrency: e.target.value
-        });
-    }
-
     render() {
+        // let currency = this.context;
+        // console.log(currency);
         return (
-            <select id="currency-select" onChange={this.handleChange} value={this.state.selectedCurrency}>
-                <option value="USD">USD</option>
-                <option value="GBP">GBP</option>
-                <option value="AUD">AUD</option>
-                <option value="JPY">JPY</option>
-                <option value="RUB">RUB</option>
-            </select>
+            <CurrencyContext.Consumer>
+                {({currency, setCurrency}) => {
+                    return (
+                        <select
+                            id="currency-select"
+                            onChange={setCurrency}
+                            defaultValue={currency}>
+                            <option value="USD">USD</option>
+                            <option value="GBP">GBP</option>
+                            <option value="AUD">AUD</option>
+                            <option value="JPY">JPY</option>
+                            <option value="RUB">RUB</option>
+                        </select>
+                    );
+                }}
+            </CurrencyContext.Consumer>
         );
     }
 }

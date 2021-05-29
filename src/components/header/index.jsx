@@ -10,7 +10,7 @@ class Header extends React.Component {
             <div id="header">
                 <Navbar />
                 <Logo />
-                <Actions />
+                <Actions selectedCurrency={this.props.selectedCurrency} handleChange={this.props.handleCurrencyChange} />
             </div>
         );
     }
