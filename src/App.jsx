@@ -3,7 +3,7 @@ import React from "react";
 import "./scss/style.scss";
 
 // COMPONENT IMPORTS
-import Header from "./components/Header";
+import Header from "./components/header";
 
 class App extends React.Component {
     render() {
