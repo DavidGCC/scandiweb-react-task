@@ -19,12 +19,16 @@ class App extends React.Component {
                 currency: e.target.value,
             }));
         }
-        this.state = { currency: "USD", setCurrency: this.handleCurrencyChange };
+        this.state = { 
+            currency: "USD",
+            setCurrency: this.handleCurrencyChange,
+            selectedCategory: ""
+        };
     }
 
     render() {
         return (
-            <CurrencyContext.Provider value={this.state}>
+            <CurrencyContext.Provider value={{ currency: this.state.currency, setCurrency: this.state.setCurrency }}>
                 <Router>
                     <Header
                         selectedCurrency={this.state.selectedCurrency}
@@ -32,7 +36,7 @@ class App extends React.Component {
                     />
                     <Switch>
                         <Route path="/">
-                            <Category />
+                            <Category selectedCategory={this.state.selectedCategory}/>
                         </Route>
                     </Switch>
                 </Router>

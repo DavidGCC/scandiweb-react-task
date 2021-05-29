@@ -10,9 +10,8 @@ class Item extends React.Component {
                 <h6 className="card-title">{this.props.item.name}</h6>
                 {
                     this.props.item.prices.map(price => {
-                        console.log(price.currency === this.context.currency);
                         if (price.currency === this.context.currency) {
-                            return <p className="card-price">{price.currency} {price.amount}</p>
+                            return <p key={this.props.item.name} className="card-price">{price.currency} {price.amount}</p>
                         }
                         return null;
                     })
