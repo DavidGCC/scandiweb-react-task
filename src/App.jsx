@@ -22,7 +22,6 @@ class App extends React.Component {
         this.state = { 
             currency: "USD",
             setCurrency: this.handleCurrencyChange,
-            selectedCategory: ""
         };
     }
 
@@ -35,9 +34,7 @@ class App extends React.Component {
                         handleCurrencyChange={this.handleCurrencyChange}
                     />
                     <Switch>
-                        <Route path="/">
-                            <Category selectedCategory={this.state.selectedCategory}/>
-                        </Route>
+                        <Route path="/" component={Category}/>
                     </Switch>
                 </Router>
             </CurrencyContext.Provider>
