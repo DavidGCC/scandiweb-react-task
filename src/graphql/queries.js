@@ -19,3 +19,13 @@ export const getItems = gql`
         }
     }
 `;
+
+export const getCategories = gql`
+    query {
+        category {
+            products {
+                category
+            }
+        }
+    }
+`;
