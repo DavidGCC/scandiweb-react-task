@@ -25,7 +25,6 @@ class Navbar extends React.Component {
             })
     }
     render() {
-        console.log(this.state.categories);
         return (
             <div id="navbar">
                 {

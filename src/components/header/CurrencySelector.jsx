@@ -1,24 +1,37 @@
 import React from "react";
+import getSymbolFromCurrency from "currency-symbol-map";
 
 import { CurrencyContext } from "../../context/CurrencyContext";
+import client from "../../graphql/client";
+import { getCurrencies } from "../../graphql/queries";
 
 class CurrencySelector extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { currencies: [] };
+    }
+    componentDidMount() {
+        client.query({ query: getCurrencies }).then((res) =>
+            this.setState((ps) => ({
+                ...ps,
+                currencies: res.data.currencies,
+            }))
+        );
+    }
     render() {
-        // let currency = this.context;
-        // console.log(currency);
         return (
             <CurrencyContext.Consumer>
-                {({currency, setCurrency}) => {
+                {({ currency, setCurrency }) => {
                     return (
                         <select
                             id="currency-select"
                             onChange={setCurrency}
                             defaultValue={currency}>
-                            <option value="USD">&#36;</option>
-                            <option value="GBP">&#163;</option>
-                            <option value="AUD">A&#36;</option>
-                            <option value="JPY">&#165;</option>
-                            <option value="RUB">&#8381;</option>
+                            {this.state.currencies.map((i) => (
+                                <option value={i} key={i}>
+                                    {getSymbolFromCurrency(i)}
+                                </option>
+                            ))}
                         </select>
                     );
                 }}
