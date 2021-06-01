@@ -15,9 +15,13 @@ class Navbar extends React.Component {
                 query: getCategories,
             })
             .then((response) => {
-                const toSet = new Set(response.data.category.products.map(i => i.category));
-                const toArr = Array.from(toSet);
-                this.setState(prevState => ({ ...prevState, categories: ["all", ...toArr] }));
+                const uniques = response.data.category.products.reduce((acc, curr) => {
+                    if (!acc.includes(curr.category)) {
+                        acc.push(curr.category);
+                    }
+                    return acc;
+                }, []);
+                this.setState(prevState => ({ ...prevState, categories: ["all", ...uniques] }));
             })
     }
     render() {

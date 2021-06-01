@@ -14,11 +14,11 @@ class CurrencySelector extends React.Component {
                             id="currency-select"
                             onChange={setCurrency}
                             defaultValue={currency}>
-                            <option value="USD">USD</option>
-                            <option value="GBP">GBP</option>
-                            <option value="AUD">AUD</option>
-                            <option value="JPY">JPY</option>
-                            <option value="RUB">RUB</option>
+                            <option value="USD">&#36;</option>
+                            <option value="GBP">&#163;</option>
+                            <option value="AUD">A&#36;</option>
+                            <option value="JPY">&#165;</option>
+                            <option value="RUB">&#8381;</option>
                         </select>
                     );
                 }}
