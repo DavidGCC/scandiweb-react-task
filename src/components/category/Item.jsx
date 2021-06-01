@@ -21,7 +21,7 @@ class Item extends React.Component {
                             <p
                                 key={this.props.item.name}
                                 className="card-price">
-                                {getSymbolFromCurrency(price.currency)}{" "}
+                                {getSymbolFromCurrency(price.currency)}
                                 {price.amount}
                             </p>
                         );

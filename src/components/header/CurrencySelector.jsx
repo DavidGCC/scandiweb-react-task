@@ -29,7 +29,7 @@ class CurrencySelector extends React.Component {
                             defaultValue={currency}>
                             {this.state.currencies.map((i) => (
                                 <option value={i} key={i}>
-                                    {getSymbolFromCurrency(i)}
+                                    {getSymbolFromCurrency(i)} {i}
                                 </option>
                             ))}
                         </select>
