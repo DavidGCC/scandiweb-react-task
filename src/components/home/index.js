@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 import { SLink, Container, Item } from "./home.styles"
 

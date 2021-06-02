@@ -1,6 +1,8 @@
 import React from "react";
 import qs from "query-string";
 
+import { SLink } from "./listings.styles";
+
 import client from "../../graphql/client";
 import { getItems } from "../../graphql/queries";
 
@@ -80,9 +82,15 @@ class Listings extends React.Component {
                         ? "All Categories"
                         : this.state.selectedCategory}
                 </h2>
-                {this.state.items.map((item) => (
-                    <Item key={item.name} item={item} />
-                ))}
+                <div className="item-listings">
+                    {
+                        this.state.items.map(i => (
+                            <SLink to={`/item/${encodeURI(i.name)}`}>
+                                <Item item={i} />
+                            </SLink>
+                        ))
+                    }
+                </div>
             </div>
         );
     }
