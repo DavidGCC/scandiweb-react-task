@@ -4,8 +4,13 @@ import "./scss/style.scss";
 
 // COMPONENT IMPORTS
 import Header from "./components/header";
-import Category from "./components/category";
+import Listings from "./components/listings";
+import Home from "./components/home/index";
 //
+
+import { getCategories } from "./graphql/queries";
+import client from "./graphql/client";
+
 
 import { CurrencyContext } from "./context/CurrencyContext";
 
@@ -22,7 +27,23 @@ class App extends React.Component {
         this.state = { 
             currency: "USD",
             setCurrency: this.handleCurrencyChange,
+            categories: ["all"]
         };
+    }
+    componentDidMount() {
+        client
+            .query({
+                query: getCategories,
+            })
+            .then((response) => {
+                const uniques = response.data.category.products.reduce((acc, curr) => {
+                    if (!acc.includes(curr.category)) {
+                        acc.push(curr.category);
+                    }
+                    return acc;
+                }, []);
+                this.setState(prevState => ({ ...prevState, categories: ["all", ...uniques] }));
+            })
     }
 
     render() {
@@ -32,9 +53,11 @@ class App extends React.Component {
                     <Header
                         selectedCurrency={this.state.selectedCurrency}
                         handleCurrencyChange={this.handleCurrencyChange}
+                        categories={this.state.categories}
                     />
                     <Switch>
-                        <Route path="/" component={Category}/>
+                        <Route path="/" exact component={() => <Home categories={this.state.categories} />} />
+                        <Route path="/listings" component={Listings}/>
                     </Switch>
                 </Router>
             </CurrencyContext.Provider>

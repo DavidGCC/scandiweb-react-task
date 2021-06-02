@@ -6,7 +6,7 @@ import { getItems } from "../../graphql/queries";
 
 import Item from "./Item";
 
-class Category extends React.Component {
+class Listings extends React.Component {
     constructor(props) {
         super(props);
         this.state = { items: [], selectedCategory: "all" };
@@ -88,4 +88,4 @@ class Category extends React.Component {
     }
 }
 
-export default Category;
+export default Listings;

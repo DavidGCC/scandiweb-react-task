@@ -1,21 +1,19 @@
-import React from "react";
+import React, { Component } from 'react';
+
 import { Link } from "react-router-dom";
 
-
-class Navbar extends React.Component {
+export default class Home extends Component {
     render() {
         return (
-            <div id="navbar">
+            <div>
                 {
                     this.props.categories.map(c => (
                         <li className="nav-item" key={c}>
-                            <Link to={`/listings/?category=${c}`}>{c}</Link>
+                            <Link to={`/listings?category=${c}`}>{c}</Link>
                         </li>
                     ))
                 }
             </div>
-        );
+        )
     }
 }
-
-export default Navbar;
