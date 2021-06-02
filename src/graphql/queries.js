@@ -6,11 +6,23 @@ export const getItems = gql`
         category(input: { title: $name }) {
             products {
                 name
-                inStock
                 gallery
+                inStock
                 prices {
                     currency
                     amount
+                }
+                category
+                description
+                attributes {
+                    id
+                    name
+                    type
+                    items {
+                        displayValue
+                        value
+                        id
+                    }
                 }
             }
         }
