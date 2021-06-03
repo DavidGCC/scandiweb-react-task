@@ -9,7 +9,7 @@ export default class Home extends Component {
             <Container>
                 {
                     this.props.categories.map(c => (
-                        <SLink to={`/listings?category=${c}`}>
+                        <SLink to={`/listings?category=${c}`} key={c}>
                             <Item>{c}</Item>
                         </SLink>
                     ))

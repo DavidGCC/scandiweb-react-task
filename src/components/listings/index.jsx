@@ -85,7 +85,7 @@ class Listings extends React.Component {
                 <div className="item-listings">
                     {
                         this.state.items.map(i => (
-                            <SLink to={`/item/${encodeURI(i.name)}`}>
+                            <SLink to={`/item/${encodeURI(i.name)}`} key={i.name}>
                                 <Item item={i} />
                             </SLink>
                         ))
