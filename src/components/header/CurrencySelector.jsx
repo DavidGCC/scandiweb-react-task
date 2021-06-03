@@ -1,7 +1,7 @@
 import React from "react";
 import getSymbolFromCurrency from "currency-symbol-map";
 
-import { CurrencyContext } from "../../context/CurrencyContext";
+import { StoreContext } from "../../context/Context";
 import client from "../../graphql/client";
 import { getCurrencies } from "../../graphql/queries";
 
@@ -20,7 +20,7 @@ class CurrencySelector extends React.Component {
     }
     render() {
         return (
-            <CurrencyContext.Consumer>
+            <StoreContext.Consumer>
                 {({ currency, setCurrency }) => {
                     return (
                         <select
@@ -35,7 +35,7 @@ class CurrencySelector extends React.Component {
                         </select>
                     );
                 }}
-            </CurrencyContext.Consumer>
+            </StoreContext.Consumer>
         );
     }
 }

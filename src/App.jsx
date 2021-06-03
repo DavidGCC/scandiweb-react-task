@@ -11,8 +11,7 @@ import Home from "./components/home/index";
 import { getCategories } from "./graphql/queries";
 import client from "./graphql/client";
 
-
-import { CurrencyContext } from "./context/CurrencyContext";
+import { StoreContext } from "./context/Context";
 
 class App extends React.Component {
     constructor(props) {
@@ -23,11 +22,11 @@ class App extends React.Component {
                 ...prevState,
                 currency: e.target.value,
             }));
-        }
-        this.state = { 
+        };
+        this.state = {
             currency: "USD",
             setCurrency: this.handleCurrencyChange,
-            categories: ["all"]
+            categories: ["all"],
         };
     }
     componentDidMount() {
@@ -36,31 +35,37 @@ class App extends React.Component {
                 query: getCategories,
             })
             .then((response) => {
-                const uniques = response.data.category.products.reduce((acc, curr) => {
-                    if (!acc.includes(curr.category)) {
-                        acc.push(curr.category);
-                    }
-                    return acc;
-                }, []);
-                this.setState(prevState => ({ ...prevState, categories: ["all", ...uniques] }));
-            })
+                const uniques = response.data.category.products.reduce(
+                    (acc, curr) => {
+                        if (!acc.includes(curr.category)) {
+                            acc.push(curr.category);
+                        }
+                        return acc;
+                    },
+                    []
+                );
+                this.setState((prevState) => ({
+                    ...prevState,
+                    categories: ["all", ...uniques],
+                }));
+            });
     }
 
     render() {
         return (
-            <CurrencyContext.Provider value={{ currency: this.state.currency, setCurrency: this.state.setCurrency }}>
+            <StoreContext.Provider value={{ ...this.state, setCurrency: this.handleCurrencyChange }}>
                 <Router>
-                    <Header
-                        selectedCurrency={this.state.selectedCurrency}
-                        handleCurrencyChange={this.handleCurrencyChange}
-                        categories={this.state.categories}
-                    />
+                    <Header />
                     <Switch>
-                        <Route path="/" exact component={() => <Home categories={this.state.categories} />} />
-                        <Route path="/listings" component={Listings}/>
+                        <Route
+                            path="/"
+                            exact
+                            component={Home}
+                        />
+                        <Route path="/listings" component={Listings} />
                     </Switch>
                 </Router>
-            </CurrencyContext.Provider>
+            </StoreContext.Provider>
         );
     }
 }

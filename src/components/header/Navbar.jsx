@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { StoreContext } from "../../context/Context";
+
 const NavContainer = styled.div`
     display: flex;
     height: 100%;
@@ -17,7 +19,8 @@ const NavItem = styled.li`
     height: 100%;
     display: flex;
     align-items: center;
-    border-bottom: ${props => props.active ? "2px solid var(--nav-selected)" : "none"};
+    border-bottom: ${(props) =>
+        props.active ? "2px solid var(--nav-selected)" : "none"};
 `;
 
 const NavLink = styled(Link)`
@@ -28,21 +31,24 @@ const NavLink = styled(Link)`
     &:hover {
         color: var(--nav-selected);
     }
-
 `;
 
 class Navbar extends React.Component {
     render() {
         return (
-            <NavContainer id="navbar">
-                {this.props.categories.map((c) => (
-                    <NavItem className="nav-item" key={c}>
-                        <NavLink to={`/listings/?category=${c}`}>
-                            {c}
-                        </NavLink>
-                    </NavItem>
-                ))}
-            </NavContainer>
+            <StoreContext.Consumer>
+                {({ categories }) => (
+                    <NavContainer id="navbar">
+                        {categories.map((c) => (
+                            <NavItem className="nav-item" key={c}>
+                                <NavLink to={`/listings/?category=${c}`}>
+                                    {c}
+                                </NavLink>
+                            </NavItem>
+                        ))}
+                    </NavContainer>
+                )}
+            </StoreContext.Consumer>
         );
     }
 }

@@ -2,19 +2,26 @@ import React, { Component } from 'react';
 
 import { SLink, Container, Item } from "./home.styles"
 
+import { StoreContext } from "../../context/Context";
 
 export default class Home extends Component {
     render() {
         return (
-            <Container>
+            <StoreContext.Consumer>
                 {
-                    this.props.categories.map(c => (
-                        <SLink to={`/listings?category=${c}`} key={c}>
-                            <Item>{c}</Item>
-                        </SLink>
-                    ))
+                    ({ categories }) => (
+                        <Container>
+                            {
+                                categories.map(c => (
+                                    <SLink to={`/listings?category=${c}`} key={c}>
+                                        <Item>{c}</Item>
+                                    </SLink>
+                                ))
+                            }
+                        </Container>
+                    )
                 }
-            </Container>
+            </StoreContext.Consumer>
         )
     }
 }

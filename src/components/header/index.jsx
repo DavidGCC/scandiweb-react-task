@@ -8,7 +8,7 @@ class Header extends React.Component {
     render() {
         return (
             <div id="header">
-                <Navbar categories={this.props.categories}/>
+                <Navbar />
                 <Logo />
                 <Actions selectedCurrency={this.props.selectedCurrency} handleChange={this.props.handleCurrencyChange} />
             </div>

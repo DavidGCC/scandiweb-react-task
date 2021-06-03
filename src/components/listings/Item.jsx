@@ -1,7 +1,7 @@
 import React from "react";
 import getSymbolFromCurrency from "currency-symbol-map";
 
-import { CurrencyContext } from "../../context/CurrencyContext";
+import { StoreContext } from "../../context/Context";
 
 class Item extends React.Component {
     render() {
@@ -32,6 +32,6 @@ class Item extends React.Component {
         );
     }
 }
-Item.contextType = CurrencyContext;
+Item.contextType = StoreContext;
 
 export default Item;
