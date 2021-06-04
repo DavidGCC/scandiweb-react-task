@@ -18,13 +18,6 @@ import { StoreContext } from "./context/Context";
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.handleCurrencyChange = (e) => {
-            e.preventDefault();
-            this.setState((prevState) => ({
-                ...prevState,
-                currency: e.target.value,
-            }));
-        };
         this.state = {
             currency: "USD",
             setCurrency: this.handleCurrencyChange,
@@ -32,7 +25,28 @@ class App extends React.Component {
             items: [],
             cart: []
         };
+        this.addToCart = this.addToCart.bind(this);
+        this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
     }
+    addToCart(item) {
+        let cart = this.state.cart;
+        const isInCart = cart.find(item => item.details.name === item.name);
+        if (isInCart) {
+            cart = cart.map(item => {
+                if (item.details.name === item.name) {
+                    return { ...item, count: item.count + 1 }
+                }
+                return item;
+            });
+        } else {
+            cart = [...cart, { details: item, count: 1 }];
+        }
+        this.setState({ cart });
+    }
+    handleCurrencyChange(e) {
+        e.preventDefault();
+        this.setState({ currency: e.target.value });
+    };
     componentDidMount() {
         client
             .query({
@@ -58,7 +72,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <StoreContext.Provider value={{ ...this.state, setCurrency: this.handleCurrencyChange }}>
+            <StoreContext.Provider value={{ ...this.state, setCurrency: this.handleCurrencyChange, addToCart: this.addToCart }}>
                 <Router>
                     <Header />
                     <Switch>

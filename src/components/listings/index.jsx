@@ -1,10 +1,8 @@
 import React from "react";
 import qs from "query-string";
 
-import { SLink } from "./listings.styles";
-
 import { StoreContext } from "../../context/Context.js";
-import Item from "./Item";
+import ProductList from "./ProductsList";
 
 class Listings extends React.Component {
     constructor(props) {
@@ -47,26 +45,16 @@ class Listings extends React.Component {
     render() {
         return (
             <StoreContext.Consumer>
-                {({ items }) => {
-                    return items
-                        .filter((item) => this.state.selectedCategory === "all" ? true : this.state.selectedCategory === item.category)
-                        .map((item) => (
-                            <div id="category-page" key={item.name}>
-                                <h2 id="category-name">
-                                    {this.state.selectedCategory === "all"
-                                        ? "All Categories"
-                                        : this.state.selectedCategory}
-                                </h2>
-                                <div className="item-listings">
-                                    <SLink
-                                        to={`/product/${encodeURI(item.name)}`}
-                                        key={item.name}>
-                                        <Item item={item} />
-                                    </SLink>
-                                </div>
-                            </div>
-                        ));
-                }}
+                {({ items }) => (
+                    <ProductList
+                        items={items.filter((item) =>
+                            this.state.selectedCategory === "all"
+                                ? true
+                                : this.state.selectedCategory === item.category
+                        )}
+                        selectedCategory={this.state.selectedCategory}
+                    />
+                )}
             </StoreContext.Consumer>
         );
     }
