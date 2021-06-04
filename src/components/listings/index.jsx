@@ -3,54 +3,32 @@ import qs from "query-string";
 
 import { SLink } from "./listings.styles";
 
-import client from "../../graphql/client";
-import { getItems } from "../../graphql/queries";
-
+import { StoreContext } from "../../context/Context.js";
 import Item from "./Item";
 
 class Listings extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { items: [], selectedCategory: "all" };
+        this.state = { selectedCategory: "all" };
     }
 
-    fetchItems(category) {
-        const variables = { name: "" };
+    setCategory(category) {
         if (typeof category === "undefined" || category === "all") {
             this.setState((prevState) => ({
                 ...prevState,
                 selectedCategory: "all",
             }));
-            variables.name = "";
         } else {
             this.setState((prevState) => ({
                 ...prevState,
                 selectedCategory: category,
             }));
-            variables.name = category;
         }
-        client
-            .query({
-                query: getItems,
-                variables,
-            })
-            .then((res) =>
-                this.setState((prevState) => {
-                    if (res.data.category) {
-                        return {
-                            ...prevState,
-                            items: res.data.category.products,
-                        };
-                    } else {
-                        return { ...prevState, items: null };
-                    }
-                })
-            );
     }
 
     componentDidMount() {
         const parsed = qs.parse(this.props.location.search);
-        this.fetchItems(parsed.category);
+        this.setCategory(parsed.category);
     }
 
     componentDidUpdate() {
@@ -62,36 +40,34 @@ class Listings extends React.Component {
             ) &&
             parsed.category !== this.state.selectedCategory
         ) {
-            this.fetchItems(parsed.category);
+            this.setCategory(parsed.category);
         }
     }
 
     render() {
-        if (this.state.items === null) {
-            return (
-                <>
-                    <h2 id="category-name">{this.state.selectedCategory}</h2>
-                    <p class="error">Invalid Category Name</p>
-                </>
-            );
-        }
         return (
-            <div id="category-page">
-                <h2 id="category-name">
-                    {this.state.selectedCategory === "all"
-                        ? "All Categories"
-                        : this.state.selectedCategory}
-                </h2>
-                <div className="item-listings">
-                    {
-                        this.state.items.map(i => (
-                            <SLink to={`/item/${encodeURI(i.name)}`} key={i.name}>
-                                <Item item={i} />
-                            </SLink>
-                        ))
-                    }
-                </div>
-            </div>
+            <StoreContext.Consumer>
+                {({ items }) => {
+                    return items
+                        .filter((item) => this.state.selectedCategory === "all" ? true : this.state.selectedCategory === item.category)
+                        .map((item) => (
+                            <div id="category-page" key={item.name}>
+                                <h2 id="category-name">
+                                    {this.state.selectedCategory === "all"
+                                        ? "All Categories"
+                                        : this.state.selectedCategory}
+                                </h2>
+                                <div className="item-listings">
+                                    <SLink
+                                        to={`/product/${encodeURI(item.name)}`}
+                                        key={item.name}>
+                                        <Item item={item} />
+                                    </SLink>
+                                </div>
+                            </div>
+                        ));
+                }}
+            </StoreContext.Consumer>
         );
     }
 }

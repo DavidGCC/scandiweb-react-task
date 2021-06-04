@@ -5,10 +5,11 @@ import "./scss/style.scss";
 // COMPONENT IMPORTS
 import Header from "./components/header";
 import Listings from "./components/listings";
-import Home from "./components/home/index";
+import Home from "./components/home/";
+import Product from "./components/product/";
 //
 
-import { getCategories } from "./graphql/queries";
+import { getItems } from "./graphql/queries";
 import client from "./graphql/client";
 
 import { StoreContext } from "./context/Context";
@@ -27,12 +28,13 @@ class App extends React.Component {
             currency: "USD",
             setCurrency: this.handleCurrencyChange,
             categories: ["all"],
+            items: []
         };
     }
     componentDidMount() {
         client
             .query({
-                query: getCategories,
+                query: getItems,
             })
             .then((response) => {
                 const uniques = response.data.category.products.reduce(
@@ -47,6 +49,7 @@ class App extends React.Component {
                 this.setState((prevState) => ({
                     ...prevState,
                     categories: ["all", ...uniques],
+                    items: response.data.category.products
                 }));
             });
     }
@@ -63,6 +66,7 @@ class App extends React.Component {
                             component={Home}
                         />
                         <Route path="/listings" component={Listings} />
+                        <Route path="/product/:itemname" component={Product} />
                     </Switch>
                 </Router>
             </StoreContext.Provider>
