@@ -7,6 +7,7 @@ import Header from "./components/header";
 import Listings from "./components/listings";
 import Home from "./components/home/";
 import Product from "./components/product/";
+import Cart from "./components/cart/";
 //
 
 import { getItems } from "./graphql/queries";
@@ -28,7 +29,8 @@ class App extends React.Component {
             currency: "USD",
             setCurrency: this.handleCurrencyChange,
             categories: ["all"],
-            items: []
+            items: [],
+            cart: []
         };
     }
     componentDidMount() {
@@ -67,6 +69,7 @@ class App extends React.Component {
                         />
                         <Route path="/listings" component={Listings} />
                         <Route path="/product/:itemname" component={Product} />
+                        <Route path="/cart" component={Cart} />
                     </Switch>
                 </Router>
             </StoreContext.Provider>

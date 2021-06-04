@@ -1,10 +1,11 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 
+import { StoreContext } from "../../../context/Context";
 
 class CartPreview extends React.Component {
     render() {
+        console.log(this);
         return (
             <Link to="/cart">
                 <svg
@@ -26,9 +27,12 @@ class CartPreview extends React.Component {
                         fill="#43464E"
                     />
                 </svg>
+                <span>{this.context.cart.length}</span>
             </Link>
         );
     }
 }
+
+CartPreview.contextType = StoreContext;
 
 export default CartPreview;

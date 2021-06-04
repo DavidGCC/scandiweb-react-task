@@ -1,7 +1,7 @@
 import React from "react";
 
 import CurrencySelector from "./CurrencySelector";
-import CartPreview from "./CartPreview";
+import CartOverlay from "./CartOverlay";
 
 class Actions extends React.Component {
 
@@ -9,7 +9,7 @@ class Actions extends React.Component {
         return(
             <div id="actions">
                 <CurrencySelector />
-                <CartPreview />
+                <CartOverlay />
             </div>
         );
     }

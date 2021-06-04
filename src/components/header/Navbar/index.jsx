@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { StoreContext } from "../../context/Context";
+import { StoreContext } from "../../../context/Context";
 
 const NavContainer = styled.div`
     display: flex;
