@@ -23,23 +23,19 @@ class App extends React.Component {
             setCurrency: this.handleCurrencyChange,
             categories: ["all"],
             items: [],
-            cart: []
+            cart: {}
         };
         this.addToCart = this.addToCart.bind(this);
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
     }
     addToCart(item) {
         let cart = this.state.cart;
-        const isInCart = cart.find(item => item.details.name === item.name);
-        if (isInCart) {
-            cart = cart.map(item => {
-                if (item.details.name === item.name) {
-                    return { ...item, count: item.count + 1 }
-                }
-                return item;
-            });
+        if (cart[item.name]) {
+            cart[item.name].count++;
         } else {
-            cart = [...cart, { details: item, count: 1 }];
+            cart[item.name] = {
+                item, count: 1
+            }
         }
         this.setState({ cart });
     }
