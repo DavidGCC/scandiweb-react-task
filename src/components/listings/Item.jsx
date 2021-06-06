@@ -13,10 +13,13 @@ import {
 import AddToCart from "./AddToCart";
 
 class Item extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { isHovering: false }
+    }
     render() {
-        console.log(this.context);
         return (
-            <ItemContainer className="card">
+            <ItemContainer className="card" onMouseEnter={() => this.setState({ isHovering: true })} onMouseLeave={() => this.setState({ isHovering: false })}>
                 <ItemTop className="top">
                     <ItemImage
                         className="card-image"
@@ -25,12 +28,12 @@ class Item extends React.Component {
                         width="354px"
                         height="330px"
                     />
-                    <AddToCart
+                    {this.state.isHovering && <AddToCart
                         onClick={(e) => {
                             e.preventDefault();
                             this.context.addToCart(this.props.item);
                         }}
-                    />
+                    />}
                 </ItemTop>
                 <ItemBot>
                     <ItemName className="card-title">
