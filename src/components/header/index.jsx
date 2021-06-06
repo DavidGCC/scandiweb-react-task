@@ -4,14 +4,16 @@ import Navbar from "./Navbar";
 import Logo from "./Logo";
 import Actions from "./Actions";
 
+import { HeaderContainer } from "./styled";
+
 class Header extends React.Component {
     render() {
         return (
-            <div id="header">
+            <HeaderContainer id="header">
                 <Navbar />
                 <Logo />
                 <Actions selectedCurrency={this.props.selectedCurrency} handleChange={this.props.handleCurrencyChange} />
-            </div>
+            </HeaderContainer>
         );
     }
 }

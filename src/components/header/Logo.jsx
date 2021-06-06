@@ -1,10 +1,11 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import { LogoContainer } from "./styled";
 class Logo extends React.Component {
     render() {
         return (
-            <div id="logo-container">
+            <LogoContainer id="logo-container">
                 <Link to="/">
                     <svg
                         width="41"
@@ -52,7 +53,7 @@ class Logo extends React.Component {
                         </defs>
                     </svg>
                 </Link>
-            </div>
+            </LogoContainer>
         );
     }
 }

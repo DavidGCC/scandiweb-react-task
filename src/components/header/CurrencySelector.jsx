@@ -5,6 +5,8 @@ import { StoreContext } from "../../context/Context";
 import client from "../../graphql/client";
 import { getCurrencies } from "../../graphql/queries";
 
+import { CurrencySelect } from "./styled";
+
 class CurrencySelector extends React.Component {
     constructor(props) {
         super(props);
@@ -23,7 +25,7 @@ class CurrencySelector extends React.Component {
             <StoreContext.Consumer>
                 {({ currency, setCurrency }) => {
                     return (
-                        <select
+                        <CurrencySelect
                             id="currency-select"
                             onChange={setCurrency}
                             defaultValue={currency}>
@@ -32,7 +34,7 @@ class CurrencySelector extends React.Component {
                                     {getSymbolFromCurrency(i)} {i}
                                 </option>
                             ))}
-                        </select>
+                        </CurrencySelect>
                     );
                 }}
             </StoreContext.Consumer>

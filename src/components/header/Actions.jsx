@@ -3,14 +3,16 @@ import React from "react";
 import CurrencySelector from "./CurrencySelector";
 import CartOverlay from "./CartOverlay";
 
+import { ActionContainer } from "./styled";
+
 class Actions extends React.Component {
 
     render() {
         return(
-            <div id="actions">
+            <ActionContainer id="actions">
                 <CurrencySelector />
                 <CartOverlay />
-            </div>
+            </ActionContainer>
         );
     }
 }
