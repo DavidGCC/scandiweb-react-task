@@ -65,11 +65,11 @@ export const AddToCartButton = styled.button`
 `;
 
 export const ItemBot = styled.div`
+    margin-top: 24px;
     width: 354px;
     height: 58px;
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
     padding: 0px;
     font-size: 18px;
     line-height: 28.8px;
@@ -77,12 +77,21 @@ export const ItemBot = styled.div`
 `;
 
 export const ItemName = styled.span`
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    width: 354px;
+    word-wrap: normal;
     font-weight: 300;
-    height: 29px;
+    min-height: 29px;
 `;
 
 export const ItemPrice = styled.span`
+    display: block;
     font-weight: 500;
+    width: auto;
+    height: 29px;
 `;
 
 //
