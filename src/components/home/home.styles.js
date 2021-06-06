@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const Item = styled.div`
     width: 300px;
     height: 30vh;
-    font-size: 1.5vw;
+    font-size: 1.5rem;
     font-weight: 600;
     text-transform: capitalize;
     background-color: #F0F8FF;

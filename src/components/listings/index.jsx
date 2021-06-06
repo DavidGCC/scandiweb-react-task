@@ -2,7 +2,7 @@ import React from "react";
 import qs from "query-string";
 
 import { StoreContext } from "../../context/Context.js";
-import ProductList from "./ProductsList";
+import CategoryPage from "./CategroyPage";
 
 class Listings extends React.Component {
     constructor(props) {
@@ -46,22 +46,14 @@ class Listings extends React.Component {
         return (
             <StoreContext.Consumer>
                 {({ items }) => (
-                    <>
-                        <h2 id="category-name">
-                            {this.state.selectedCategory === "all"
-                                ? "All Categories"
-                                : this.state.selectedCategory}
-                        </h2>
-                        <ProductList
-                            items={items.filter((item) =>
-                                this.state.selectedCategory === "all"
-                                    ? true
-                                    : this.state.selectedCategory ===
-                                      item.category
-                            )}
-                            selectedCategory={this.state.selectedCategory}
-                        />
-                    </>
+                    <CategoryPage
+                        items={items.filter((item) =>
+                            this.state.selectedCategory === "all"
+                                ? true
+                                : this.state.selectedCategory === item.category
+                        )}
+                        selectedCategory={this.state.selectedCategory}
+                    />
                 )}
             </StoreContext.Consumer>
         );

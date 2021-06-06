@@ -33,9 +33,9 @@ export const NavLink = styled(Link)`
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
-    color: var(--nav-black);
+    color: var(--black);
     &:hover {
-        color: var(--nav-selected);
+        color: var(--green);
     }
 `;
 

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { StoreContext } from "../../../context/Context";
-import CartModal from "./CartModal";
 
 class CartOverlay extends React.Component {
     render() {
@@ -30,7 +29,6 @@ class CartOverlay extends React.Component {
                     </svg>
                     <span>{this.context.cart.length}</span>
                 </Link>
-                <CartModal />
             </>
         );
     }
