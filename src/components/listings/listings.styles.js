@@ -77,6 +77,7 @@ export const ItemBot = styled.div`
 `;
 
 export const ItemName = styled.span`
+    color: ${props => props.inStock ? "var(--black)" : "var(--gray)"};
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -88,10 +89,31 @@ export const ItemName = styled.span`
 `;
 
 export const ItemPrice = styled.span`
+    color: ${props => props.inStock ? "var(--black)" : "var(--gray)"};
     display: block;
     font-weight: 500;
     width: auto;
     height: 29px;
+`;
+
+export const OutOfStockOverlay = styled.div`
+    width: 356px;
+    height: 338px;
+    position: absolute;
+    opacity: 0.5;
+    left: 0;
+    top: -5px;
+    background-color: #fff;
+    display: flex;
+`;
+
+export const OutOfStockText = styled.span`
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 38.4px;
+    text-transform: uppercase;
+    margin: auto;
+    color: var(--gray);
 `;
 
 //
