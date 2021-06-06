@@ -46,14 +46,22 @@ class Listings extends React.Component {
         return (
             <StoreContext.Consumer>
                 {({ items }) => (
-                    <ProductList
-                        items={items.filter((item) =>
-                            this.state.selectedCategory === "all"
-                                ? true
-                                : this.state.selectedCategory === item.category
-                        )}
-                        selectedCategory={this.state.selectedCategory}
-                    />
+                    <>
+                        <h2 id="category-name">
+                            {this.state.selectedCategory === "all"
+                                ? "All Categories"
+                                : this.state.selectedCategory}
+                        </h2>
+                        <ProductList
+                            items={items.filter((item) =>
+                                this.state.selectedCategory === "all"
+                                    ? true
+                                    : this.state.selectedCategory ===
+                                      item.category
+                            )}
+                            selectedCategory={this.state.selectedCategory}
+                        />
+                    </>
                 )}
             </StoreContext.Consumer>
         );
