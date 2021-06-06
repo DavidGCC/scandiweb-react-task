@@ -1,7 +1,7 @@
 import React from "react";
 
 import { StoreContext } from "../../context/Context";
-import { NavContainer, NavItem, NavLink } from "./styled";
+import { NavContainer, NavItem, NavLink } from "./header.styles";
 
 class Navbar extends React.Component {
     render() {

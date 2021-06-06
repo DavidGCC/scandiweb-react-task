@@ -3,7 +3,7 @@ import React from "react";
 import CurrencySelector from "./CurrencySelector";
 import CartOverlay from "./CartOverlay";
 
-import { ActionContainer } from "./styled";
+import { ActionContainer } from "./header.styles";
 
 class Actions extends React.Component {
 

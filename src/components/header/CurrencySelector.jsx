@@ -5,7 +5,7 @@ import { StoreContext } from "../../context/Context";
 import client from "../../graphql/client";
 import { getCurrencies } from "../../graphql/queries";
 
-import { CurrencySelect } from "./styled";
+import { CurrencySelect } from "./header.styles";
 
 class CurrencySelector extends React.Component {
     constructor(props) {

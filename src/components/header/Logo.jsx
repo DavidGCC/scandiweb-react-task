@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import { LogoContainer } from "./styled";
+import { LogoContainer } from "./header.styles";
 class Logo extends React.Component {
     render() {
         return (

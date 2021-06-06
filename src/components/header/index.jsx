@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import Logo from "./Logo";
 import Actions from "./Actions";
 
-import { HeaderContainer } from "./styled";
+import { HeaderContainer } from "./header.styles";
 
 class Header extends React.Component {
     render() {
