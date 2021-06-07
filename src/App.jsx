@@ -23,10 +23,19 @@ class App extends React.Component {
             setCurrency: this.handleCurrencyChange,
             categories: ["all"],
             items: [],
-            cart: {}
+            cart: {},
+            selectedCategory: "all",
         };
         this.addToCart = this.addToCart.bind(this);
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
+        this.setSelectedCategory = this.setSelectedCategory.bind(this);
+    }
+    setSelectedCategory(category) {
+        if (typeof category === "undefined" || category === "all") {
+            this.setState({ selectedCategory: "all" });
+        } else {
+            this.setState({ selectedCategory: category });
+        }
     }
     addToCart(item) {
         let cart = this.state.cart;
@@ -34,15 +43,16 @@ class App extends React.Component {
             cart[item.name].count++;
         } else {
             cart[item.name] = {
-                item, count: 1
-            }
+                item,
+                count: 1,
+            };
         }
         this.setState({ cart });
     }
     handleCurrencyChange(e) {
         e.preventDefault();
         this.setState({ currency: e.target.value });
-    };
+    }
     componentDidMount() {
         client
             .query({
@@ -61,22 +71,24 @@ class App extends React.Component {
                 this.setState((prevState) => ({
                     ...prevState,
                     categories: ["all", ...uniques],
-                    items: response.data.category.products
+                    items: response.data.category.products,
                 }));
             });
     }
 
     render() {
         return (
-            <StoreContext.Provider value={{ ...this.state, setCurrency: this.handleCurrencyChange, addToCart: this.addToCart }}>
+            <StoreContext.Provider
+                value={{
+                    ...this.state,
+                    setCurrency: this.handleCurrencyChange,
+                    addToCart: this.addToCart,
+                    setSelectedCategory: this.setSelectedCategory
+                }}>
                 <Router>
                     <Header />
                     <Switch>
-                        <Route
-                            path="/"
-                            exact
-                            component={Home}
-                        />
+                        <Route path="/" exact component={Home} />
                         <Route path="/listings" component={Listings} />
                         <Route path="/product/:itemname" component={Product} />
                         <Route path="/cart" component={Cart} />

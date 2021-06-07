@@ -5,28 +5,9 @@ import { StoreContext } from "../../context/Context.js";
 import CategoryPage from "./CategroyPage";
 
 class Listings extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { selectedCategory: "all" };
-    }
-
-    setCategory(category) {
-        if (typeof category === "undefined" || category === "all") {
-            this.setState((prevState) => ({
-                ...prevState,
-                selectedCategory: "all",
-            }));
-        } else {
-            this.setState((prevState) => ({
-                ...prevState,
-                selectedCategory: category,
-            }));
-        }
-    }
-
     componentDidMount() {
         const parsed = qs.parse(this.props.location.search);
-        this.setCategory(parsed.category);
+        this.context.setSelectedCategory(parsed.category);
     }
 
     componentDidUpdate() {
@@ -34,30 +15,28 @@ class Listings extends React.Component {
         if (
             !(
                 typeof parsed.category === "undefined" &&
-                this.state.selectedCategory === "all"
+                this.context.selectedCategory === "all"
             ) &&
-            parsed.category !== this.state.selectedCategory
+            parsed.category !== this.context.selectedCategory
         ) {
-            this.setCategory(parsed.category);
+            this.context.setSelectedCategory(parsed.category);
         }
     }
 
     render() {
+        const { items, selectedCategory } = this.context;
         return (
-            <StoreContext.Consumer>
-                {({ items }) => (
-                    <CategoryPage
-                        items={items.filter((item) =>
-                            this.state.selectedCategory === "all"
-                                ? true
-                                : this.state.selectedCategory === item.category
-                        )}
-                        selectedCategory={this.state.selectedCategory}
-                    />
+            <CategoryPage
+                items={items.filter((item) =>
+                    selectedCategory === "all"
+                        ? true
+                        : selectedCategory === item.category
                 )}
-            </StoreContext.Consumer>
+                selectedCategory={selectedCategory}
+            />
         );
     }
 }
+Listings.contextType = StoreContext;
 
 export default Listings;

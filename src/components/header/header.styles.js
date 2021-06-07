@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
@@ -19,23 +19,32 @@ export const NavContainer = styled.div`
 `;
 
 export const NavItem = styled.li`
-    text-transform: uppercase;
-    list-style-type: none;
+`;
+
+export const StyledNavLink = styled(NavLink)`
+    padding: 0;
+    width: 97px;
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
     margin: 0 0.2rem;
     height: 100%;
     display: flex;
     align-items: center;
     border-bottom: ${(props) =>
         props.active ? "2px solid var(--nav-selected)" : "none"};
-`;
-
-export const NavLink = styled(Link)`
+    text-transform: uppercase;
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
     color: var(--black);
     &:hover {
         color: var(--green);
+    }
+    &.active {
+        border-bottom: 1px solid red;
     }
 `;
 
