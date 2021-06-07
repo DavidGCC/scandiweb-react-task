@@ -14,25 +14,22 @@ export const NavContainer = styled.div`
     display: flex;
     height: 100%;
     width: 235px;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
+    flex: 0;
 `;
 
 export const NavItem = styled.li`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-    padding: 0;
     width: 97px;
     height: 56px;
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-    margin: 0 0.2rem;
-    height: 100%;
-    display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 0 .5rem;
     border-bottom: ${(props) =>
         props.active ? "2px solid var(--nav-selected)" : "none"};
     text-transform: uppercase;
@@ -44,7 +41,8 @@ export const StyledNavLink = styled(NavLink)`
         color: var(--green);
     }
     &.active {
-        border-bottom: 1px solid red;
+        color: var(--green);
+        border-bottom: 2px solid var(--green);
     }
 `;
 
@@ -92,7 +90,7 @@ export const ActionContainer = styled.div`
 `;
 
 export const LogoContainer = styled.div`
-    flex: 1;
+margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
