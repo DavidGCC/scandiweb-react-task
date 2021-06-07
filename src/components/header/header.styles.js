@@ -41,6 +41,39 @@ export const NavLink = styled(Link)`
 
 export const CurrencySelect = styled.select`
     margin-right: 2rem;
+    border: none;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
+    width: 38px;
+    height: 29px;
+    background-color: #ffffff;
+    margin: 0 22px; 
+`;
+
+export const CartIconContainer = styled.div`
+    position: relative;
+`;
+
+export const CartItemCountShape = styled.div`
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+`;
+export const CartItemCountContent = styled.span`
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    line-height: 16px;
 `;
 
 export const ActionContainer = styled.div`
