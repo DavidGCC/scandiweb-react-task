@@ -22,7 +22,7 @@ class Item extends React.Component {
     render() {
         return (
             <ItemContainer
-                onMouseEnter={() => this.setState({ isHovering: true })}
+                onMouseOver={() => this.setState({ isHovering: true })}
                 onMouseLeave={() => this.setState({ isHovering: false })}>
                 <ItemTop>
                     <ItemImage
