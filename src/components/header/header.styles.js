@@ -8,6 +8,7 @@ export const HeaderContainer = styled.div`
     flex-direction: row;
     align-items: center;
     padding: 0.5rem 8rem;
+    z-index: 2;
 `;
 
 export const NavContainer = styled.div`
@@ -59,7 +60,10 @@ export const CurrencySelect = styled.select`
 `;
 
 export const CartIconContainer = styled.div`
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
 `;
 
 export const CartItemCountShape = styled.div`
@@ -90,7 +94,7 @@ export const ActionContainer = styled.div`
 `;
 
 export const LogoContainer = styled.div`
-margin: auto;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;

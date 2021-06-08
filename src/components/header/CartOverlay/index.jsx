@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 import { StoreContext } from "../../../context/Context";
 
@@ -9,13 +10,44 @@ import {
     CartIconContainer,
 } from "../header.styles";
 
+import CartModal from "./CartModal";
+
+const Overlay = styled.div`
+    background: #39374838;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 5rem;
+    left: 0;
+    z-index: 1;
+`;
+
 class CartOverlay extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { showModal: false };
+        this.handleLeave = this.handleLeave.bind(this);
+        this.handleMouseOver = this.handleMouseOver.bind(this);
+        this.timeout = null;
+    }
+
+    handleLeave() {
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => this.setState({ showModal: false }), 500);
+    }
+
+    handleMouseOver() {
+        clearTimeout(this.timeout);
+        this.setState({ showModal: true });
+    }
+
+    
     render() {
         const cartItems = Object.entries(this.context.cart).length;
         return (
             <>
-                <Link to="/cart">
-                    <CartIconContainer>
+                <CartIconContainer onMouseOver={this.handleMouseOver} onMouseLeave={this.handleLeave}>
+                    <Link to="/cart">
                         <svg
                             width="20"
                             height="20"
@@ -42,8 +74,10 @@ class CartOverlay extends React.Component {
                                 </CartItemCountContent>
                             </CartItemCountShape>
                         ) : null}
-                    </CartIconContainer>
-                </Link>
+                    </Link>
+                    {this.state.showModal && <CartModal onMouseLeave={this.handleLeave} onMouseOver={this.handleMouseOver}/>}
+                </CartIconContainer>
+                { this.state.showModal && <Overlay /> }
             </>
         );
     }

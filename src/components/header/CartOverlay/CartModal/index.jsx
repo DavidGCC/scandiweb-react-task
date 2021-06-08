@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import styled from "styled-components";
 
 import { StoreContext } from "../../../../context/Context";
@@ -8,8 +8,11 @@ const ModalContainer = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 80px;
-    width: 325px;
+    left: 76.5vw;
+    top: 5rem;
+    width: 335px;
+    background-color: #fff;
+    z-index: 2;
 `;
 
 const CartName = styled.span`
@@ -32,27 +35,32 @@ const ItemCount = styled.span`
     text-align: right;
 `;
 
+
+
 export default class CartModal extends Component {
     render() {
         const cartEntries = Object.entries(this.context.cart);
         const totalPrice = 100;
         return (
-            <ModalContainer>
-                <div>
-                    <CartName>My Bag,</CartName> <ItemCount>{Object.keys(this.context.cart).length}</ItemCount>
-                </div>
-                {
-                    cartEntries.map(item => (
+            <>
+                <ModalContainer>
+                    <div>
+                        <CartName>My Bag,</CartName>{" "}
+                        <ItemCount>
+                            {Object.keys(this.context.cart).length}
+                        </ItemCount>
+                    </div>
+                    {cartEntries.map((item) => (
                         <ModalItem item={item[1]} key={item[0]} />
-                    ))
-                }
-                <p>Total: { totalPrice }</p>
-                <div>
-                    <button>view bag</button>
-                    <button>chekout</button>
-                </div>
-            </ModalContainer>
-        )
+                    ))}
+                    <p>Total: {totalPrice}</p>
+                    <div>
+                        <button>view bag</button>
+                        <button>chekout</button>
+                    </div>
+                </ModalContainer>
+            </>
+        );
     }
 }
 

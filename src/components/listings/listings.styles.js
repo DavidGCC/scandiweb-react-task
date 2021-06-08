@@ -44,7 +44,6 @@ export const ItemTop = styled.div`
 export const ItemImage = styled.img`
     width: 354px;
     height: 330px;
-    z-index: 1;
 `;
 
 export const AddToCartButton = styled.button`
@@ -54,7 +53,6 @@ export const AddToCartButton = styled.button`
     border: none;
     background-color: var(--green);
     position: absolute;
-    z-index: 2;
     top: calc(100% - 26px);
     left: 80%;
     transition: all .5s ease;
