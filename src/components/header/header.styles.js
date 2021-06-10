@@ -66,6 +66,10 @@ export const CartIconContainer = styled.div`
     height: 80px;
 `;
 
+export const CartLink = styled(NavLink)`
+    position: relative;
+`;
+
 export const CartItemCountShape = styled.div`
     display: block;
     width: 20px;

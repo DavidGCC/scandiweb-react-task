@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { StoreContext } from "../../../../context/Context";
 import ModalItem from "./ModalItem";
+import FooterButtons from "./FooterButtons";
 
 const ModalContainer = styled.div`
     display: flex;
@@ -13,6 +14,7 @@ const ModalContainer = styled.div`
     width: 335px;
     background-color: #fff;
     z-index: 2;
+    padding: 20px;
 `;
 
 const CartName = styled.span`
@@ -35,6 +37,11 @@ const ItemCount = styled.span`
     text-align: right;
 `;
 
+const TotalPrice = styled.div`
+    font-size: 16px;
+    font-weight: 500;
+`;
+
 
 
 export default class CartModal extends Component {
@@ -54,10 +61,7 @@ export default class CartModal extends Component {
                         <ModalItem item={item[1]} key={item[0]} />
                     ))}
                     <p>Total: {totalPrice}</p>
-                    <div>
-                        <button>view bag</button>
-                        <button>chekout</button>
-                    </div>
+                    <FooterButtons />   
                 </ModalContainer>
             </>
         );

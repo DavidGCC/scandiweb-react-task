@@ -26,7 +26,7 @@ const AttributesContainer = styled.div`
     grid-area: attrs;
 `;
 
-const AttributeGroup = styled.div`
+const AttributeGroup = styled.form`
     display: flex;
     flex-direction: row;
 `;
@@ -66,6 +66,8 @@ const ItemImage = styled.img`
     grid-area: img;
 `;
 
+const CountControl = styled.button``;
+
 export default class ModalItem extends Component {
     render() {
         const { item, count } = this.props.item;
@@ -86,9 +88,9 @@ export default class ModalItem extends Component {
                     </ItemNumbers>
                 </NameAndPrice>
                 <Actions>
-                    <button>+</button>
+                    <CountControl>+</CountControl>
                     <ItemNumbers>{count}</ItemNumbers>
-                    <button>-</button>
+                    <CountControl>-</CountControl>
                 </Actions>
                 <ImageContainer>
                     <ItemImage src={item.gallery[0]} />
@@ -97,15 +99,14 @@ export default class ModalItem extends Component {
                     {item.attributes.map((attr) => (
                         <AttributeGroup>
                             {attr.items.map((i) => (
-                                <>
+                                <label>
                                     <input
                                         name={i.name}
                                         type="radio"
                                         key={i.id}
                                         value={i.value}
-                                    />
-                                    {i.displayValue}
-                                </>
+                                    />{i.displayValue}
+                                </label>
                             ))}
                         </AttributeGroup>
                     ))}

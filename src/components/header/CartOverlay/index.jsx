@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { StoreContext } from "../../../context/Context";
@@ -8,6 +7,7 @@ import {
     CartItemCountShape,
     CartItemCountContent,
     CartIconContainer,
+    CartLink
 } from "../header.styles";
 
 import CartModal from "./CartModal";
@@ -47,7 +47,7 @@ class CartOverlay extends React.Component {
         return (
             <>
                 <CartIconContainer onMouseOver={this.handleMouseOver} onMouseLeave={this.handleLeave}>
-                    <Link to="/cart">
+                    <CartLink to="/cart">
                         <svg
                             width="20"
                             height="20"
@@ -74,7 +74,7 @@ class CartOverlay extends React.Component {
                                 </CartItemCountContent>
                             </CartItemCountShape>
                         ) : null}
-                    </Link>
+                    </CartLink>
                     {this.state.showModal && <CartModal onMouseLeave={this.handleLeave} onMouseOver={this.handleMouseOver}/>}
                 </CartIconContainer>
                 { this.state.showModal && <Overlay /> }
