@@ -52,9 +52,10 @@ export default class CartModal extends Component {
             <>
                 <ModalContainer>
                     <div>
-                        <CartName>My Bag,</CartName>{" "}
+                        <CartName>My Bag,</CartName>
+                        &nbsp;
                         <ItemCount>
-                            {Object.keys(this.context.cart).length}
+                            {Object.keys(this.context.cart).length} items
                         </ItemCount>
                     </div>
                     {cartEntries.map((item) => (

@@ -11,14 +11,15 @@ const ItemContainer = styled.div`
     grid-template-areas:
         "name actions img"
         "attrs actions img ";
-    grid-gap: 1rem;
+    margin: 20px 0;
 `;
 
 const NameAndPrice = styled.div`
-    display: flex;
-    flex-direction: column;
     grid-area: name;
-    align-items: flex-start;
+    width: 136px;
+    margin: 0 18px 27px 0;
+    padding: 0;
+    align-items: start;
 `;
 
 const AttributesContainer = styled.div`
@@ -43,9 +44,11 @@ const Actions = styled.div`
 
 const ImageContainer = styled.div`
     grid-area: img;
+    margin-left: 10px;
 `;
 
-const ItemName = styled.p`
+const ItemName = styled.span`
+    margin-bottom: 5px;
     font-family: Raleway;
     font-size: 16px;
     font-style: normal;
@@ -55,7 +58,8 @@ const ItemName = styled.p`
     text-align: left;
 `;
 
-const ItemNumbers = styled.p`
+const ItemNumbers = styled.span`
+    display: block;
     font-family: Raleway;
     font-size: 16px;
     font-style: normal;
@@ -64,6 +68,13 @@ const ItemNumbers = styled.p`
     letter-spacing: 0em;
     text-align: right;
 `;
+
+const ItemPrice = styled(ItemNumbers)`
+    text-align: left;
+    margin: 0;
+`;
+
+const ItemCount = styled(ItemNumbers)``;
 
 const ItemImage = styled.img`
     width: 105px;
@@ -81,6 +92,7 @@ const CountControl = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 `;
 
 export default class ModalItem extends Component {
@@ -90,7 +102,7 @@ export default class ModalItem extends Component {
             <ItemContainer>
                 <NameAndPrice>
                     <ItemName>{item.name}</ItemName>
-                    <ItemNumbers>
+                    <ItemPrice>
                         {item.prices.map((price) => {
                             if (price.currency === this.context.currency) {
                                 return `${getSymbolFromCurrency(
@@ -99,17 +111,17 @@ export default class ModalItem extends Component {
                             }
                             return null;
                         })}
-                    </ItemNumbers>
+                    </ItemPrice>
                 </NameAndPrice>
                 <Actions>
                     <CountControl onClick={() => this.context.addToCart(item)}>+</CountControl>
-                    <ItemNumbers>{count}</ItemNumbers>
+                    <ItemCount>{count}</ItemCount>
                     <CountControl onClick={() => this.context.removeFromCart(item)}>-</CountControl>
                 </Actions>
                 <ImageContainer>
                     <ItemImage src={item.gallery[0]} />
                 </ImageContainer>
-                <AttributesContainer>
+                {/* <AttributesContainer>
                     {item.attributes.map((attr) => (
                         <AttributeGroup>
                             {attr.items.map((i) => (
@@ -124,7 +136,7 @@ export default class ModalItem extends Component {
                             ))}
                         </AttributeGroup>
                     ))}
-                </AttributesContainer>
+                </AttributesContainer> */}
             </ItemContainer>
         );
     }
