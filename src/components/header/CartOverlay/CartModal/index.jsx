@@ -4,14 +4,15 @@ import styled from "styled-components";
 import { StoreContext } from "../../../../context/Context";
 import ModalItem from "./ModalItem";
 import FooterButtons from "./FooterButtons";
+import TotalPrice from "./TotalPrice";
 
 const ModalContainer = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
-    left: 76.5vw;
+    left: 77vw;
     top: 5rem;
-    width: 335px;
+    width: 325px;
     background-color: #fff;
     z-index: 2;
     padding: 20px;
@@ -37,17 +38,16 @@ const ItemCount = styled.span`
     text-align: right;
 `;
 
-const TotalPrice = styled.div`
-    font-size: 16px;
-    font-weight: 500;
-`;
-
-
 
 export default class CartModal extends Component {
     render() {
         const cartEntries = Object.entries(this.context.cart);
-        const totalPrice = 100;
+        const totalPrice = cartEntries.reduce((total, curr) => {
+            console.log(curr[1]);
+            const price = curr[1].item.prices.find(i => i.currency === this.context.currency);
+            total += curr[1].count * price.amount;
+            return total;
+        }, 0);        
         return (
             <>
                 <ModalContainer>
@@ -60,8 +60,8 @@ export default class CartModal extends Component {
                     {cartEntries.map((item) => (
                         <ModalItem item={item[1]} key={item[0]} />
                     ))}
-                    <p>Total: {totalPrice}</p>
-                    <FooterButtons />   
+                    <TotalPrice totalPrice={Math.round(totalPrice*100)/100} />
+                    <FooterButtons />
                 </ModalContainer>
             </>
         );

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -49,10 +49,8 @@ export default class FooterButtons extends Component {
                 <SLink to="/cart">
                     <ViewBagButton>view bag</ViewBagButton>
                 </SLink>
-                <SLink>
-                    <CheckOutButton>check out</CheckOutButton>
-                </SLink>
+                <CheckOutButton>check out</CheckOutButton>
             </ModalFooterContainer>
-        )
+        );
     }
 }

@@ -50,6 +50,7 @@ export const StyledNavLink = styled(NavLink)`
 export const CurrencySelect = styled.select`
     margin-right: 2rem;
     border: none;
+    outline: none;
     font-weight: 500;
     font-size: 18px;
     line-height: 29px;

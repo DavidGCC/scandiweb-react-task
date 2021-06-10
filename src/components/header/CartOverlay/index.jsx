@@ -38,7 +38,9 @@ class CartOverlay extends React.Component {
 
     handleMouseOver() {
         clearTimeout(this.timeout);
-        this.setState({ showModal: true });
+        if (this.state.showModal !== true) {
+            this.setState({ showModal: true });
+        }
     }
 
     
