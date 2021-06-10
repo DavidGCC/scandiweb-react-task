@@ -38,16 +38,16 @@ const ItemCount = styled.span`
     text-align: right;
 `;
 
-
 export default class CartModal extends Component {
     render() {
         const cartEntries = Object.entries(this.context.cart);
         const totalPrice = cartEntries.reduce((total, curr) => {
-            console.log(curr[1]);
-            const price = curr[1].item.prices.find(i => i.currency === this.context.currency);
+            const price = curr[1].item.prices.find(
+                (i) => i.currency === this.context.currency
+            );
             total += curr[1].count * price.amount;
             return total;
-        }, 0);        
+        }, 0);
         return (
             <>
                 <ModalContainer>
@@ -60,7 +60,9 @@ export default class CartModal extends Component {
                     {cartEntries.map((item) => (
                         <ModalItem item={item[1]} key={item[0]} />
                     ))}
-                    <TotalPrice totalPrice={Math.round(totalPrice*100)/100} />
+                    <TotalPrice
+                        totalPrice={Math.round(totalPrice * 100) / 100}
+                    />
                     <FooterButtons />
                 </ModalContainer>
             </>

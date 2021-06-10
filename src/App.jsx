@@ -29,6 +29,7 @@ class App extends React.Component {
         this.addToCart = this.addToCart.bind(this);
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
         this.setSelectedCategory = this.setSelectedCategory.bind(this);
+        this.removeFromCart = this.removeFromCart.bind(this);
     }
     setSelectedCategory(category) {
         if (typeof category === "undefined" || category === "all") {
@@ -46,6 +47,15 @@ class App extends React.Component {
                 item,
                 count: 1,
             };
+        }
+        this.setState({ cart });
+    }
+    removeFromCart(item) {
+        let cart = this.state.cart;
+        if (cart[item.name].count > 1) {
+            cart[item.name].count--;
+        } else {
+            delete cart[item.name];
         }
         this.setState({ cart });
     }
@@ -83,7 +93,8 @@ class App extends React.Component {
                     ...this.state,
                     setCurrency: this.handleCurrencyChange,
                     addToCart: this.addToCart,
-                    setSelectedCategory: this.setSelectedCategory
+                    setSelectedCategory: this.setSelectedCategory,
+                    removeFromCart: this.removeFromCart
                 }}>
                 <Router>
                     <Header />

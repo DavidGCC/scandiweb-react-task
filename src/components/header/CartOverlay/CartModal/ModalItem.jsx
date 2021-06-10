@@ -7,6 +7,7 @@ import { StoreContext } from "../../../../context/Context";
 const ItemContainer = styled.div`
     width: 90%;
     display: grid;
+    height: 137px;
     grid-template-areas:
         "name actions img"
         "attrs actions img ";
@@ -33,6 +34,11 @@ const AttributeGroup = styled.form`
 
 const Actions = styled.div`
     grid-area: actions;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 137px;
 `;
 
 const ImageContainer = styled.div`
@@ -66,12 +72,20 @@ const ItemImage = styled.img`
     grid-area: img;
 `;
 
-const CountControl = styled.button``;
+const CountControl = styled.button`
+    background-color: #ffffff;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--black);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
 
 export default class ModalItem extends Component {
     render() {
         const { item, count } = this.props.item;
-        console.log(item);
         return (
             <ItemContainer>
                 <NameAndPrice>
@@ -88,9 +102,9 @@ export default class ModalItem extends Component {
                     </ItemNumbers>
                 </NameAndPrice>
                 <Actions>
-                    <CountControl>+</CountControl>
+                    <CountControl onClick={() => this.context.addToCart(item)}>+</CountControl>
                     <ItemNumbers>{count}</ItemNumbers>
-                    <CountControl>-</CountControl>
+                    <CountControl onClick={() => this.context.removeFromCart(item)}>-</CountControl>
                 </Actions>
                 <ImageContainer>
                     <ItemImage src={item.gallery[0]} />
