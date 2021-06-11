@@ -22,17 +22,6 @@ const NameAndPrice = styled.div`
     align-items: start;
 `;
 
-const AttributesContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    grid-area: attrs;
-`;
-
-const AttributeGroup = styled.form`
-    display: flex;
-    flex-direction: row;
-`;
-
 const Actions = styled.div`
     grid-area: actions;
     display: flex;
@@ -85,6 +74,7 @@ const ItemImage = styled.img`
 
 const CountControl = styled.button`
     background-color: #ffffff;
+    font-weight: 400;
     width: 24px;
     height: 24px;
     border: 1px solid var(--black);
@@ -93,6 +83,20 @@ const CountControl = styled.button`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+`;
+const AttributesContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    grid-area: attrs;
+`;
+const AttributeGroup = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
+const AttrButton = styled.button`
+    background-color: ${(props) => (props.color ? props.color : "#fff")};
+    border: ${props => props.active ? "3px solid red" : "none"};
 `;
 
 export default class ModalItem extends Component {
@@ -114,29 +118,54 @@ export default class ModalItem extends Component {
                     </ItemPrice>
                 </NameAndPrice>
                 <Actions>
-                    <CountControl onClick={() => this.context.addToCart(item)}>+</CountControl>
+                    <CountControl onClick={() => this.context.addToCart(item)}>
+                        +
+                    </CountControl>
                     <ItemCount>{count}</ItemCount>
-                    <CountControl onClick={() => this.context.removeFromCart(item)}>-</CountControl>
+                    <CountControl
+                        onClick={() => this.context.removeFromCart(item)}>
+                        -
+                    </CountControl>
                 </Actions>
                 <ImageContainer>
                     <ItemImage src={item.gallery[0]} />
                 </ImageContainer>
-                {/* <AttributesContainer>
-                    {item.attributes.map((attr) => (
-                        <AttributeGroup>
-                            {attr.items.map((i) => (
-                                <label>
-                                    <input
-                                        name={i.name}
-                                        type="radio"
-                                        key={i.id}
-                                        value={i.value}
-                                    />{i.displayValue}
-                                </label>
-                            ))}
-                        </AttributeGroup>
-                    ))}
-                </AttributesContainer> */}
+                <AttributesContainer>
+                    {item.attributes.map((attrType) => {
+                        return (
+                            <AttributeGroup key={attrType.id}>
+                                {attrType.items.map((attr) => {
+                                    return (
+                                        <AttrButton
+                                            color={
+                                                attrType.type === "swatch"
+                                                    ? attr.value
+                                                    : null
+                                            }
+                                            onClick={() =>
+                                                this.context.addAttribute(
+                                                    item,
+                                                    {
+                                                        id: attrType.id,
+                                                        name: attrType.name,
+                                                        type: attrType.type,
+                                                        item: attr,
+                                                    }
+                                                )
+                                            }
+                                            active={this.context.cart[item.name].chosenAttributes.find(i => {
+                                                console.log(i, attrType);
+                                                return i.id === attrType.id && i.item?.id === attr.id;
+                                            })}>
+                                            {attrType.type !== "swatch" &&
+                                                attr.displayValue}
+                                        </AttrButton>
+                                    );
+                                })}
+                            </AttributeGroup>
+                        );
+                    })}
+                </AttributesContainer>
             </ItemContainer>
         );
     }

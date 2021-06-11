@@ -30,6 +30,7 @@ class App extends React.Component {
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
         this.setSelectedCategory = this.setSelectedCategory.bind(this);
         this.removeFromCart = this.removeFromCart.bind(this);
+        this.addAttribute = this.addAttribute.bind(this);
     }
     setSelectedCategory(category) {
         if (typeof category === "undefined" || category === "all") {
@@ -43,11 +44,39 @@ class App extends React.Component {
         if (cart[item.name]) {
             cart[item.name].count++;
         } else {
+            const attributes = item.attributes.reduce((res, curr) => {
+                res = [
+                    ...res,
+                    {
+                        id: curr.id,
+                        name: curr.name,
+                        type: curr.type,
+                        item: null,
+                    },
+                ];
+                return res;
+            }, []);
             cart[item.name] = {
                 item,
                 count: 1,
+                chosenAttributes: attributes,
             };
         }
+        this.setState({ cart });
+    }
+    addAttribute(item, attribute) {
+        let cart = this.state.cart;
+        let chosenAttributes = cart[item.name].chosenAttributes;
+        chosenAttributes = chosenAttributes.map((i) => {
+            if (i.id === attribute.id) {
+                return {
+                    ...i,
+                    item: attribute.item,
+                };
+            }
+            return i;
+        });
+        cart[item.name].chosenAttributes = chosenAttributes;
         this.setState({ cart });
     }
     removeFromCart(item) {
@@ -94,7 +123,8 @@ class App extends React.Component {
                     setCurrency: this.handleCurrencyChange,
                     addToCart: this.addToCart,
                     setSelectedCategory: this.setSelectedCategory,
-                    removeFromCart: this.removeFromCart
+                    removeFromCart: this.removeFromCart,
+                    addAttribute: this.addAttribute
                 }}>
                 <Router>
                     <Header />
