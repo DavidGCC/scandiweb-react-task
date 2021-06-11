@@ -3,6 +3,7 @@ import styled from "styled-components";
 import getSymbolFromCurrency from "currency-symbol-map";
 
 import { StoreContext } from "../../../../context/Context";
+import Attributes from "./Attributes";
 
 const ItemContainer = styled.div`
     width: 90%;
@@ -84,20 +85,7 @@ const CountControl = styled.button`
     justify-content: center;
     cursor: pointer;
 `;
-const AttributesContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    grid-area: attrs;
-`;
-const AttributeGroup = styled.div`
-    display: flex;
-    flex-direction: row;
-`;
 
-const AttrButton = styled.button`
-    background-color: ${(props) => (props.color ? props.color : "#fff")};
-    border: ${props => props.active ? "3px solid red" : "none"};
-`;
 
 export default class ModalItem extends Component {
     render() {
@@ -130,42 +118,7 @@ export default class ModalItem extends Component {
                 <ImageContainer>
                     <ItemImage src={item.gallery[0]} />
                 </ImageContainer>
-                <AttributesContainer>
-                    {item.attributes.map((attrType) => {
-                        return (
-                            <AttributeGroup key={attrType.id}>
-                                {attrType.items.map((attr) => {
-                                    return (
-                                        <AttrButton
-                                            color={
-                                                attrType.type === "swatch"
-                                                    ? attr.value
-                                                    : null
-                                            }
-                                            onClick={() =>
-                                                this.context.addAttribute(
-                                                    item,
-                                                    {
-                                                        id: attrType.id,
-                                                        name: attrType.name,
-                                                        type: attrType.type,
-                                                        item: attr,
-                                                    }
-                                                )
-                                            }
-                                            active={this.context.cart[item.name].chosenAttributes.find(i => {
-                                                console.log(i, attrType);
-                                                return i.id === attrType.id && i.item?.id === attr.id;
-                                            })}>
-                                            {attrType.type !== "swatch" &&
-                                                attr.displayValue}
-                                        </AttrButton>
-                                    );
-                                })}
-                            </AttributeGroup>
-                        );
-                    })}
-                </AttributesContainer>
+                <Attributes item={item} />  
             </ItemContainer>
         );
     }

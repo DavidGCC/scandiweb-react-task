@@ -8,7 +8,6 @@ export const HeaderContainer = styled.div`
     flex-direction: row;
     align-items: center;
     padding: 0.5rem 8rem;
-    z-index: 2;
 `;
 
 export const NavContainer = styled.div`
