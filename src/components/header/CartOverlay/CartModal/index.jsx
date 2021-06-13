@@ -1,42 +1,11 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 
 import { StoreContext } from "../../../../context/Context";
 import ModalItem from "./ModalItem";
 import FooterButtons from "./FooterButtons";
 import TotalPrice from "./TotalPrice";
 
-const ModalContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 5rem;
-    right: 5px;
-    width: 325px;
-    background-color: #fff;
-    z-index: 2;
-    padding: 20px;
-`;
-
-const CartName = styled.span`
-    font-family: Raleway;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 26px;
-    letter-spacing: 0em;
-    text-align: right;
-`;
-
-const ItemCount = styled.span`
-    font-family: Raleway;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
-    letter-spacing: 0em;
-    text-align: right;
-`;
+import { ModalContainer, CartName, ItemCount } from "./modal.styles";
 
 export default class CartModal extends Component {
     render() {

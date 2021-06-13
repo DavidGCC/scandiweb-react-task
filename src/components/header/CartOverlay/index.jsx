@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import { StoreContext } from "../../../context/Context";
 
@@ -7,28 +6,19 @@ import {
     CartItemCountShape,
     CartItemCountContent,
     CartIconContainer,
-    CartLink,
+    CartLink
 } from "../header.styles";
 
-import CartModal from "./CartModal";
 
-const Overlay = styled.div`
-    background: #39374838;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: ${props => props.scroll <= 80 ? 80 - props.scroll : "0"}px;
-    left: 0;
-    z-index: 1;
-`;
+import CartModal from "./CartModal";
+import Overlay from "./CartModal/Overlay";
 
 class CartOverlay extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { showModal: false, scroll: 0 };
+        this.state = { showModal: false };
         this.handleLeave = this.handleLeave.bind(this);
         this.handleMouseOver = this.handleMouseOver.bind(this);
-        this.handleScroll = this.handleScroll.bind(this);
         this.timeout = null;
     }
 
@@ -47,17 +37,7 @@ class CartOverlay extends React.Component {
         }
     }
 
-    handleScroll() {
-        this.setState({ scroll: document.body.scrollTop });
-    }
-
-    componentDidMount() {
-        document.body.addEventListener("scroll", this.handleScroll);
-    }
-
-    componentWillUnmount() {
-        document.body.removeEventListener("scroll", this.handleScroll);
-    }
+    
 
     render() {
         const cartItems = Object.entries(this.context.cart).length;
@@ -101,7 +81,7 @@ class CartOverlay extends React.Component {
                         />
                     )}
                 </CartIconContainer>
-                {this.state.showModal && <Overlay scroll={this.state.scroll}/>}
+                {this.state.showModal && <Overlay />}
             </div>
         );
     }
