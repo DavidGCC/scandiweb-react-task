@@ -64,6 +64,7 @@ export const CartIconContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 80px;
+    position: relative;
 `;
 
 export const CartLink = styled(NavLink)`

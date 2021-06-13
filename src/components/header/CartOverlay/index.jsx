@@ -7,7 +7,7 @@ import {
     CartItemCountShape,
     CartItemCountContent,
     CartIconContainer,
-    CartLink
+    CartLink,
 } from "../header.styles";
 
 import CartModal from "./CartModal";
@@ -17,7 +17,7 @@ const Overlay = styled.div`
     width: 100%;
     height: 100%;
     position: fixed;
-    top: 5rem;
+    top: ${props => props.scroll <= 80 ? 80 - props.scroll : "0"}px;
     left: 0;
     z-index: 1;
 `;
@@ -25,15 +25,19 @@ const Overlay = styled.div`
 class CartOverlay extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { showModal: false };
+        this.state = { showModal: false, scroll: 0 };
         this.handleLeave = this.handleLeave.bind(this);
         this.handleMouseOver = this.handleMouseOver.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
         this.timeout = null;
     }
 
     handleLeave() {
         clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => this.setState({ showModal: false }), 500);
+        this.timeout = setTimeout(
+            () => this.setState({ showModal: false }),
+            500
+        );
     }
 
     handleMouseOver() {
@@ -43,12 +47,25 @@ class CartOverlay extends React.Component {
         }
     }
 
-    
+    handleScroll() {
+        this.setState({ scroll: document.body.scrollTop });
+    }
+
+    componentDidMount() {
+        document.body.addEventListener("scroll", this.handleScroll);
+    }
+
+    componentWillUnmount() {
+        document.body.removeEventListener("scroll", this.handleScroll);
+    }
+
     render() {
         const cartItems = Object.entries(this.context.cart).length;
         return (
-            <>
-                <CartIconContainer onMouseOver={this.handleMouseOver} onMouseLeave={this.handleLeave}>
+            <div style={{ position: "relative" }}>
+                <CartIconContainer
+                    onMouseOver={this.handleMouseOver}
+                    onMouseLeave={this.handleLeave}>
                     <CartLink to="/cart">
                         <svg
                             width="20"
@@ -77,10 +94,15 @@ class CartOverlay extends React.Component {
                             </CartItemCountShape>
                         ) : null}
                     </CartLink>
-                    {this.state.showModal && <CartModal onMouseLeave={this.handleLeave} onMouseOver={this.handleMouseOver}/>}
+                    {this.state.showModal && (
+                        <CartModal
+                            onMouseLeave={this.handleLeave}
+                            onMouseOver={this.handleMouseOver}
+                        />
+                    )}
                 </CartIconContainer>
-                { this.state.showModal && <Overlay /> }
-            </>
+                {this.state.showModal && <Overlay scroll={this.state.scroll}/>}
+            </div>
         );
     }
 }
