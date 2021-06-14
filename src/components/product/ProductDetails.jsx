@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import { StoreContext } from "../../context/Context";
+
 import ImageGallery from "./ImageGallery";
 import Attributes from "./Attributes";
 import Price from "../shared/Price";
@@ -60,6 +62,22 @@ const ProdcutPrice = styled.span`
     display: flex;
     justify-content: flex-start;
     align-items: center;
+`;
+
+const AddToCartButton = styled.button`
+    height: 52px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    border: none;
+    background-color: var(--green);
+    text-transform: uppercase;
+    margin: 20px 0 40px 0;
 `;
 
 export default class ProductDetails extends Component {
@@ -136,9 +154,12 @@ export default class ProductDetails extends Component {
                                 return <ProdcutPrice>{`${symbol}${amount}`}</ProdcutPrice>;
                             }}
                         </Price>
+                        <AddToCartButton onClick={() => this.context.addToCart(this.props.item, this.state.savedAttributes)}>Add To Cart</AddToCartButton>
                     </ProductDescription>
                 </DetailsContainer>
             </ProductContainer>
         );
     }
 }
+
+ProductDetails.contextType = StoreContext;

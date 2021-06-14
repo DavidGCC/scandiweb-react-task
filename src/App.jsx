@@ -39,12 +39,12 @@ class App extends React.Component {
             this.setState({ selectedCategory: category });
         }
     }
-    addToCart(item) {
+    addToCart(item, attrs = null) {
         let cart = this.state.cart;
         if (cart[item.name]) {
             cart[item.name].count++;
         } else {
-            const attributes = item.attributes.reduce((res, curr) => {
+            const attributes = attrs ? attrs : item.attributes.reduce((res, curr) => {
                 res = [
                     ...res,
                     {
