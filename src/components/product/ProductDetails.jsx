@@ -26,7 +26,7 @@ const ProductImage = styled.img`
     height: 511px;
 `;
 
-const ProductDescription = styled.div`
+const PrdouctDetails = styled.div`
     width: 292;
 `;
 
@@ -66,7 +66,7 @@ const ProdcutPrice = styled.span`
 
 const AddToCartButton = styled.button`
     height: 52px;
-    width: 100%;
+    width: 292px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,7 +78,13 @@ const AddToCartButton = styled.button`
     background-color: var(--green);
     text-transform: uppercase;
     margin: 20px 0 40px 0;
+    transition: all .2s ease;
+    &:active {
+        transform: scale(0.95, 0.95);
+    }
 `;
+
+const ProductDescription = styled.div``;
 
 export default class ProductDetails extends Component {
     constructor(props) {
@@ -141,7 +147,7 @@ export default class ProductDetails extends Component {
                 </GalleryContainer>
                 <DetailsContainer>
                     <ProductImage src={this.state.chosenImage} />
-                    <ProductDescription>
+                    <PrdouctDetails>
                         <ProductName>{this.props.item.name}</ProductName>
                         <Attributes
                             isAttrActive={this.isAttrActive}
@@ -151,11 +157,22 @@ export default class ProductDetails extends Component {
                         <ProductPriceLabel>price:</ProductPriceLabel>
                         <Price prices={this.props.item.prices}>
                             {(symbol, amount) => {
-                                return <ProdcutPrice>{`${symbol}${amount}`}</ProdcutPrice>;
+                                return (
+                                    <ProdcutPrice>{`${symbol}${amount}`}</ProdcutPrice>
+                                );
                             }}
                         </Price>
-                        <AddToCartButton onClick={() => this.context.addToCart(this.props.item, this.state.savedAttributes)}>Add To Cart</AddToCartButton>
-                    </ProductDescription>
+                        <AddToCartButton
+                            onClick={() =>
+                                this.context.addToCart(
+                                    this.props.item,
+                                    this.state.savedAttributes
+                                )
+                            }>
+                            Add To Cart
+                        </AddToCartButton>
+                        <ProductDescription dangerouslySetInnerHTML={{ __html: this.props.item.description }}></ProductDescription>
+                    </PrdouctDetails>
                 </DetailsContainer>
             </ProductContainer>
         );
