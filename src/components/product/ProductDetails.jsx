@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 
 import { StoreContext } from "../../context/Context";
 
@@ -7,84 +6,18 @@ import ImageGallery from "./ImageGallery";
 import Attributes from "./Attributes";
 import Price from "../shared/Price";
 
-const ProductContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    margin: 80px 220px 72px 120px;
-`;
-
-const GalleryContainer = styled.div``;
-
-const DetailsContainer = styled.div`
-    display: flex;
-    gap: 100px;
-`;
-
-const ProductImage = styled.img`
-    width: 610px;
-    height: 511px;
-`;
-
-const PrdouctDetails = styled.div`
-    width: 292;
-`;
-
-const ProductName = styled.h1`
-    &::first-line {
-        font-weight: 600;
-    }
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 27px;
-    margin-bottom: 43px;
-`;
-
-const ProductPriceLabel = styled.span`
-    margin-top: 40px;
-    display: block;
-    width: 50px;
-    font-family: "Roboto Condensed", sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 18px;
-    text-transform: uppercase;
-`;
-
-const ProdcutPrice = styled.span`
-    display: block;
-    width: auto;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 18px;
-    margin: 10px 0 20px 0;
-    height: 46px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-`;
-
-const AddToCartButton = styled.button`
-    height: 52px;
-    width: 292px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 100%;
-    border: none;
-    background-color: var(--green);
-    text-transform: uppercase;
-    margin: 20px 0 40px 0;
-    transition: all .2s ease;
-    &:active {
-        transform: scale(0.95, 0.95);
-    }
-`;
-
-const ProductDescription = styled.div``;
+import {
+    ProductContainer,
+    GalleryContainer,
+    DetailsContainer,
+    ProductImage,
+    ProductDetailsContainer,
+    ProductName,
+    ProductPriceLabel,
+    ProductPrice,
+    AddToCartButton,
+    ProductDescription,
+} from "./product.styles";
 
 export default class ProductDetails extends Component {
     constructor(props) {
@@ -147,7 +80,7 @@ export default class ProductDetails extends Component {
                 </GalleryContainer>
                 <DetailsContainer>
                     <ProductImage src={this.state.chosenImage} />
-                    <PrdouctDetails>
+                    <ProductDetailsContainer>
                         <ProductName>{this.props.item.name}</ProductName>
                         <Attributes
                             isAttrActive={this.isAttrActive}
@@ -158,7 +91,7 @@ export default class ProductDetails extends Component {
                         <Price prices={this.props.item.prices}>
                             {(symbol, amount) => {
                                 return (
-                                    <ProdcutPrice>{`${symbol}${amount}`}</ProdcutPrice>
+                                    <ProductPrice>{`${symbol}${amount}`}</ProductPrice>
                                 );
                             }}
                         </Price>
@@ -171,8 +104,11 @@ export default class ProductDetails extends Component {
                             }>
                             Add To Cart
                         </AddToCartButton>
-                        <ProductDescription dangerouslySetInnerHTML={{ __html: this.props.item.description }}></ProductDescription>
-                    </PrdouctDetails>
+                        <ProductDescription
+                            dangerouslySetInnerHTML={{
+                                __html: this.props.item.description,
+                            }}></ProductDescription>
+                    </ProductDetailsContainer>
                 </DetailsContainer>
             </ProductContainer>
         );
