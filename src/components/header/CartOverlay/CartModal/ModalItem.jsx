@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import getSymbolFromCurrency from "currency-symbol-map";
 
 import { StoreContext } from "../../../../context/Context";
 import Attributes from "./Attributes";
