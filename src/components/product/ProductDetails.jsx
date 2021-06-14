@@ -35,6 +35,7 @@ const ProductName = styled.h1`
     font-weight: 400;
     font-size: 30px;
     line-height: 27px;
+    margin-bottom: 43px;
 `;
 
 const ProductPriceLabel = styled.span`
@@ -45,6 +46,7 @@ const ProductPriceLabel = styled.span`
     font-weight: 700;
     font-size: 18px;
     line-height: 18px;
+    text-transform: uppercase;
 `;
 
 const ProdcutPrice = styled.span`
@@ -53,7 +55,11 @@ const ProdcutPrice = styled.span`
     font-weight: 700;
     font-size: 24px;
     line-height: 18px;
-    margin-top: 10px;
+    margin: 10px 0 20px 0;
+    height: 46px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 `;
 
 export default class ProductDetails extends Component {
