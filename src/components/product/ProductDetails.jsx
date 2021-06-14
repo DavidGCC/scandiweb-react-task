@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import ImageGallery from "./ImageGallery";
 import Attributes from "./Attributes";
+import Price from "../shared/Price";
 
 const ProductContainer = styled.div`
     display: flex;
@@ -36,6 +37,25 @@ const ProductName = styled.h1`
     line-height: 27px;
 `;
 
+const ProductPriceLabel = styled.span`
+    margin-top: 40px;
+    display: block;
+    width: 50px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+`;
+
+const ProdcutPrice = styled.span`
+    display: block;
+    width: auto;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+    margin-top: 10px;
+`;
+
 export default class ProductDetails extends Component {
     constructor(props) {
         super(props);
@@ -63,7 +83,6 @@ export default class ProductDetails extends Component {
                     item: null,
                 };
             });
-            console.log(emptyAttrs);
             return { ...prevState, savedAttributes: emptyAttrs };
         });
     }
@@ -105,6 +124,12 @@ export default class ProductDetails extends Component {
                             saveAttribute={this.saveAttribute}
                             attributes={this.props.item.attributes}
                         />
+                        <ProductPriceLabel>price:</ProductPriceLabel>
+                        <Price prices={this.props.item.prices}>
+                            {(symbol, amount) => {
+                                return <ProdcutPrice>{`${symbol}${amount}`}</ProdcutPrice>;
+                            }}
+                        </Price>
                     </ProductDescription>
                 </DetailsContainer>
             </ProductContainer>

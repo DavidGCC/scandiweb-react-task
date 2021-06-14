@@ -50,7 +50,7 @@ export default class Attributes extends Component {
                                             );
                                         })}>
                                         {attrType.type !== "swatch" &&
-                                            attr.displayValue}
+                                            attr.value}
                                     </AttrButton>
                                 );
                             })}

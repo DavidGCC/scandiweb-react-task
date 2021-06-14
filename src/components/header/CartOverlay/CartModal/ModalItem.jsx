@@ -6,6 +6,7 @@ import Attributes from "./Attributes";
 
 import { ItemContainer, NameAndPrice, Actions, ImageContainer, ItemName, ItemNumbers, ItemPrice, ItemImage, CountControl } from "./modal.styles";
 
+import Price from "../../../shared/Price";
 export default class ModalItem extends Component {
     render() {
         const { item, count } = this.props.item;
@@ -13,16 +14,13 @@ export default class ModalItem extends Component {
             <ItemContainer>
                 <NameAndPrice>
                     <ItemName>{item.name}</ItemName>
-                    <ItemPrice>
-                        {item.prices.map((price) => {
-                            if (price.currency === this.context.currency) {
-                                return `${getSymbolFromCurrency(
-                                    price.currency
-                                )} ${price.amount}`;
-                            }
-                            return null;
-                        })}
-                    </ItemPrice>
+                    <Price prices={item.prices}>
+                        {
+                            (symbol, amount) => (
+                                <ItemPrice>{symbol}{amount}</ItemPrice>
+                            )
+                        }
+                    </Price>
                 </NameAndPrice>
                 <Actions>
                     <CountControl onClick={() => this.context.addToCart(item)}>

@@ -14,6 +14,8 @@ import {
 } from "./listings.styles";
 import AddToCart from "./AddToCart";
 
+import Price from "../shared/Price";
+
 class Item extends React.Component {
     constructor(props) {
         super(props);
@@ -49,17 +51,13 @@ class Item extends React.Component {
                 </ItemTop>
                 <ItemBot>
                     <ItemName inStock={this.props.item.inStock}>{this.props.item.name}</ItemName>
-                    {this.props.item.prices.map((price) => {
-                        if (price.currency === this.context.currency) {
-                            return (
-                                <ItemPrice key={this.props.item.name} inStock={this.props.item.inStock}>
-                                    {getSymbolFromCurrency(price.currency)}
-                                    {price.amount}
-                                </ItemPrice>
-                            );
+                    <Price prices={this.props.item.prices}>
+                        {
+                            (symbol, amount) => (
+                                <ItemPrice inStock={this.props.item.inStock}>{`${symbol}${amount}`}</ItemPrice>
+                            )
                         }
-                        return null;
-                    })}
+                    </Price>
                 </ItemBot>
             </ItemContainer>
         );
