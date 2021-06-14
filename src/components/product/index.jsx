@@ -6,19 +6,18 @@ import ProductDetails from "./ProductDetails";
 
 export default class Product extends Component {
     render() {
+        const item = this.context.items.find(
+            (item) => item.name === this.props.match.params.itemname
+        );
+        if (!item) {
+            return <h2>Unknown Item</h2>;
+        }
         return (
-            <StoreContext.Consumer>
-                {
-                    ({ items }) => {
-                        const item = items.find(item => item.name === this.props.match.params.itemname);
-                        if (item) {
-                            return <ProductDetails item={item} />
-                        } else {
-                            <h2 className="error">Unknown Item</h2>
-                        }
-                    }
-                }
-            </StoreContext.Consumer>
+            <div>
+                <ProductDetails item={item} />
+            </div>
         )
     }
 }
+
+Product.contextType = StoreContext;

@@ -107,6 +107,7 @@ class App extends React.Component {
                     },
                     []
                 );
+                console.log(response.data.category.products);
                 this.setState((prevState) => ({
                     ...prevState,
                     categories: ["all", ...uniques],
