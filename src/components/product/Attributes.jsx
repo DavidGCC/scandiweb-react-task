@@ -65,7 +65,7 @@ export default class Attributes extends Component {
                                             attrToSave
                                         )}>
                                         {attrType.type !== "swatch" &&
-                                            item.displayValue}
+                                            item.value}
                                     </AttributeButton>
                                 );
                             })}
