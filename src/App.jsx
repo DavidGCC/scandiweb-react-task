@@ -21,10 +21,10 @@ class App extends React.Component {
         this.state = {
             currency: "USD",
             setCurrency: this.handleCurrencyChange,
-            categories: ["all"],
+            categories: [],
             items: [],
             cart: {},
-            selectedCategory: "all",
+            selectedCategory: "",
         };
         this.addToCart = this.addToCart.bind(this);
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
@@ -33,8 +33,8 @@ class App extends React.Component {
         this.addAttribute = this.addAttribute.bind(this);
     }
     setSelectedCategory(category) {
-        if (typeof category === "undefined" || category === "all") {
-            this.setState({ selectedCategory: "all" });
+        if (typeof category === "undefined") {
+            this.setState({ selectedCategory: "" });
         } else {
             this.setState({ selectedCategory: category });
         }
@@ -109,7 +109,7 @@ class App extends React.Component {
                 );
                 this.setState((prevState) => ({
                     ...prevState,
-                    categories: ["all", ...uniques],
+                    categories: [...uniques],
                     items: response.data.category.products,
                 }));
             });

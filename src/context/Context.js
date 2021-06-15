@@ -9,7 +9,7 @@ export const StoreContext = React.createContext({
     addAttribute: () => {},
     categories: ["all"],
     items: [],
-    selectedCategory: "all",
+    selectedCategory: "",
     setSelectedCategory: () => {},
 });
 
