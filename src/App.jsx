@@ -109,7 +109,8 @@ class App extends React.Component {
                 );
                 this.setState((prevState) => ({
                     ...prevState,
-                    categories: [...uniques],
+                    selectedCategory: uniques[0],
+                    categories: uniques,
                     items: response.data.category.products,
                 }));
             });
