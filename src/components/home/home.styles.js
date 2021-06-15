@@ -7,7 +7,7 @@ export const Container = styled.div`
     height: 100%;
     margin: 1rem 2rem;
     margin: auto;
-    justify-content: space-between;
+    justify-content: space-around;
 `;
 
 export const Item = styled.div`

@@ -7,7 +7,7 @@ export const HeaderContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0.5rem 8rem;
+    padding: 0.5rem 110px;
 `;
 
 export const NavContainer = styled.div`
