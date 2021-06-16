@@ -72,3 +72,26 @@ export const ListImage = styled.img`
     cursor: pointer;
 `;
 
+export const ProductName = styled.h1`
+    &::first-line {
+        font-weight: 600;
+    }
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 27px;
+    margin-bottom: 43px;
+`;
+
+export const ProductPrice = styled.span`
+    display: block;
+    width: auto;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+    margin: 10px 0 20px 0;
+    height: 46px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+`;
+

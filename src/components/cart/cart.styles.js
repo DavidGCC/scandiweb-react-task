@@ -22,4 +22,16 @@ export const CartItems = styled.div`
 export const CartItemContainer = styled.div`
     border-top: 1px solid #e5e5e5;
     width: 100%;
+    display: flex;
+    flex-direction: row;
 `;
+
+export const CartItemDetailsContainer = styled.div``;
+
+export const CartItemActionsContainer = styled.div``;
+
+export const CartItemImageContainer = styled.div``;
+
+export const CartItemName = styled.span``;
+
+export const CartItemPrice = styled.span``;

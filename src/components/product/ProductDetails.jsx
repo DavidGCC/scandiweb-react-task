@@ -15,9 +15,10 @@ import {
     ProductPriceLabel,
     AddToCartButton,
     ProductDescription,
+    ProductName,
+    ProductPrice
 } from "./product.styles";
 
-import { ProductPrice, ProductName } from "../shared/shared.styles";
 
 export default class ProductDetails extends Component {
     constructor(props) {
