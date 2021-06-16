@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
 
-import { CartContainer } from "./cart.styles";
+import CartItem from "./CartItem";
+
+import { CartContainer, CartLabel, CartItems } from "./cart.styles";
+
+import { StoreContext } from "../../context/Context";
 
 export default class Cart extends Component {
     render() {
+        const cartEntries = Object.values(this.context.cart);
         return (
-            <div>
-                Cart
-            </div>
+            <CartContainer>
+                <CartLabel>Cart</CartLabel>
+                <CartItems>
+                    {
+                        cartEntries.map(cartItem => {
+                            return <CartItem key={cartItem.item.name} cartItem={cartItem} />
+                        })
+                    }
+                </CartItems>
+            </CartContainer>
         )
     }
 }
+
+Cart.contextType = StoreContext;

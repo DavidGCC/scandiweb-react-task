@@ -12,12 +12,12 @@ import {
     DetailsContainer,
     ProductImage,
     ProductDetailsContainer,
-    ProductName,
     ProductPriceLabel,
-    ProductPrice,
     AddToCartButton,
     ProductDescription,
 } from "./product.styles";
+
+import { ProductPrice, ProductName } from "../shared/shared.styles";
 
 export default class ProductDetails extends Component {
     constructor(props) {

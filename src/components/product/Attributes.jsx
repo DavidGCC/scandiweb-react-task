@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { AttributesContainer, AttributeGroup, AttributeGroupName, AttributeButton } from "./product.styles";
+import { AttributesContainer, AttributeGroup, AttributeGroupName, AttributeButton } from "../shared/shared.styles";
 
 export default class Attributes extends Component {
     render() {
