@@ -37,7 +37,7 @@ export default class CartImage extends Component {
                         />
                     </svg>
                 </CartArrowPrevious>
-                <img src={this.props.images[this.state.imageIndex]} alt="item" width="100%" height="100%"/>
+                <img src={this.props.images[this.state.imageIndex]} alt="item" />
                 <CartArrowNext onClick={() => this.changeImage(1)}>
                     <svg
                         width="8"
