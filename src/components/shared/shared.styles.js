@@ -38,15 +38,11 @@ export const AttributeGroupName = styled.span`
 `;
 
 export const AttributeButton = styled.button`
-    background-color: ${(props) =>
-        !props.active
-            ? "var(--disabledAttr)"
-            : props.bgColor
-            ? props.bgColor
-            : "var(--black)"};
+    background-color: ${(props) => props.active ? "var(--black)" : "#fff" };
+    background-color: ${(props) => props.bgColor ? props.bgColor : ""};
     min-width: 64px;
     height: 45px;
-    border: 1px solid var(--black);
+    border: ${props => props.bgColor && props.active ? "3px" : "1px"} solid var(--black);
     font-size: 16px;
     line-height: 18px;
     font-weight: 400;

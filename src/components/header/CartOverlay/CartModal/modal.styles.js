@@ -53,7 +53,7 @@ export const AttributeGroup = styled.div`
 `;
 
 export const AttrButton = styled.button`
-    background-color: ${(props) => !props.active ? "var(--disabledAttr)" : props.color ? props.color : "#fff"};
+    background-color: ${(props) => !props.active ? "var(--disabledAttr)" : props.bgColor ? props.bgColor : "#fff"};
     border: 1px solid ${props => props.active ? "var(--black)" : "var(--disabledAttr)"};
     color: ${props => props.active ? "var(--black)" : "var(--disabledAttr)"};
     min-width: 24px;
