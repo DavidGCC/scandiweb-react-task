@@ -1,33 +1,64 @@
 import React, { Component } from "react";
 
+import { StoreContext } from "../../context/Context";
+
 export default class Attributes extends Component {
-    isAttrActive(attr, chosenAttributes) {
-        return Boolean(chosenAttributes.find(i => i.id === attr.id && i.item?.id === attr.item.id))
+    constructor(props) {
+        super(props);
+        this.defaultHandleClick = this.defaultHandleClick.bind(this);
     }
+
+    isAttrActive(attr, chosenAttributes) {
+        return Boolean(
+            chosenAttributes.find(
+                (i) => i.id === attr.id && i.item?.id === attr.item.id
+            )
+        );
+    }
+
+    defaultHandleClick(item, attr) {
+        this.context.addAttribute(item, attr);
+    }
+
     render() {
         const {
             container: Container,
             group: Group,
             button: Button,
-            attributes,
-            chosenAttributes
+            item,
         } = this.props;
+        const clickHandler = this.props.handleClick || this.defaultHandleClick;
         return (
             <Container>
-                {attributes.map((attrType) => {
+                {item.attributes.map((attrType) => {
                     return (
-                        <Group>
+                        <Group key={attrType.id}>
                             {attrType.items.map((attr) => {
-                                const attrToSaveObj = { id: attrType.id, name: attrType.name, type: attrType.type, item: attr }
+                                const attrToSaveObj = {
+                                    id: attrType.id,
+                                    name: attrType.name,
+                                    type: attrType.type,
+                                    item: attr,
+                                };
                                 return (
                                     <Button
+                                        key={attr.id}
+                                        onClick={() =>
+                                            clickHandler(
+                                                item,
+                                                attrToSaveObj
+                                            )
+                                        }
                                         bgColor={
                                             attrType.type === "swatch" &&
                                             attr.value
                                         }
-                                        active={this.isAttrActive({attrToSaveObj, chosenAttributes})}
-                                        >
-                                        {attrType.type === "swatch" &&
+                                        active={this.isAttrActive(
+                                            attrToSaveObj,
+                                            this.context.cart[item.name]
+                                                .chosenAttributes
+                                        )}>
+                                        {attrType.type !== "swatch" &&
                                             attr.value}
                                     </Button>
                                 );
@@ -39,3 +70,5 @@ export default class Attributes extends Component {
         );
     }
 }
+
+Attributes.contextType = StoreContext;

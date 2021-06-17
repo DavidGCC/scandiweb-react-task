@@ -76,7 +76,7 @@ export const ModalContainer = styled.div`
     right: 5px;
     width: 325px;
     background-color: #fff;
-    z-index: 2;
+    z-index: 7;
     padding: 20px;
 `;
 
@@ -207,7 +207,7 @@ export const Overlay = styled.div`
     position: fixed;
     top: ${props => props.scroll <= 80 ? 80 - props.scroll : "0"}px;
     left: 0;
-    z-index: 1;
+    z-index: 6;
 `;
 
 export const ProductName = styled.h1`
