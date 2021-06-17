@@ -35,7 +35,7 @@ export default class Attributes extends Component {
                 {item.attributes.map((attrType) => {
                     return (
                         <Group key={attrType.id}>
-                            {GroupName ? <GroupName>{attrType.name}:</GroupName> : null}
+                            {this.props.groupName ? <GroupName>{attrType.name}:</GroupName> : null}
                             {attrType.items.map((attr) => {
                                 const attrToSaveObj = {
                                     id: attrType.id,

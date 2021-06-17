@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 
 import { StoreContext } from "../../../../context/Context";
-import Attributes from "./Attributes";
+import Attributes from "../../../shared/Attributes";
 
 import { ItemContainer, NameAndPrice, Actions, ImageContainer, ItemName, ItemNumbers, ItemPrice, ItemImage, CountControl } from "./modal.styles";
+import { AttributesContainer, AttributeGroup, AttrButton } from "./modal.styles";
+
 
 import Price from "../../../shared/Price";
 export default class ModalItem extends Component {
@@ -34,7 +36,7 @@ export default class ModalItem extends Component {
                 <ImageContainer>
                     <ItemImage src={item.gallery[0]} />
                 </ImageContainer>
-                <Attributes item={item} />  
+                <Attributes item={item} container={AttributesContainer} group={AttributeGroup}  button={AttrButton} />
             </ItemContainer>
         );
     }
