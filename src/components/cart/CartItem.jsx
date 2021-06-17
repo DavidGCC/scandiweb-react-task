@@ -40,32 +40,6 @@ export default class CartItem extends Component {
                         button={AttributeButton}
                         item={this.props.cartItem.item}
                     />
-                    {/* <AttributesContainer>
-                        {this.props.cartItem.item.attributes.map((attrType) => {
-                            return (
-                                <AttributeGroup>
-                                    {attrType.items.map((attr) => {
-                                        return (
-                                            <AttributeButton
-                                                active={this.props.cartItem.chosenAttributes.find(
-                                                    (i) =>
-                                                        i.id === attrType.id &&
-                                                        i.item?.id === attr.id
-                                                )}
-                                                bgColor={
-                                                    attrType.type === "swatch"
-                                                        ? attr.value
-                                                        : null
-                                                }>
-                                                {attrType.type !== "swatch" &&
-                                                    attr.value}
-                                            </AttributeButton>
-                                        );
-                                    })}
-                                </AttributeGroup>
-                            );
-                        })}
-                    </AttributesContainer> */}
                 </CartItemDetailsContainer>
                 <CartItemActionsContainer>
                     <CartCountButton

@@ -16,7 +16,7 @@ export default class Attributes extends Component {
         );
     }
 
-    defaultHandleClick(item, attr) {
+    defaultHandleClick({ item, attr }) {
         this.context.addAttribute(item, attr);
     }
 
@@ -28,6 +28,7 @@ export default class Attributes extends Component {
             item,
         } = this.props;
         const clickHandler = this.props.handleClick || this.defaultHandleClick;
+        const chosenAttributes = this.props.chosenAttributes || this.context.cart[item.name].chosenAttributes;
         return (
             <Container>
                 {item.attributes.map((attrType) => {
@@ -44,10 +45,10 @@ export default class Attributes extends Component {
                                     <Button
                                         key={attr.id}
                                         onClick={() =>
-                                            clickHandler(
+                                            clickHandler({
                                                 item,
-                                                attrToSaveObj
-                                            )
+                                                attr: attrToSaveObj,
+                                            })
                                         }
                                         bgColor={
                                             attrType.type === "swatch" &&
@@ -55,8 +56,7 @@ export default class Attributes extends Component {
                                         }
                                         active={this.isAttrActive(
                                             attrToSaveObj,
-                                            this.context.cart[item.name]
-                                                .chosenAttributes
+                                            chosenAttributes
                                         )}>
                                         {attrType.type !== "swatch" &&
                                             attr.value}

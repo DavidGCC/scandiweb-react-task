@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import { StoreContext } from "../../context/Context";
 
 import ImageGallery from "./ImageGallery";
-import Attributes from "./Attributes";
+// import Attributes from "./Attributes";
 import Price from "../shared/Price";
+import Attributes from "../shared/Attributes";
 
 import {
     ProductContainer,
@@ -16,9 +17,15 @@ import {
     AddToCartButton,
     ProductDescription,
     ProductName,
-    ProductPrice
+    ProductPrice,
 } from "./product.styles";
 
+import {
+    AttributesContainer,
+    AttributeGroup,
+    AttributeGroupName,
+    AttributeButton,
+} from "../shared/shared.styles";
 
 export default class ProductDetails extends Component {
     constructor(props) {
@@ -51,7 +58,7 @@ export default class ProductDetails extends Component {
         });
     }
 
-    saveAttribute(attr) {
+    saveAttribute({ attr }) {
         const attributes = this.state.savedAttributes.map((i) => {
             if (i.id === attr.id) {
                 return {
@@ -84,9 +91,12 @@ export default class ProductDetails extends Component {
                     <ProductDetailsContainer>
                         <ProductName>{this.props.item.name}</ProductName>
                         <Attributes
-                            isAttrActive={this.isAttrActive}
-                            saveAttribute={this.saveAttribute}
-                            attributes={this.props.item.attributes}
+                            item={this.props.item}
+                            chosenAttributes={this.state.savedAttributes}
+                            handleClick={this.saveAttribute}
+                            container={AttributesContainer}
+                            group={AttributeGroup}
+                            button={AttributeButton}
                         />
                         <ProductPriceLabel>price:</ProductPriceLabel>
                         <Price prices={this.props.item.prices}>
