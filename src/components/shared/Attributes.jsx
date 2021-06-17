@@ -25,6 +25,7 @@ export default class Attributes extends Component {
             container: Container,
             group: Group,
             button: Button,
+            groupName: GroupName,
             item,
         } = this.props;
         const clickHandler = this.props.handleClick || this.defaultHandleClick;
@@ -34,6 +35,7 @@ export default class Attributes extends Component {
                 {item.attributes.map((attrType) => {
                     return (
                         <Group key={attrType.id}>
+                            {GroupName ? <GroupName>{attrType.name}:</GroupName> : null}
                             {attrType.items.map((attr) => {
                                 const attrToSaveObj = {
                                     id: attrType.id,

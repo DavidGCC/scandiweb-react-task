@@ -97,6 +97,7 @@ export default class ProductDetails extends Component {
                             container={AttributesContainer}
                             group={AttributeGroup}
                             button={AttributeButton}
+                            groupName={AttributeGroupName}
                         />
                         <ProductPriceLabel>price:</ProductPriceLabel>
                         <Price prices={this.props.item.prices}>
