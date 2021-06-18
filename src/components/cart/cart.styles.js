@@ -97,20 +97,32 @@ export const CartItemImageContainer = styled.div`
         width: 100%;
         height: 100%;
     }
-
 `;
 
 export const CartArrows = styled.div`
     position: absolute;
     z-index: 6;
-    top: 50%;
-    left: 50%;
+    top: 40%;
+    left: 40%;
+    height: 20%;
+    width: 1.5vw;
+    display: flex;
+    align-items: center;
+    background-color: #00000080;
+    cursor: pointer;
+`;
+
+
+export const CartArrowPrevious = styled(CartArrows)`
+    border-radius: 0 50% 50% 0;
+    justify-content: flex-start;
+    left: 0;
+    padding-left: 5px;
 `;
 
 export const CartArrowNext = styled(CartArrows)`
-    left: calc(100% - 16px);
-`;
-
-export const CartArrowPrevious = styled(CartArrows)`
-    left: 8px;
+    border-radius: 50% 0 0 50%;
+    justify-content: flex-end;
+    left: calc(100% - 1.5vw);
+    padding-right: 5px;
 `;
