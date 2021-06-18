@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import getSumbolFromCurrency from "currency-symbol-map";
 
-import { StoreContext } from "../../context/Context";
+import { StoreContext } from "context/Context";
 
 export default class Price extends Component {
     render() {

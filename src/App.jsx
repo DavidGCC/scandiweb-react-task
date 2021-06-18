@@ -1,17 +1,17 @@
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import "./scss/style.scss";
+import "scss/style.scss";
 
 // COMPONENT IMPORTS
-import Header from "./components/header";
-import Listings from "./components/listings";
-import Home from "./components/home/";
-import Product from "./components/product/";
-import Cart from "./components/cart/";
+import Header from "components/header";
+import Listings from "components/listings";
+import Home from "components/home/";
+import Product from "components/product/";
+import Cart from "components/cart/";
 //
 
-import { getItems } from "./graphql/queries";
-import client from "./graphql/client";
+import { getItems } from "graphql/queries";
+import client from "graphql/client";
 
 import { StoreContext } from "./context/Context";
 

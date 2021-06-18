@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StoreContext } from "../../context/Context";
+import { StoreContext } from "context/Context";
 import {
     ItemContainer,
     ItemImage,

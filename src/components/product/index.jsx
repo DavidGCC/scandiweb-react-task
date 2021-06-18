@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { StoreContext } from "../../context/Context";
+import { StoreContext } from "context/Context";
 
 import ProductDetails from "./ProductDetails";
 

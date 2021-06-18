@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-import { StoreContext } from "../../context/Context";
+import { StoreContext } from "context/Context";
 
 import ImageGallery from "./ImageGallery";
 // import Attributes from "./Attributes";
-import Price from "../shared/Price";
-import Attributes from "../shared/Attributes";
+import Price from "components/shared/Price";
+import Attributes from "components/shared/Attributes";
 
 import {
     ProductContainer,
@@ -25,7 +25,7 @@ import {
     AttributeGroup,
     AttributeGroupName,
     AttributeButton,
-} from "../shared/shared.styles";
+} from "components/shared/shared.styles";
 
 export default class ProductDetails extends Component {
     constructor(props) {

@@ -1,9 +1,9 @@
 import React from "react";
 import getSymbolFromCurrency from "currency-symbol-map";
 
-import { StoreContext } from "../../context/Context";
-import client from "../../graphql/client";
-import { getCurrencies } from "../../graphql/queries";
+import { StoreContext } from "context/Context";
+import client from "graphql/client";
+import { getCurrencies } from "graphql/queries";
 
 import { CurrencySelect } from "./header.styles";
 

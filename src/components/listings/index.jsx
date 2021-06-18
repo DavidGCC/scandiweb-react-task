@@ -1,7 +1,7 @@
 import React from "react";
 import qs from "query-string";
 
-import { StoreContext } from "../../context/Context.js";
+import { StoreContext } from "context/Context.js";
 import CategoryPage from "./CategroyPage";
 
 class Listings extends React.Component {

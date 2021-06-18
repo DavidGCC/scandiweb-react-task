@@ -14,14 +14,14 @@ import {
     AttributeButton,
     AttributeGroup,
     AttributesContainer,
-} from "../shared/shared.styles";
+} from "components/shared/shared.styles";
 
-import Price from "../shared/Price";
-import Attributes from "../shared/Attributes";
+import Price from "components/shared/Price";
+import Attributes from "components/shared/Attributes";
 
 import CartImage from "./CartImage";
 
-import { StoreContext } from "../../context/Context";
+import { StoreContext } from "context/Context";
 
 export default class CartItem extends Component {
     render() {

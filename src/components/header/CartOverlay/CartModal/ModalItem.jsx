@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-import { StoreContext } from "../../../../context/Context";
-import Attributes from "../../../shared/Attributes";
+import { StoreContext } from "context/Context";
+import Attributes from "components/shared/Attributes";
 
 import { ItemContainer, NameAndPrice, Actions, ImageContainer, ItemName, ItemNumbers, ItemPrice, ItemImage, CountControl } from "./modal.styles";
 import { AttributesContainer, AttributeGroup, AttrButton } from "./modal.styles";
 
 
-import Price from "../../../shared/Price";
+import Price from "components/shared/Price";
 export default class ModalItem extends Component {
     render() {
         const { item, count } = this.props.item;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { StoreContext } from "../../../../context/Context";
+import { StoreContext } from "context/Context";
 import ModalItem from "./ModalItem";
 import FooterButtons from "./FooterButtons";
 import TotalPrice from "./TotalPrice";
