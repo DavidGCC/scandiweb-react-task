@@ -7,31 +7,29 @@ export const HeaderContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0.5rem 110px;
+    padding: 28px 8vw;
 `;
 
 export const NavContainer = styled.div`
     display: flex;
     height: 100%;
-    width: 235px;
+    width: 16vw;
     justify-content: flex-start;
     align-items: center;
     flex: 0;
+    padding-top: 24px;
 `;
 
 export const NavItem = styled.li`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-    width: 97px;
+    padding: 4px 1vw 32px 1vw;
     height: 56px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 0 .5rem;
-    border-bottom: ${(props) =>
-        props.active ? "2px solid var(--nav-selected)" : "none"};
     text-transform: uppercase;
     text-decoration: none;
     font-size: 16px;
@@ -47,7 +45,6 @@ export const StyledNavLink = styled(NavLink)`
 `;
 
 export const CurrencySelect = styled.select`
-    margin-right: 2rem;
     border: none;
     outline: none;
     font-weight: 500;
@@ -55,8 +52,7 @@ export const CurrencySelect = styled.select`
     line-height: 29px;
     width: 38px;
     height: 29px;
-    background-color: #ffffff;
-    margin: 0 22px; 
+    background-color: #ffffff; 
 `;
 
 export const CartIconContainer = styled.div`
@@ -64,7 +60,7 @@ export const CartIconContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 80px;
-    position: relative;
+        position: relative;
 `;
 
 export const CartLink = styled(NavLink)`
@@ -96,11 +92,13 @@ export const ActionContainer = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 2vw;
 `;
 
 export const LogoContainer = styled.div`
-    margin: auto;
+    margin: 0 auto;
     display: flex;
+    width: 41px;
     align-items: center;
     justify-content: center;
 `;
