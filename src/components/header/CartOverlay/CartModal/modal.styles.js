@@ -1,12 +1,45 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const ModalContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 5rem;
+    right: 5px;
+    width: 23vw;
+    background-color: #fff;
+    z-index: 7;
+    padding: 8px 1.1vw 1.3vw 1.1vw;
+`;
+
 export const ModalFooterContainer = styled.div`
     display: flex;
 `;
 
+
+export const CartName = styled.span`
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: right;
+`;
+
+export const ItemContainer = styled.div`
+    width: 20vw;
+    display: grid;
+    min-height: 137px;
+    grid-template-areas:
+        "name actions img"
+        "attrs actions img ";
+    margin: 20px 0;
+`;
+
 export const ButtonCommon = styled.button`
-    width: 140px;
+    width: 9vw;
     height: 43px;
     font-size: 14px;
     line-height: 16.8px;
@@ -14,7 +47,7 @@ export const ButtonCommon = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 16px 32px;
+    padding: 16px 2vw;
     text-transform: uppercase;
     cursor: pointer;
     white-space: nowrap;
@@ -28,7 +61,7 @@ export const ViewBagButton = styled(ButtonCommon)`
     background-color: #fff;
     border: 1px solid var(--black);
     color: var(--black);
-    margin-right: 12px;
+    margin-right: 0.8vw;
 `;
 
 export const CheckOutButton = styled(ButtonCommon)`
@@ -56,7 +89,7 @@ export const AttrButton = styled.button`
     background-color: ${(props) => !props.active ? "var(--disabledAttr)" : props.bgColor ? props.bgColor : "#fff"};
     border: 1px solid ${props => props.active ? "var(--black)" : "var(--disabledAttr)"};
     color: ${props => props.active ? "var(--black)" : "var(--disabledAttr)"};
-    min-width: 24px;
+    min-width: 1.6vw;
     height: 24px;
     margin: 0 8px 4px 0;
     font-family: "Source Sans Pro", sans-serif;
@@ -67,28 +100,6 @@ export const AttrButton = styled.button`
     align-items: center;
 `;
 
-
-export const ModalContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 5rem;
-    right: 5px;
-    width: 325px;
-    background-color: #fff;
-    z-index: 7;
-    padding: 20px;
-`;
-
-export const CartName = styled.span`
-    font-family: Raleway;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 26px;
-    letter-spacing: 0em;
-    text-align: right;
-`;
 
 export const ItemCount = styled.span`
     font-family: Raleway;
@@ -101,36 +112,19 @@ export const ItemCount = styled.span`
 `;
 
 
-export const ItemContainer = styled.div`
-    width: 90%;
-    display: grid;
-    height: 137px;
-    grid-template-areas:
-        "name actions img"
-        "attrs actions img ";
-    margin: 20px 0;
-`;
 
 export const NameAndPrice = styled.div`
     grid-area: name;
-    width: 136px;
-    margin: 0 18px 27px 0;
+    width: 9vw;
+    margin: 0 1.2vw 53px 0;
     padding: 0;
     align-items: start;
 `;
 
-export const Actions = styled.div`
-    grid-area: actions;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 137px;
-`;
 
 export const ImageContainer = styled.div`
     grid-area: img;
-    margin-left: 10px;
+    margin-left: 0.6vw;
 `;
 
 export const ItemName = styled.span`
@@ -161,10 +155,19 @@ export const ItemPrice = styled(ItemNumbers)`
 `;
 
 export const ItemImage = styled.img`
-    width: 105px;
+    width: 7vw;
     height: 137px;
     float: right;
     grid-area: img;
+`;
+
+export const Actions = styled.div`
+    grid-area: actions;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 137px;
 `;
 
 export const CountControl = styled.button`
@@ -183,6 +186,7 @@ export const CountControl = styled.button`
 
 export const TotalPriceContainer = styled.div`
     display: flex;
+    width: 20vw;
     justify-content: space-between;
     margin: 43px 0 35px 0;
 `;
