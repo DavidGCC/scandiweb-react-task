@@ -10,7 +10,10 @@ import { CurrencySelect } from "./header.styles";
 class CurrencySelector extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { currencies: [] };
+        this.state = { currencies: [], showOptions: false };
+        this.toggleOptions = this.toggleOptions.bind(this);
+        this.ref = React.createRef();
+        this.handleOutsideClick = this.handleOutsideClick.bind(this);
     }
     componentDidMount() {
         client.query({ query: getCurrencies }).then((res) =>
@@ -19,27 +22,42 @@ class CurrencySelector extends React.Component {
                 currencies: res.data.currencies,
             }))
         );
+        document.addEventListener("click", this.handleOutsideClick);
+    }
+    componentWillUnmount() {
+        document.removeEventListener("click", this.handleOutsideClick);
+    }
+    handleOutsideClick(e) {
+        if (this.ref && !this.ref.current.contains(e.target)) {
+            this.setState({ showOptions: false });
+        }
+    }
+    toggleOptions() {
+        this.setState({ showOptions: !this.state.showOptions });
     }
     render() {
         return (
-            <StoreContext.Consumer>
-                {({ currency, setCurrency }) => {
-                    return (
-                        <CurrencySelect
-                            id="currency-select"
-                            onChange={setCurrency}
-                            value={currency}>
-                            {this.state.currencies.map((i) => (
-                                <option value={i} key={i}>
-                                    {getSymbolFromCurrency(i)}&nbsp;&nbsp;{i}
-                                </option>
-                            ))}
-                        </CurrencySelect>
-                    );
-                }}
-            </StoreContext.Consumer>
+            <CurrencySelect onClick={this.toggleOptions} ref={this.ref} active={this.state.showOptions}>
+                <span id="selected">{getSymbolFromCurrency(this.context.currency)}</span>
+                {this.state.showOptions && (
+                    <div id="options">
+                        {this.state.currencies.map((curr) => {
+                            return (
+                                <span
+                                    onClick={(e) =>
+                                        this.context.setCurrency(curr)
+                                    }>{`${getSymbolFromCurrency(
+                                    curr
+                                )} ${curr}`}</span>
+                            );
+                        })}
+                    </div>
+                )}
+            </CurrencySelect>
         );
     }
 }
+
+CurrencySelector.contextType = StoreContext;
 
 export default CurrencySelector;

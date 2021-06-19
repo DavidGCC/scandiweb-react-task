@@ -88,9 +88,8 @@ class App extends React.Component {
         }
         this.setState({ cart });
     }
-    handleCurrencyChange(e) {
-        e.preventDefault();
-        this.setState({ currency: e.target.value });
+    handleCurrencyChange(curr) {
+        this.setState({ currency: curr });
     }
     componentDidMount() {
         client

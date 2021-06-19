@@ -44,7 +44,7 @@ export const StyledNavLink = styled(NavLink)`
     }
 `;
 
-export const CurrencySelect = styled.select`
+export const CurrencySelect = styled.div`
     border: none;
     outline: none;
     font-weight: 500;
@@ -52,7 +52,31 @@ export const CurrencySelect = styled.select`
     line-height: 29px;
     width: 38px;
     height: 29px;
-    background-color: #ffffff; 
+    position: relative;
+    background-color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+
+    #selected::after {
+        content: ${props => props.active ? `url("Images/SelectUp.png")` : `url("Images/SelectDown.png")`};
+        position: absolute;
+        left: 20px;
+    }
+
+    #options {
+        box-shadow: 0px 4px 35px 0px #A8ACB030;
+        display: flex;
+        flex-direction: column;
+        width: 8vw;
+        padding: 20px 2vw 20px 1vw;
+        gap: 10px;
+        position: absolute;
+        left: -2vw;
+        top: 50px;
+        span {
+            display: block;
+        }
+    }
 `;
 
 export const CartIconContainer = styled.div`
