@@ -8,7 +8,11 @@ export default class Overlay extends Component {
         this.handleScroll = this.handleScroll.bind(this);
     }
     handleScroll() {
-        this.setState({ scroll: document.body.scrollTop });
+        if (document.body.scrollTop >= 80 && this.state.scroll !== 80) {
+            this.setState({ scroll: 80 });
+        } else if (document.body.scrollTop < 80) {
+            this.setState({ scroll: document.body.scrollTop });
+        }
     }
 
     componentDidMount() {
@@ -18,6 +22,7 @@ export default class Overlay extends Component {
     componentWillUnmount() {
         document.body.removeEventListener("scroll", this.handleScroll);
     }
+
     render() {
         return <StyledOverlay scroll={this.state.scroll} />;
     }
