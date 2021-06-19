@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 export const CategoryPage = styled.div`
-    margin: 80px 100px;
+    margin: 80px 7vw 191px 7vw;
 `;
 
 export const CategortyName = styled.h2`
@@ -22,12 +22,19 @@ export const SLink = styled(Link)`
     display: inline-block;
 `;
 
+export const ItemsContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2.7vw;
+    row-gap: 103px;
+`;
+
 // List Item (card)
 
 export const ItemContainer = styled.div`
-    width: 386px;
+    width: 27vw;
+    border: 1px solid red;
     height: 445px;
-    margin: 0 40px 103px 0;
     display: flex;
     flex-direction: column;
     padding: 16px;
@@ -42,7 +49,7 @@ export const ItemTop = styled.div`
 `;
 
 export const ItemImage = styled.img`
-    width: 354px;
+    width: 25vw;
     height: 330px;
 `;
 
@@ -64,7 +71,7 @@ export const AddToCartButton = styled.button`
 
 export const ItemBot = styled.div`
     margin-top: 24px;
-    width: 354px;
+    width: 25vw;
     height: 58px;
     display: flex;
     flex-direction: column;
@@ -80,7 +87,7 @@ export const ItemName = styled.span`
     white-space: nowrap;
     overflow: hidden;
     display: block;
-    width: 354px;
+    width: 25vw;
     word-wrap: normal;
     font-weight: 300;
     min-height: 29px;
@@ -95,7 +102,7 @@ export const ItemPrice = styled.span`
 `;
 
 export const OutOfStockOverlay = styled.div`
-    width: 356px;
+    width: 25vw;
     height: 338px;
     position: absolute;
     opacity: 0.5;
