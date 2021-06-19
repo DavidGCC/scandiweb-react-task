@@ -33,7 +33,6 @@ export const ItemsContainer = styled.div`
 
 export const ItemContainer = styled.div`
     width: 27vw;
-    height: 445px;
     display: flex;
     flex-direction: column;
     padding: 16px;
@@ -49,7 +48,7 @@ export const ItemTop = styled.div`
 
 export const ItemImage = styled.img`
     width: 25vw;
-    height: 330px;
+    height: 22vw;
 `;
 
 export const AddToCartButton = styled.button`
@@ -102,7 +101,7 @@ export const ItemPrice = styled.span`
 
 export const OutOfStockOverlay = styled.div`
     width: 25vw;
-    height: 338px;
+    height: 23vw;
     position: absolute;
     opacity: 0.5;
     left: 0;
