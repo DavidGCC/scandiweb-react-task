@@ -33,7 +33,6 @@ export const ItemsContainer = styled.div`
 
 export const ItemContainer = styled.div`
     width: 27vw;
-    border: 1px solid red;
     height: 445px;
     display: flex;
     flex-direction: column;
