@@ -29,43 +29,49 @@ export default class Attributes extends Component {
             item,
         } = this.props;
         const clickHandler = this.props.handleClick || this.defaultHandleClick;
-        const chosenAttributes = this.props.chosenAttributes || this.context.cart[item.name].chosenAttributes;
+        const chosenAttributes =
+            this.props.chosenAttributes ||
+            this.context.cart[item.name].chosenAttributes;
         return (
             <Container>
                 {item.attributes.map((attrType) => {
                     return (
-                        <Group key={attrType.id}>
-                            {this.props.groupName ? <GroupName>{attrType.name}:</GroupName> : null}
-                            {attrType.items.map((attr) => {
-                                const attrToSaveObj = {
-                                    id: attrType.id,
-                                    name: attrType.name,
-                                    type: attrType.type,
-                                    item: attr,
-                                };
-                                return (
-                                    <Button
-                                        key={attr.id}
-                                        onClick={() =>
-                                            clickHandler({
-                                                item,
-                                                attr: attrToSaveObj,
-                                            })
-                                        }
-                                        bgColor={
-                                            attrType.type === "swatch" &&
-                                            attr.value
-                                        }
-                                        active={this.isAttrActive(
-                                            attrToSaveObj,
-                                            chosenAttributes
-                                        )}>
-                                        {attrType.type !== "swatch" &&
-                                            attr.value}
-                                    </Button>
-                                );
-                            })}
-                        </Group>
+                        <>
+                            {this.props.groupName ? (
+                                <GroupName>{attrType.name}:</GroupName>
+                            ) : null}
+                            <Group key={attrType.id}>
+                                {attrType.items.map((attr) => {
+                                    const attrToSaveObj = {
+                                        id: attrType.id,
+                                        name: attrType.name,
+                                        type: attrType.type,
+                                        item: attr,
+                                    };
+                                    return (
+                                        <Button
+                                            key={attr.id}
+                                            onClick={() =>
+                                                clickHandler({
+                                                    item,
+                                                    attr: attrToSaveObj,
+                                                })
+                                            }
+                                            bgColor={
+                                                attrType.type === "swatch" &&
+                                                attr.value
+                                            }
+                                            active={this.isAttrActive(
+                                                attrToSaveObj,
+                                                chosenAttributes
+                                            )}>
+                                            {attrType.type !== "swatch" &&
+                                                attr.value}
+                                        </Button>
+                                    );
+                                })}
+                            </Group>
+                        </>
                     );
                 })}
             </Container>

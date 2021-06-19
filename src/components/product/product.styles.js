@@ -3,24 +3,24 @@ import styled from "styled-components";
 export const ProductContainer = styled.div`
     display: flex;
     flex-direction: row;
-    gap: 40px;
-    margin: 80px 220px 72px 120px;
+    gap: 2.778vw;
+    margin: 80px 15.278vw 72px 8.333vw;
 `;
 
 export const GalleryContainer = styled.div``;
 
 export const DetailsContainer = styled.div`
     display: flex;
-    gap: 100px;
+    gap: 6.944vw;
 `;
 
 export const ProductImage = styled.img`
-    width: 610px;
-    height: 511px;
+    width: 42vw;
+    height: 35vw;
 `;
 
 export const ProductDetailsContainer = styled.div`
-    width: 292;
+    min-width: 20.278vw;
 `;
 
 
@@ -28,7 +28,7 @@ export const ProductDetailsContainer = styled.div`
 export const ProductPriceLabel = styled.span`
     margin-top: 40px;
     display: block;
-    width: 50px;
+    width: 3.472vw;
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 700;
     font-size: 18px;
@@ -40,7 +40,7 @@ export const ProductPriceLabel = styled.span`
 
 export const AddToCartButton = styled.button`
     height: 52px;
-    width: 292px;
+    width: 20.278vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,12 +58,13 @@ export const AddToCartButton = styled.button`
     }
 `;
 
-export const ProductDescription = styled.div``;
+export const ProductDescription = styled.div`
+`;
 
 export const ImageListContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 2.778vw;
 `;
 
 export const ListImage = styled.img`

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CartContainer = styled.div`
     width: 100%;
-    padding: 80px 17vw 54px 7vw;
+    padding: 80px 16vw 54px 7vw;
 `;
 
 export const CartLabel = styled.h1`
@@ -39,7 +39,7 @@ export const CartItemActionsContainer = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    margin: 20px 1vw 0 0;
+    margin: 20px 0.8vw 0 0;
     height: 100%;
 `;
 
@@ -89,12 +89,12 @@ export const CartItemCount = styled.span`
 export const CartItemImageContainer = styled.div`
     position: relative;
     margin-top: 20px;
-    width: 10vw;
+    width: 9.792vw;
     height: 185px;
     z-index: 5;
 
     img {
-        width: 100%;
+        width: 9.792vw;
         height: 100%;
     }
 `;
