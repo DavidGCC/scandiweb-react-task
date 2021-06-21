@@ -8,8 +8,6 @@ export const ProductContainer = styled.div`
     width: 100%;
 `;
 
-export const GalleryContainer = styled.div``;
-
 export const DetailsContainer = styled.div`
     display: flex;
     gap: 6.944vw;
@@ -57,9 +55,6 @@ export const AddToCartButton = styled.button`
     &:active {
         transform: scale(0.95, 0.95);
     }
-`;
-
-export const ProductDescription = styled.div`
 `;
 
 export const ImageListContainer = styled.div`

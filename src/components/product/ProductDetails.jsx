@@ -9,13 +9,11 @@ import Attributes from "components/shared/Attributes";
 
 import {
     ProductContainer,
-    GalleryContainer,
     DetailsContainer,
     ProductImage,
     ProductDetailsContainer,
     ProductPriceLabel,
     AddToCartButton,
-    ProductDescription,
     ProductName,
     ProductPrice,
 } from "./product.styles";
@@ -80,12 +78,12 @@ export default class ProductDetails extends Component {
     render() {
         return (
             <ProductContainer>
-                <GalleryContainer>
+                <div>
                     <ImageGallery
                         images={this.props.item.gallery}
                         makeActive={this.makeActive}
                     />
-                </GalleryContainer>
+                </div>
                 <DetailsContainer>
                     <ProductImage src={this.state.chosenImage} />
                     <ProductDetailsContainer>
@@ -116,10 +114,10 @@ export default class ProductDetails extends Component {
                             }>
                             Add To Cart
                         </AddToCartButton>
-                        <ProductDescription
+                        <div
                             dangerouslySetInnerHTML={{
                                 __html: this.props.item.description,
-                            }}></ProductDescription>
+                            }}></div>
                     </ProductDetailsContainer>
                 </DetailsContainer>
             </ProductContainer>
