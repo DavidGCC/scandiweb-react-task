@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 export const ProductName = styled.h1`
     &::first-line {
@@ -41,15 +41,31 @@ export const AttributeGroupName = styled.span`
     margin-bottom: 8px;
 `;
 
+const errorPopup = keyframes`
+    0% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+`;
+
+const errorAnimation = props => css`${errorPopup} .2s linear 1`;
 export const AttributeButton = styled.button`
     background-color: ${(props) => props.active ? "var(--black)" : "#fff"};
     background-color: ${(props) => props.bgColor ? props.bgColor : ""};
     min-width: 63px;
     height: 45px;
-    border: ${props => props.bgColor && props.active ? "3px" : "1px"} solid var(--black);
+    border: ${props => props.error ? "2px solid var(--error)" : props.bgColor && props.active ? "3px solid var(--black)" : "1px solid var(--black)"};
     font-size: 16px;
     line-height: 18px;
     font-weight: 400;
     font-family: "Source Sans Pro", sans-serif;
     color: ${(props) => (props.active ? "#fff" : "#292929")};
+    animation: ${props => props.error && errorAnimation}
 `;

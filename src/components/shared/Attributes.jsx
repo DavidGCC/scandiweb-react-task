@@ -27,6 +27,7 @@ export default class Attributes extends Component {
             button: Button,
             groupName: GroupName,
             item,
+            error
         } = this.props;
         const clickHandler = this.props.handleClick || this.defaultHandleClick;
         const chosenAttributes =
@@ -36,11 +37,11 @@ export default class Attributes extends Component {
             <Container>
                 {item.attributes.map((attrType) => {
                     return (
-                        <>
+                        <div key={attrType.id}>
                             {this.props.groupName ? (
                                 <GroupName>{attrType.name}:</GroupName>
                             ) : null}
-                            <Group key={attrType.id}>
+                            <Group>
                                 {attrType.items.map((attr) => {
                                     const attrToSaveObj = {
                                         id: attrType.id,
@@ -64,14 +65,16 @@ export default class Attributes extends Component {
                                             active={this.isAttrActive(
                                                 attrToSaveObj,
                                                 chosenAttributes
-                                            )}>
+                                            )}
+                                            error={error ? error.some(i => i === attrType.id) : false}
+                                            >
                                             {attrType.type !== "swatch" &&
                                                 attr.value}
                                         </Button>
                                     );
                                 })}
                             </Group>
-                        </>
+                        </div>
                     );
                 })}
             </Container>
