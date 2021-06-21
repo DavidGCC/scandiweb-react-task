@@ -5,6 +5,7 @@ export const ProductContainer = styled.div`
     flex-direction: row;
     gap: 2.778vw;
     margin: 80px 15.278vw 72px 8.333vw;
+    width: 100%;
 `;
 
 export const GalleryContainer = styled.div``;
@@ -15,12 +16,12 @@ export const DetailsContainer = styled.div`
 `;
 
 export const ProductImage = styled.img`
-    width: 42vw;
+    width: 42.361vw;
     height: 35vw;
 `;
 
 export const ProductDetailsContainer = styled.div`
-    min-width: 20.278vw;
+    width: 20.278vw;
 `;
 
 
