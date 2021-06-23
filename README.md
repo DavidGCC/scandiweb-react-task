@@ -1,10 +1,10 @@
-#Junior React Developer Position Test
+# Junior React Developer Position Test
 
 ---
 
 **Author**: Davit Gvetadze
 
-##Overview
+## Overview
 A minimalistic storefront built with ReactJS, features include:
 1. A Navigation
 2. Filtering with categories given from backend
@@ -17,7 +17,7 @@ A minimalistic storefront built with ReactJS, features include:
 
 Designed the application as per provided design.
 
-##Used Technologies
+## Used Technologies
 
     React
     Apollo Client
