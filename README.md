@@ -19,6 +19,7 @@ Designed the application as per provided design.
 
 
 ##Used Technologies
+
     React
     Apollo Client
     react-router-dom
