@@ -41,21 +41,22 @@ class App extends React.Component {
     }
     addToCart(item, attrs = null) {
         let cart = this.state.cart;
+        const attributes = attrs ? attrs : item.attributes.reduce((res, curr) => {
+            res = [
+                ...res,
+                {
+                    id: curr.id,
+                    name: curr.name,
+                    type: curr.type,
+                    item: null,
+                },
+            ];
+            return res;
+        }, []);
         if (cart[item.name]) {
             cart[item.name].count++;
+            cart[item.name].chosenAttributes = attributes;
         } else {
-            const attributes = attrs ? attrs : item.attributes.reduce((res, curr) => {
-                res = [
-                    ...res,
-                    {
-                        id: curr.id,
-                        name: curr.name,
-                        type: curr.type,
-                        item: null,
-                    },
-                ];
-                return res;
-            }, []);
             cart[item.name] = {
                 item,
                 count: 1,
