@@ -1,7 +1,5 @@
 # Junior React Developer Position Test
 
----
-
 **Author**: Davit Gvetadze
 
 ## Overview
