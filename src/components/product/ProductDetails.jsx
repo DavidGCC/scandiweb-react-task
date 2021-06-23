@@ -35,6 +35,7 @@ export default class ProductDetails extends Component {
         this.makeActive = this.makeActive.bind(this);
         this.saveAttribute = this.saveAttribute.bind(this);
         this.isAttrActive = this.isAttrActive.bind(this);
+        this.handleAddToCart = this.handleAddToCart.bind(this);
     }
     makeActive(img) {
         if (this.state.chosenImage !== img) {
@@ -75,6 +76,9 @@ export default class ProductDetails extends Component {
         );
         return Boolean(isActive);
     }
+    handleAddToCart() {
+        if (this.props.item.inStock) this.context.addToCart(this.props.item, this.state.savedAttributes);
+    }
     render() {
         return (
             <ProductContainer>
@@ -106,12 +110,8 @@ export default class ProductDetails extends Component {
                             }}
                         </Price>
                         <AddToCartButton
-                            onClick={() =>
-                                this.context.addToCart(
-                                    this.props.item,
-                                    this.state.savedAttributes
-                                )
-                            }>
+                            onClick={this.handleAddToCart}
+                            inStock={this.props.item.inStock}>
                             Add To Cart
                         </AddToCartButton>
                         <div

@@ -43,17 +43,18 @@ export const AddToCartButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
     font-weight: 600;
     font-size: 16px;
     line-height: 100%;
     border: none;
-    background-color: var(--green);
+    background-color: ${props => props.inStock ? "var(--green)" : "var(--disabledAttr)"};
+    color: ${props => props.inStock ? "#fff" : "var(--black)"};
+    cursor: ${props => props.inStock ? "pointer" : "not-allowed"};
     text-transform: uppercase;
     margin: 20px 0 40px 0;
     transition: all 0.2s ease;
     &:active {
-        transform: scale(0.95, 0.95);
+        transform: ${props => props.inStock && "scale(0.95, 0.95)"};
     }
 `;
 
