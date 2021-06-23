@@ -2,7 +2,7 @@ import React from "react";
 import qs from "query-string";
 
 import { StoreContext } from "context/Context.js";
-import CategoryPage from "./CategroyPage";
+import CategoryPage from "./CategoryPage";
 
 class Listings extends React.Component {
     componentDidMount() {

@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import ProductList from "./ProductsList";
 
-import { CategoryPage, CategortyName, ItemsContainer } from "./listings.styles";
+import { CategoryPageContainer, CategoryName, ItemsContainer } from "./listings.styles";
 
-export default class CategroyPage extends Component {
+export default class CategoryPage extends Component {
     render() {
         return (
-            <CategoryPage>
-                <CategortyName id="category-name">
-                    {this.props.selectedCategory === "all"
+            <CategoryPageContainer>
+                <CategoryName id="category-name">
+                    {this.props.selectedCategory === ""
                         ? "All Categories"
                         : this.props.selectedCategory}
-                </CategortyName>
+                </CategoryName>
                 <ItemsContainer>
                     <ProductList
                         items={this.props.items}
                         selectedCategory={this.props.selectedCategory}
                     />
                 </ItemsContainer>
-            </CategoryPage>
+            </CategoryPageContainer>
         );
     }
 }

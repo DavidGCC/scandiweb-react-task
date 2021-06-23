@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 
-export const CategoryPage = styled.div`
+export const CategoryPageContainer = styled.div`
     margin: 80px 7vw 191px 7vw;
 `;
 
-export const CategortyName = styled.h2`
+export const CategoryName = styled.h2`
     font-weight: 400;
     font-size: 42px;
     line-height: 67.2px;
