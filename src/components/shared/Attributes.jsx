@@ -28,7 +28,7 @@ export default class Attributes extends Component {
             groupName: GroupName,
             item,
         } = this.props;
-        const clickHandler = this.props.handleClick || this.defaultHandleClick;
+        const clickHandler = item.inStock ? (this.props.handleClick || this.defaultHandleClick) : () => null;
         const chosenAttributes =
             this.props.chosenAttributes ||
             this.context.cart[item.name].chosenAttributes;
@@ -51,6 +51,7 @@ export default class Attributes extends Component {
                                     return (
                                         <Button
                                             key={attr.id}
+                                            inStock={item.inStock}
                                             onClick={() =>
                                                 clickHandler({
                                                     item,
