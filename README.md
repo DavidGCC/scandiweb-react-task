@@ -17,7 +17,6 @@ A minimalistic storefront built with ReactJS, features include:
 
 Designed the application as per provided design.
 
-
 ##Used Technologies
 
     React
