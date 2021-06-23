@@ -112,7 +112,7 @@ export default class ProductDetails extends Component {
                         <AddToCartButton
                             onClick={this.handleAddToCart}
                             inStock={this.props.item.inStock}>
-                            Add To Cart
+                            {this.props.item.inStock ? "add to cart" : "out of stock"}
                         </AddToCartButton>
                         <div
                             dangerouslySetInnerHTML={{
