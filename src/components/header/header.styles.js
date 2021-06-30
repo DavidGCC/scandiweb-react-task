@@ -58,9 +58,11 @@ export const CurrencySelect = styled.div`
     user-select: none;
 
     #selected::after {
+        display: block;
         content: ${props => props.active ? `url("Images/SelectUp.png")` : `url("Images/SelectDown.png")`};
         position: absolute;
         left: 20px;
+        top: 0px;
     }
 
     #options {
