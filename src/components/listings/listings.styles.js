@@ -20,19 +20,20 @@ export const CategoryName = styled.h2`
 export const SLink = styled(Link)`
     text-decoration: none;
     display: inline-block;
+    width: fit-content;
 `;
 
 export const ItemsContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 2.7vw;
+    grid-template-columns: repeat(auto-fill, 385px);
+    column-gap: 30px;
     row-gap: 103px;
 `;
 
 // List Item (card)
 
 export const ItemContainer = styled.div`
-    width: 27vw;
+    width: 386px;
     display: flex;
     flex-direction: column;
     padding: 16px;
@@ -46,9 +47,15 @@ export const ItemTop = styled.div`
     position: relative;
 `;
 
+export const ItemImageContainer = styled.div`
+    width: 354px;
+    height: 330px;
+`;
+
 export const ItemImage = styled.img`
-    width: 25vw;
-    height: 22vw;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 `;
 
 export const AddToCartButton = styled.button`
@@ -69,7 +76,7 @@ export const AddToCartButton = styled.button`
 
 export const ItemBot = styled.div`
     margin-top: 24px;
-    width: 25vw;
+    width: 354px;
     height: 58px;
     display: flex;
     flex-direction: column;
@@ -85,7 +92,7 @@ export const ItemName = styled.span`
     white-space: nowrap;
     overflow: hidden;
     display: block;
-    width: 25vw;
+    width: 354px;
     word-wrap: normal;
     font-weight: 300;
     min-height: 29px;
@@ -100,8 +107,8 @@ export const ItemPrice = styled.span`
 `;
 
 export const OutOfStockOverlay = styled.div`
-    width: 25vw;
-    height: 23vw;
+    width: 100%;
+    height: 100%;
     position: absolute;
     opacity: 0.5;
     left: 0;

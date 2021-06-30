@@ -9,7 +9,8 @@ import {
     ItemTop,
     ItemBot,
     OutOfStockOverlay,
-    OutOfStockText
+    OutOfStockText,
+    ItemImageContainer
 } from "./listings.styles";
 import AddToCart from "./AddToCart";
 
@@ -26,12 +27,14 @@ class Item extends React.Component {
                 onMouseOver={() => this.setState({ isHovering: true })}
                 onMouseLeave={() => this.setState({ isHovering: false })}>
                 <ItemTop>
-                    <ItemImage
-                        alt="item preview"
-                        src={this.props.item.gallery[0]}
-                        width="354px"
-                        height="330px"
-                    />
+                    <ItemImageContainer>
+                        <ItemImage
+                            alt="item preview"
+                            src={this.props.item.gallery[0]}
+                            width="354px"
+                            height="330px"
+                        />
+                    </ItemImageContainer>
                     {this.state.isHovering && this.props.item.inStock && (
                         <AddToCart
                             onClick={(e) => {
@@ -45,7 +48,7 @@ class Item extends React.Component {
                             <OutOfStockOverlay>
                                 <OutOfStockText>out of stock</OutOfStockText>
                             </OutOfStockOverlay>
-                        ) 
+                        )
                     }
                 </ItemTop>
                 <ItemBot>
