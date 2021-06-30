@@ -15,6 +15,8 @@ export const ModalContainer = styled.div`
 
 export const ModalFooterContainer = styled.div`
     display: flex;
+    width: 100%;
+    gap: 1vw;
 `;
 
 
