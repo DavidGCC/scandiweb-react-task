@@ -36,7 +36,7 @@ export default class Attributes extends Component {
             <Container>
                 {item.attributes.map((attrType) => {
                     return (
-                        <>
+                        <div key={attrType.id}>
                             {this.props.groupName ? (
                                 <GroupName>{attrType.name}:</GroupName>
                             ) : null}
@@ -72,7 +72,7 @@ export default class Attributes extends Component {
                                     );
                                 })}
                             </Group>
-                        </>
+                        </div>
                     );
                 })}
             </Container>

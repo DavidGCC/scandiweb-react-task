@@ -125,6 +125,8 @@ export const NameAndPrice = styled.div`
 export const ImageContainer = styled.div`
     grid-area: img;
     margin-left: 0.6vw;
+    width: 105px;
+    height: 137px;
 `;
 
 export const ItemName = styled.span`
@@ -155,10 +157,11 @@ export const ItemPrice = styled(ItemNumbers)`
 `;
 
 export const ItemImage = styled.img`
-    width: 7vw;
-    height: 137px;
+    width: 100%;
+    height: 100%;
     float: right;
     grid-area: img;
+    object-fit: contain;
 `;
 
 export const Actions = styled.div`

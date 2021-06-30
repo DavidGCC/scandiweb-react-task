@@ -16,6 +16,7 @@ export const DetailsContainer = styled.div`
 export const ProductImage = styled.img`
     width: 42.361vw;
     height: 35vw;
+    object-fit: contain;
 `;
 
 export const ProductDetailsContainer = styled.div`
@@ -68,6 +69,7 @@ export const ListImage = styled.img`
     width: 80px;
     height: 80px;
     cursor: pointer;
+    object-fit: contain;
 `;
 
 export const ProductName = styled.h1`
