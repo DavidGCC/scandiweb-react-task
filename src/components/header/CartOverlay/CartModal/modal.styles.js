@@ -85,6 +85,16 @@ export const AttributesContainer = styled.div`
 export const AttributeGroup = styled.div`
     display: flex;
     flex-direction: row;
+    margin-bottom: 8px;
+`;
+
+export const AttributeGroupName = styled.span`
+    display: block;
+    font-family: "Roboto Condensed", sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 700;
 `;
 
 export const AttrButton = styled.button`
@@ -118,7 +128,7 @@ export const ItemCount = styled.span`
 export const NameAndPrice = styled.div`
     grid-area: name;
     width: 9vw;
-    margin: 0 1.2vw 53px 0;
+    margin: 0 1.2vw 30px 0;
     padding: 0;
     align-items: start;
 `;

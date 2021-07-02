@@ -77,6 +77,7 @@ export const CartCountButton = styled.button`
     width: 45px;
     height: 45px;
     font-size: 1.5rem;
+    user-select: none;
 `;
 
 export const CartItemCount = styled.span`
@@ -92,10 +93,12 @@ export const CartItemImageContainer = styled.div`
     width: 9.792vw;
     height: 185px;
     z-index: 5;
+    user-select: none;
 
     img {
         width: 9.792vw;
         height: 100%;
+        object-fit: contain;
     }
 `;
 

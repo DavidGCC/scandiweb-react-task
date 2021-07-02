@@ -14,6 +14,7 @@ import {
     AttributeButton,
     AttributeGroup,
     AttributesContainer,
+    AttributeGroupName
 } from "components/shared/shared.styles";
 
 import Price from "components/shared/Price";
@@ -55,6 +56,7 @@ export default class CartItem extends Component {
                         button={AttributeButton}
                         item={cartItem.item}
                         itemID={this.props.cartItemID}
+                        groupName={AttributeGroupName}
                     />
                 </CartItemDetailsContainer>
                 <CartItemActionsContainer>

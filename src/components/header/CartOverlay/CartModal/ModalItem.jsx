@@ -4,7 +4,7 @@ import { StoreContext } from "context/Context";
 import Attributes from "components/shared/Attributes";
 
 import { ItemContainer, NameAndPrice, Actions, ImageContainer, ItemName, ItemNumbers, ItemPrice, ItemImage, CountControl } from "./modal.styles";
-import { AttributesContainer, AttributeGroup, AttrButton } from "./modal.styles";
+import { AttributesContainer, AttributeGroup, AttrButton, AttributeGroupName } from "./modal.styles";
 
 
 import Price from "components/shared/Price";
@@ -51,7 +51,7 @@ export default class ModalItem extends Component {
                 <ImageContainer>
                     <ItemImage src={cartItem.item.gallery[0]} />
                 </ImageContainer>
-                <Attributes itemID={itemID} item={cartItem.item} container={AttributesContainer} group={AttributeGroup} button={AttrButton} />
+                <Attributes itemID={itemID} item={cartItem.item} container={AttributesContainer} group={AttributeGroup} button={AttrButton} groupName={AttributeGroupName}/>
             </ItemContainer>
         );
     }
