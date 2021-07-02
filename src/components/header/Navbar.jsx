@@ -10,9 +10,9 @@ class Navbar extends React.Component {
             <NavContainer id="navbar">
                 {categories.map((c) => (
                     <StyledNavLink
-                        to={`/listings/?category=${c}`}
+                        to={`/listings?category=${c}`}
                         activeClassName="active"
-                        isActive={(match, location) => location.pathname + location.search === `/listings/?category=${c}`}
+                        isActive={(match, location) => location.pathname + location.search === `/listings?category=${c}`}
                         key={c}>
                         {c}
                     </StyledNavLink>

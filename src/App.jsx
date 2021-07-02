@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import equal from "deep-equal";
 import "scss/style.scss";
 
 // COMPONENT IMPORTS
@@ -15,9 +16,8 @@ import client from "graphql/client";
 
 import { StoreContext } from "./context/Context";
 
-import { compareObjects, genID } from "./utils";
+import { genID } from "./utils";
 
-import equal from "deep-equal";
 
 class App extends React.Component {
     constructor(props) {
