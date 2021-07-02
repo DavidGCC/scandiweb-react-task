@@ -8,14 +8,14 @@ import { StoreContext } from "context/Context";
 
 export default class Cart extends Component {
     render() {
-        const cartEntries = Object.values(this.context.cart);
+        const cartItemIDs = Object.keys(this.context.cart);
         return (
             <CartContainer>
                 <CartLabel>Cart</CartLabel>
                 <CartItems>
                     {
-                        cartEntries.map(cartItem => {
-                            return <CartItem key={cartItem.item.name} cartItem={cartItem} />
+                        cartItemIDs.map(cartItemID => {
+                            return <CartItem key={cartItemID} cartItemID={cartItemID} />
                         })
                     }
                 </CartItems>

@@ -17,6 +17,8 @@ import { StoreContext } from "./context/Context";
 
 import { compareObjects, genID } from "./utils";
 
+import equal from "deep-equal";
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -57,7 +59,7 @@ class App extends React.Component {
             return res;
         }, []);
         for (let id in cart) {
-            if (compareObjects(cart[id].chosenAttributes, attributes) && cart[id].item.name === item.name) {
+            if (equal(cart[id].chosenAttributes, attributes) && cart[id].item.name === item.name) {
                 cart[id].count++;
                 this.setState({ cart });
                 return;

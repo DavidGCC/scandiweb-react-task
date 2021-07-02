@@ -51,7 +51,7 @@ export default class ModalItem extends Component {
                 <ImageContainer>
                     <ItemImage src={cartItem.item.gallery[0]} />
                 </ImageContainer>
-                <Attributes itemID={itemID} container={AttributesContainer} group={AttributeGroup} button={AttrButton} />
+                <Attributes itemID={itemID} item={cartItem.item} container={AttributesContainer} group={AttributeGroup} button={AttrButton} />
             </ItemContainer>
         );
     }

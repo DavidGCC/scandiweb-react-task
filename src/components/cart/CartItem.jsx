@@ -24,12 +24,27 @@ import CartImage from "./CartImage";
 import { StoreContext } from "context/Context";
 
 export default class CartItem extends Component {
+    constructor(props) {
+        super(props);
+        this.handleAdd = this.handleAdd.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
+    }
+
+    handleAdd() {
+        this.context.increaseCount(this.props.cartItemID);
+    }
+
+    handleRemove() {
+        this.context.removeFromCart(this.props.cartItemID);
+    }
+
     render() {
+        const cartItem = this.context.cart[this.props.cartItemID];
         return (
             <CartItemContainer>
                 <CartItemDetailsContainer>
-                    <CartItemName>{this.props.cartItem.item.name}</CartItemName>
-                    <Price prices={this.props.cartItem.item.prices}>
+                    <CartItemName>{cartItem.item.name}</CartItemName>
+                    <Price prices={cartItem.item.prices}>
                         {(symbol, amount) => (
                             <CartItemPrice>{`${symbol}${amount}`}</CartItemPrice>
                         )}
@@ -38,27 +53,22 @@ export default class CartItem extends Component {
                         container={AttributesContainer}
                         group={AttributeGroup}
                         button={AttributeButton}
-                        item={this.props.cartItem.item}
+                        item={cartItem.item}
+                        itemID={this.props.cartItemID}
                     />
                 </CartItemDetailsContainer>
                 <CartItemActionsContainer>
                     <CartCountButton
-                        onClick={() =>
-                            this.context.addToCart(this.props.cartItem.item)
-                        }>
+                        onClick={this.handleAdd}>
                         +
                     </CartCountButton>
-                    <CartItemCount>{this.props.cartItem.count}</CartItemCount>
+                    <CartItemCount>{cartItem.count}</CartItemCount>
                     <CartCountButton
-                        onClick={() =>
-                            this.context.removeFromCart(
-                                this.props.cartItem.item
-                            )
-                        }>
+                        onClick={this.handleRemove}>
                         -
                     </CartCountButton>
                 </CartItemActionsContainer>
-                <CartImage images={this.props.cartItem.item.gallery} />
+                <CartImage images={cartItem.item.gallery} />
             </CartItemContainer>
         );
     }
