@@ -11,7 +11,7 @@ import Product from "components/product/";
 import Cart from "components/cart/";
 //
 
-import { getItems } from "graphql/queries";
+import { getCategories } from "graphql/queries";
 import client from "graphql/client";
 
 import { StoreContext } from "./context/Context";
@@ -107,10 +107,10 @@ class App extends React.Component {
     componentDidMount() {
         client
             .query({
-                query: getItems,
+                query: getCategories,
             })
             .then((response) => {
-                const uniques = response.data.category.products.reduce(
+                const categories = response.data.category.products.reduce(
                     (acc, curr) => {
                         if (!acc.includes(curr.category)) {
                             acc.push(curr.category);
@@ -119,12 +119,7 @@ class App extends React.Component {
                     },
                     []
                 );
-                this.setState((prevState) => ({
-                    ...prevState,
-                    selectedCategory: uniques[0],
-                    categories: uniques,
-                    items: response.data.category.products,
-                }));
+                this.setState({ categories });
             });
     }
 

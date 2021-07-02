@@ -7,8 +7,7 @@ export const StoreContext = React.createContext({
     addToCart: () => {},
     removeFromCart: () => {},
     addAttribute: () => {},
-    categories: ["all"],
-    items: [],
+    categories: [],
     selectedCategory: "",
     setSelectedCategory: () => {},
 });

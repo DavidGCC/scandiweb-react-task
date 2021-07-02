@@ -4,10 +4,29 @@ import qs from "query-string";
 import { StoreContext } from "context/Context.js";
 import CategoryPage from "./CategoryPage";
 
+import { getItemsByCategory } from "graphql/queries";
+import client from "graphql/client";
+
 class Listings extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { items: [] }
+        this.fetchItems = this.fetchItems.bind(this);
+    }
+
+    fetchItems(category) {
+        client.query({
+            query: getItemsByCategory, variables: { title: category }
+        }).then(response => {
+            this.setState({ items: response.data.category.products });
+        })
+    }
+
     componentDidMount() {
         const parsed = qs.parse(this.props.location.search);
         this.context.setSelectedCategory(parsed.category);
+        this.fetchItems(parsed.category);
     }
 
     componentDidUpdate() {
@@ -20,18 +39,15 @@ class Listings extends React.Component {
             parsed.category !== this.context.selectedCategory
         ) {
             this.context.setSelectedCategory(parsed.category);
+            this.fetchItems(parsed.category);
         }
     }
 
     render() {
-        const { items, selectedCategory } = this.context;
+        const { selectedCategory } = this.context;
         return (
             <CategoryPage
-                items={items.filter((item) =>
-                    selectedCategory === "all"
-                        ? true
-                        : selectedCategory === item.category
-                )}
+                items={this.state.items.filter((item) => selectedCategory === item.category)}
                 selectedCategory={selectedCategory}
             />
         );
