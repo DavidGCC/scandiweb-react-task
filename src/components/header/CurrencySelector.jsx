@@ -15,6 +15,7 @@ class CurrencySelector extends React.Component {
         this.ref = React.createRef();
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
     }
+
     componentDidMount() {
         client.query({ query: getCurrencies }).then((res) =>
             this.setState((ps) => ({
@@ -24,17 +25,21 @@ class CurrencySelector extends React.Component {
         );
         document.addEventListener("click", this.handleOutsideClick);
     }
+
     componentWillUnmount() {
         document.removeEventListener("click", this.handleOutsideClick);
     }
+    
     handleOutsideClick(e) {
         if (this.ref && !this.ref.current.contains(e.target)) {
             this.setState({ showOptions: false });
         }
     }
+    
     toggleOptions() {
         this.setState({ showOptions: !this.state.showOptions });
     }
+    
     render() {
         return (
             <CurrencySelect onClick={this.toggleOptions} ref={this.ref} active={this.state.showOptions}>

@@ -26,6 +26,7 @@ import {
 } from "components/shared/shared.styles";
 
 export default class ProductDetails extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -37,6 +38,7 @@ export default class ProductDetails extends Component {
         this.isAttrActive = this.isAttrActive.bind(this);
         this.handleAddToCart = this.handleAddToCart.bind(this);
     }
+    
     makeActive(img) {
         if (this.state.chosenImage !== img) {
             this.setState({ chosenImage: img });
@@ -69,6 +71,7 @@ export default class ProductDetails extends Component {
         });
         this.setState({ savedAttributes: attributes });
     }
+    
     isAttrActive(attr) {
         const isActive = this.state.savedAttributes.find(
             (savedAttr) =>
@@ -76,9 +79,11 @@ export default class ProductDetails extends Component {
         );
         return Boolean(isActive);
     }
+    
     handleAddToCart() {
         if (this.props.item.inStock) this.context.addToCart(this.props.item, this.state.savedAttributes);
     }
+    
     render() {
         return (
             <ProductContainer>

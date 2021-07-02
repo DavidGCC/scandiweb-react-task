@@ -23,6 +23,7 @@ export default class ModalItem extends Component {
     handleRemove() {
         this.context.removeFromCart(this.props.itemID);
     }
+    
     render() {
         const cartItem = this.context.cart[this.props.itemID];
         const { itemID } = this.props;

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { StoreContext } from "context/Context";
 
 export default class Attributes extends Component {
+    
     constructor(props) {
         super(props);
         this.defaultHandleClick = this.defaultHandleClick.bind(this);

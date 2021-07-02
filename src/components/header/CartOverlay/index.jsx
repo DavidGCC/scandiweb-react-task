@@ -37,8 +37,6 @@ class CartOverlay extends React.Component {
         }
     }
 
-    
-
     render() {
         const cartItems = Object.entries(this.context.cart).length;
         return (

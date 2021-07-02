@@ -37,6 +37,7 @@ class App extends React.Component {
         this.addAttribute = this.addAttribute.bind(this);
         this.increaseCount = this.increaseCount.bind(this);
     }
+    
     setSelectedCategory(category) {
         if (typeof category === "undefined") {
             this.setState({ selectedCategory: "" });
@@ -44,8 +45,9 @@ class App extends React.Component {
             this.setState({ selectedCategory: category });
         }
     }
+    
     addToCart(item, attrs = null) {
-        let cart = this.state.cart;
+        const cart = this.state.cart;
         const attributes = attrs ? attrs : item.attributes.reduce((res, curr) => {
             res = [
                 ...res,
@@ -58,7 +60,7 @@ class App extends React.Component {
             ];
             return res;
         }, []);
-        for (let id in cart) {
+        for (const id in cart) {
             if (equal(cart[id].chosenAttributes, attributes) && cart[id].item.name === item.name) {
                 cart[id].count++;
                 this.setState({ cart });
@@ -72,15 +74,17 @@ class App extends React.Component {
         console.log(cart);
         this.setState({ cart });
     }
+    
     increaseCount(itemID) {
         const cart = this.state.cart;
         cart[itemID].count++;
         this.setState({ cart });
     }
+    
     addAttribute(itemID, attribute) {
-        let cart = this.state.cart;
-        let chosenAttributes = cart[itemID].chosenAttributes;
-        chosenAttributes = chosenAttributes.map((i) => {
+        const cart = this.state.cart;
+        const chosenAttributes = cart[itemID].chosenAttributes;
+        const newChosenAttributes = chosenAttributes.map((i) => {
             if (i.id === attribute.id) {
                 return {
                     ...i,
@@ -89,11 +93,12 @@ class App extends React.Component {
             }
             return i;
         });
-        cart[itemID].chosenAttributes = chosenAttributes;
+        cart[itemID].chosenAttributes = newChosenAttributes;
         this.setState({ cart });
     }
+    
     removeFromCart(itemID) {
-        let cart = this.state.cart;
+        const cart = this.state.cart;
         if (cart[itemID].count > 1) {
             cart[itemID].count--;
         } else {
@@ -101,9 +106,11 @@ class App extends React.Component {
         }
         this.setState({ cart });
     }
+
     handleCurrencyChange(curr) {
         this.setState({ currency: curr });
     }
+
     componentDidMount() {
         client
             .query({

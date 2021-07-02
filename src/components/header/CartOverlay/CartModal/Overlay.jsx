@@ -7,6 +7,7 @@ export default class Overlay extends Component {
         this.state = { scroll: 0 };
         this.handleScroll = this.handleScroll.bind(this);
     }
+    
     handleScroll() {
         if (document.body.scrollTop >= 80 && this.state.scroll !== 80) {
             this.setState({ scroll: 80 });

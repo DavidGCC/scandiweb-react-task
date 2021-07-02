@@ -9,6 +9,7 @@ export default class CartImage extends Component {
         this.state = { imageIndex: 0 };
         this.changeImage = this.changeImage.bind(this);
     }
+
     changeImage(dir) {
         const len = this.props.images.length;
         this.setState(ps => {
@@ -18,6 +19,7 @@ export default class CartImage extends Component {
             return { imageIndex: (ps.imageIndex + dir) % len }
         })
     }
+    
     render() {
         return (
             <CartItemImageContainer>

@@ -21,6 +21,7 @@ class Item extends React.Component {
         super(props);
         this.state = { isHovering: false };
     }
+
     render() {
         return (
             <ItemContainer
