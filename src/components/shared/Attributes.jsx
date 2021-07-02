@@ -26,15 +26,14 @@ export default class Attributes extends Component {
             group: Group,
             button: Button,
             groupName: GroupName,
-            item,
         } = this.props;
-        const clickHandler = item.inStock ? (this.props.handleClick || this.defaultHandleClick) : () => null;
+        const cartItem = this.context.cart[this.props.itemID];
+        const clickHandler = cartItem.item.inStock ? (this.props.handleClick || this.defaultHandleClick) : () => null;
         const chosenAttributes =
-            this.props.chosenAttributes ||
-            this.context.cart[item.name].chosenAttributes;
+            this.props.chosenAttributes || cartItem.chosenAttributes;
         return (
             <Container>
-                {item.attributes.map((attrType) => {
+                {cartItem.item.attributes.map((attrType) => {
                     return (
                         <div key={attrType.id}>
                             {this.props.groupName ? (
@@ -51,10 +50,10 @@ export default class Attributes extends Component {
                                     return (
                                         <Button
                                             key={attr.id}
-                                            inStock={item.inStock}
+                                            inStock={cartItem.item.inStock}
                                             onClick={() =>
                                                 clickHandler({
-                                                    item,
+                                                    item: this.props.itemID,
                                                     attr: attrToSaveObj,
                                                 })
                                             }

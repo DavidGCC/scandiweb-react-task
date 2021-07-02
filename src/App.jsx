@@ -15,6 +15,8 @@ import client from "graphql/client";
 
 import { StoreContext } from "./context/Context";
 
+import { compareObjects, genID } from "./utils";
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -31,6 +33,7 @@ class App extends React.Component {
         this.setSelectedCategory = this.setSelectedCategory.bind(this);
         this.removeFromCart = this.removeFromCart.bind(this);
         this.addAttribute = this.addAttribute.bind(this);
+        this.increaseCount = this.increaseCount.bind(this);
     }
     setSelectedCategory(category) {
         if (typeof category === "undefined") {
@@ -53,21 +56,28 @@ class App extends React.Component {
             ];
             return res;
         }, []);
-        if (cart[item.name]) {
-            cart[item.name].count++;
-            cart[item.name].chosenAttributes = attributes;
-        } else {
-            cart[item.name] = {
-                item,
-                count: 1,
-                chosenAttributes: attributes,
-            };
+        for (let id in cart) {
+            if (compareObjects(cart[id].chosenAttributes, attributes) && cart[id].item.name === item.name) {
+                cart[id].count++;
+                this.setState({ cart });
+                return;
+            }
         }
+        const id = genID();
+        cart[id] = {
+            item, count: 1, chosenAttributes: attributes
+        }
+        console.log(cart);
         this.setState({ cart });
     }
-    addAttribute(item, attribute) {
+    increaseCount(itemID) {
+        const cart = this.state.cart;
+        cart[itemID].count++;
+        this.setState({ cart });
+    }
+    addAttribute(itemID, attribute) {
         let cart = this.state.cart;
-        let chosenAttributes = cart[item.name].chosenAttributes;
+        let chosenAttributes = cart[itemID].chosenAttributes;
         chosenAttributes = chosenAttributes.map((i) => {
             if (i.id === attribute.id) {
                 return {
@@ -77,15 +87,15 @@ class App extends React.Component {
             }
             return i;
         });
-        cart[item.name].chosenAttributes = chosenAttributes;
+        cart[itemID].chosenAttributes = chosenAttributes;
         this.setState({ cart });
     }
-    removeFromCart(item) {
+    removeFromCart(itemID) {
         let cart = this.state.cart;
-        if (cart[item.name].count > 1) {
-            cart[item.name].count--;
+        if (cart[itemID].count > 1) {
+            cart[itemID].count--;
         } else {
-            delete cart[item.name];
+            delete cart[itemID];
         }
         this.setState({ cart });
     }
@@ -125,7 +135,8 @@ class App extends React.Component {
                     addToCart: this.addToCart,
                     setSelectedCategory: this.setSelectedCategory,
                     removeFromCart: this.removeFromCart,
-                    addAttribute: this.addAttribute
+                    addAttribute: this.addAttribute,
+                    increaseCount: this.increaseCount
                 }}>
                 <Router>
                     <Header />

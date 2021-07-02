@@ -9,13 +9,28 @@ import { AttributesContainer, AttributeGroup, AttrButton } from "./modal.styles"
 
 import Price from "components/shared/Price";
 export default class ModalItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { cartItem: {} }
+        this.handleAdd = this.handleAdd.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
+    }
+
+    handleAdd() {
+        this.context.increaseCount(this.props.itemID);
+    }
+
+    handleRemove() {
+        this.context.removeFromCart(this.props.itemID);
+    }
     render() {
-        const { item, count } = this.props.item;
+        const cartItem = this.context.cart[this.props.itemID];
+        const { itemID } = this.props;
         return (
             <ItemContainer>
                 <NameAndPrice>
-                    <ItemName>{item.name}</ItemName>
-                    <Price prices={item.prices}>
+                    <ItemName>{cartItem.item.name}</ItemName>
+                    <Price prices={cartItem.item.prices}>
                         {
                             (symbol, amount) => (
                                 <ItemPrice>{symbol}{amount}</ItemPrice>
@@ -24,19 +39,19 @@ export default class ModalItem extends Component {
                     </Price>
                 </NameAndPrice>
                 <Actions>
-                    <CountControl onClick={() => this.context.addToCart(item)}>
+                    <CountControl onClick={this.handleAdd}>
                         +
                     </CountControl>
-                    <ItemNumbers>{count}</ItemNumbers>
+                    <ItemNumbers>{cartItem.count}</ItemNumbers>
                     <CountControl
-                        onClick={() => this.context.removeFromCart(item)}>
+                        onClick={this.handleRemove}>
                         -
                     </CountControl>
                 </Actions>
                 <ImageContainer>
-                    <ItemImage src={item.gallery[0]} />
+                    <ItemImage src={cartItem.item.gallery[0]} />
                 </ImageContainer>
-                <Attributes item={item} container={AttributesContainer} group={AttributeGroup}  button={AttrButton} />
+                <Attributes itemID={itemID} container={AttributesContainer} group={AttributeGroup} button={AttrButton} />
             </ItemContainer>
         );
     }

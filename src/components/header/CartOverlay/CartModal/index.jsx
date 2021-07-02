@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { StoreContext } from "context/Context";
 import ModalItem from "./ModalItem";
@@ -7,7 +7,7 @@ import TotalPrice from "./TotalPrice";
 
 import { ModalContainer, CartName, ItemCount } from "./modal.styles";
 
-export default class CartModal extends Component {
+export default class CartModal extends PureComponent {
     render() {
         const cartEntries = Object.entries(this.context.cart);
         const totalPrice = cartEntries.reduce((total, curr) => {
@@ -28,7 +28,7 @@ export default class CartModal extends Component {
                         </ItemCount>
                     </div>
                     {cartEntries.map((item) => (
-                        <ModalItem item={item[1]} key={item[0]} />
+                        <ModalItem itemID={item[0]} key={item[0]} />
                     ))}
                     <TotalPrice
                         totalPrice={Math.round(totalPrice * 100) / 100}
