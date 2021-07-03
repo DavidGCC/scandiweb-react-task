@@ -61,6 +61,13 @@ export const CartItemName = styled.span`
     font-weight: 400;
     color: var(--black);
     line-height: 27px;
+    &:hover {
+        color: var(--green);
+    }
+`;
+
+export const ItemNameLink = styled(Link)`
+    text-decoration: none;
 `;
 
 export const CartItemPrice = styled.span`

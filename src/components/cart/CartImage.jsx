@@ -33,9 +33,9 @@ export default class CartImage extends PureComponent {
                         <path
                             d="M7 13L1 7L7 1"
                             stroke="white"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         />
                     </svg>
                 </CartArrowPrevious>
@@ -50,9 +50,9 @@ export default class CartImage extends PureComponent {
                         <path
                             d="M1 13L7 7L1 1"
                             stroke="white"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         />
                     </svg>
                 </CartArrowNext>

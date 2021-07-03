@@ -8,6 +8,7 @@ import {
     CartItemPrice,
     CartCountButton,
     CartItemCount,
+    ItemNameLink
 } from "./cart.styles";
 
 import {
@@ -44,7 +45,9 @@ export default class CartItem extends PureComponent {
         return (
             <CartItemContainer>
                 <CartItemDetailsContainer>
-                    <CartItemName>{cartItem.item.name}</CartItemName>
+                    <ItemNameLink to={`/product/${cartItem.item.name}`}>
+                        <CartItemName>{cartItem.item.name}</CartItemName>
+                    </ItemNameLink>
                     <Price prices={cartItem.item.prices}>
                         {(symbol, amount) => (
                             <CartItemPrice>{`${symbol}${amount}`}</CartItemPrice>
