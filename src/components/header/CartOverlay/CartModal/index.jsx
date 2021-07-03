@@ -7,16 +7,12 @@ import TotalPrice from "./TotalPrice";
 
 import { ModalContainer, CartName, ItemCount } from "./modal.styles";
 
+import { getTotalPrice } from "utils";
+
 export default class CartModal extends PureComponent {
     render() {
         const cartEntries = Object.entries(this.context.cart);
-        const totalPrice = cartEntries.reduce((total, curr) => {
-            const price = curr[1].item.prices.find(
-                (i) => i.currency === this.context.currency
-            );
-            total += curr[1].count * price.amount;
-            return total;
-        }, 0);
+        const totalPrice = getTotalPrice(this.context.cart, this.context.currency);
         return (
             <>
                 <ModalContainer>

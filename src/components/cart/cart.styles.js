@@ -141,3 +141,21 @@ export const CartArrowNext = styled(CartArrows)`
     left: calc(100% - 1.5vw);
     padding-right: 5px;
 `;
+
+export const TotalPriceContainer = styled.div`
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-top: 40px;
+    width: 76vw;
+    text-align: right;
+`;
+
+export const TotalPriceLabel = styled.span`
+    margin-right: 15px;
+    font-family: "Roboto", sans-serif;
+`
+
+export const TotalPriceNumber = styled.span`
+    font-family: "Raleway", sans-serif;
+`;

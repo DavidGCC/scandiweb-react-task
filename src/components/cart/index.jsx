@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
+import getSymbolFromCurrency from 'currency-symbol-map';
 
 import CartItem from "./CartItem";
+import TotalPrice from "./TotalPrice";
 
 import { CartContainer, CartLabel, CartItems } from "./cart.styles";
 
 import { StoreContext } from "context/Context";
+import { getTotalPrice } from 'utils';
 
 export default class Cart extends PureComponent {
     render() {
@@ -19,6 +22,7 @@ export default class Cart extends PureComponent {
                         })
                     }
                 </CartItems>
+                <TotalPrice price={getTotalPrice(this.context.cart, this.context.currency)} symbol={getSymbolFromCurrency(this.context.currency)}/>
             </CartContainer>
         )
     }
