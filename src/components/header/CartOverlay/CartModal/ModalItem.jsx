@@ -14,7 +14,7 @@ import {
     ItemImage,
     CountControl,
     AttributesContainer,
-    AttributeGroup, AttrButton, AttributeGroupName, SLink
+    AttributeGroup, AttrButton, AttributeGroupName, ItemNameLink
 } from "./modal.styles";
 
 import Price from "components/shared/Price";
@@ -41,9 +41,9 @@ export default class ModalItem extends PureComponent {
         return (
             <ItemContainer>
                 <NameAndPrice>
-                    <SLink to={`/product/${cartItem.item.name}`} onClick={() => this.props.setModal(false)}>
+                    <ItemNameLink to={`/product/${cartItem.item.name}`} onClick={() => this.props.setModal(false)}>
                         <ItemName>{cartItem.item.name}</ItemName>
-                    </SLink>
+                    </ItemNameLink>
                     <Price prices={cartItem.item.prices}>
                         {
                             (symbol, amount) => (

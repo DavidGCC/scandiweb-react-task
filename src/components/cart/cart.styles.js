@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+export const SLink = styled(Link)`
+    text-decoration: none;
+`;
 
 export const CartContainer = styled.div`
     width: 100%;

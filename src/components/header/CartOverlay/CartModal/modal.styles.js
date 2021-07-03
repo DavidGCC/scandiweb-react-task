@@ -81,12 +81,12 @@ export const AttributesContainer = styled.div`
     flex-direction: column;
     grid-area: attrs;
     margin: 8px 0;
-`;
+    `;
 export const AttributeGroup = styled.div`
     display: flex;
     flex-direction: row;
     margin-bottom: 8px;
-`;
+    `;
 
 export const AttributeGroupName = styled.span`
     display: block;
@@ -95,7 +95,7 @@ export const AttributeGroupName = styled.span`
     font-size: 14px;
     line-height: 14px;
     font-weight: 700;
-`;
+    `;
 
 export const AttrButton = styled.button`
     background-color: ${(props) => !props.active ? "var(--disabledAttr)" : props.bgColor ? props.bgColor : "#fff"};
@@ -110,7 +110,7 @@ export const AttrButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-`;
+    `;
 
 
 export const ItemCount = styled.span`
@@ -121,7 +121,7 @@ export const ItemCount = styled.span`
     line-height: 26px;
     letter-spacing: 0em;
     text-align: right;
-`;
+    `;
 
 
 
@@ -131,7 +131,7 @@ export const NameAndPrice = styled.div`
     margin: 0 1.2vw 30px 0;
     padding: 0;
     align-items: start;
-`;
+    `;
 
 
 export const ImageContainer = styled.div`
@@ -139,7 +139,7 @@ export const ImageContainer = styled.div`
     margin-left: 0.6vw;
     width: 105px;
     height: 137px;
-`;
+    `;
 
 export const ItemName = styled.span`
     margin-bottom: 5px;
@@ -150,6 +150,10 @@ export const ItemName = styled.span`
     line-height: 26px;
     letter-spacing: 0px;
     text-align: left;
+    `;
+
+export const ItemNameLink = styled(Link)`
+    text-decoration: none;
     &:hover {
         color: var(--green);
     }
