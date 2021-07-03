@@ -60,6 +60,12 @@ export default class ProductDetails extends PureComponent {
         });
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.item.name !== this.props.item.name) {
+            this.setState({ chosenImage: this.props.item.gallery[0] })
+        }
+    }
+
     saveAttribute({ attr }) {
         const attributes = this.state.savedAttributes.map((i) => {
             if (i.id === attr.id) {
