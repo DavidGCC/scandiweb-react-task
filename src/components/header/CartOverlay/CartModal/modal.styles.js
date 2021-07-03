@@ -150,6 +150,9 @@ export const ItemName = styled.span`
     line-height: 26px;
     letter-spacing: 0px;
     text-align: left;
+    &:hover {
+        color: var(--green);
+    }
 `;
 
 export const ItemNumbers = styled.span`

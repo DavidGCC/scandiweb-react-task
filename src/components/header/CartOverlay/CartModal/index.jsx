@@ -28,7 +28,7 @@ export default class CartModal extends PureComponent {
                         </ItemCount>
                     </div>
                     {cartEntries.map((item) => (
-                        <ModalItem itemID={item[0]} key={item[0]} />
+                        <ModalItem itemID={item[0]} key={item[0]} setModal={this.props.setModal}/>
                     ))}
                     <TotalPrice
                         totalPrice={Math.round(totalPrice * 100) / 100}

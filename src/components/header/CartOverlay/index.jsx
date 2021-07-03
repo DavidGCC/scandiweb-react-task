@@ -19,13 +19,18 @@ class CartOverlay extends React.PureComponent {
         this.state = { showModal: false };
         this.handleLeave = this.handleLeave.bind(this);
         this.handleMouseOver = this.handleMouseOver.bind(this);
+        this.setModal = this.setModal.bind(this);
         this.timeout = null;
+    }
+
+    setModal(bool) {
+        this.setState({ showModal: bool })
     }
 
     handleLeave() {
         clearTimeout(this.timeout);
         this.timeout = setTimeout(
-            () => this.setState({ showModal: false }),
+            () => this.setModal(false),
             500
         );
     }
@@ -33,7 +38,7 @@ class CartOverlay extends React.PureComponent {
     handleMouseOver() {
         clearTimeout(this.timeout);
         if (this.state.showModal !== true) {
-            this.setState({ showModal: true });
+            this.setModal(true);
         }
     }
 
@@ -76,6 +81,7 @@ class CartOverlay extends React.PureComponent {
                         <CartModal
                             onMouseLeave={this.handleLeave}
                             onMouseOver={this.handleMouseOver}
+                            setModal={this.setModal}
                         />
                     )}
                 </CartIconContainer>
