@@ -7,7 +7,7 @@ import CategoryPage from "./CategoryPage";
 import { getItemsByCategory } from "graphql/queries";
 import client from "graphql/client";
 
-class Listings extends React.Component {
+class Listings extends React.PureComponent {
 
     constructor(props) {
         super(props);

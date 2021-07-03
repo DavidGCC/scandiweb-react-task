@@ -6,7 +6,7 @@ import Actions from "./Actions";
 
 import { HeaderContainer } from "./header.styles";
 
-class Header extends React.Component {
+class Header extends React.PureComponent {
     render() {
         return (
             <HeaderContainer id="header">

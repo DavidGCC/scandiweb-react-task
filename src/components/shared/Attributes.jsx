@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { StoreContext } from "context/Context";
 
-export default class Attributes extends Component {
+export default class Attributes extends PureComponent {
     
     constructor(props) {
         super(props);

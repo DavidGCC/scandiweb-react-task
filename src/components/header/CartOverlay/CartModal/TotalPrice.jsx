@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import getSymbolFromCurrency from 'currency-symbol-map';
 
 import { StoreContext } from "context/Context";
 import { TotalPriceContainer, TotalPriceTotal, TotalPriceCost } from "./modal.styles";
 
-export default class TotalPrice extends Component {
+export default class TotalPrice extends PureComponent {
     render() {
         return (
             <TotalPriceContainer>

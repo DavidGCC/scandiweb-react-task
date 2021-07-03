@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { ModalFooterContainer, ViewBagButton, CheckOutButton, SLink } from "./modal.styles";
 
 
-export default class FooterButtons extends Component {
+export default class FooterButtons extends PureComponent {
     render() {
         return (
             <ModalFooterContainer>

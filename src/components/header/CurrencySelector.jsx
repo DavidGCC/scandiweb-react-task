@@ -7,7 +7,7 @@ import { getCurrencies } from "graphql/queries";
 
 import { CurrencySelect } from "./header.styles";
 
-class CurrencySelector extends React.Component {
+class CurrencySelector extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = { currencies: [], showOptions: false };

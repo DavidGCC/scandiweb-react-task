@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { StoreContext } from "context/Context";
 
 import ProductDetails from "./ProductDetails";
 
-export default class Product extends Component {
+export default class Product extends PureComponent {
     render() {
         const item = this.context.items.find(
             (item) => item.name === this.props.match.params.itemname

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import {
     CartItemContainer,
@@ -24,7 +24,7 @@ import CartImage from "./CartImage";
 
 import { StoreContext } from "context/Context";
 
-export default class CartItem extends Component {
+export default class CartItem extends PureComponent {
     constructor(props) {
         super(props);
         this.handleAdd = this.handleAdd.bind(this);

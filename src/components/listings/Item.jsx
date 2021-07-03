@@ -16,7 +16,7 @@ import AddToCart from "./AddToCart";
 
 import Price from "../shared/Price";
 
-class Item extends React.Component {
+class Item extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = { isHovering: false };

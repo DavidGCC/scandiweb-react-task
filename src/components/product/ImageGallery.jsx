@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 
 import { ImageListContainer, ListImage } from "./product.styles";
 
-export default class ImageGallery extends Component {
+export default class ImageGallery extends PureComponent {
     render() {
         return (
             <ImageListContainer>

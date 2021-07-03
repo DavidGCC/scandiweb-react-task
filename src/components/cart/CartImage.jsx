@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { CartItemImageContainer, CartArrowNext, CartArrowPrevious } from "./cart.styles";
 
 
-export default class CartImage extends Component {
+export default class CartImage extends PureComponent {
     constructor(props) {
         super(props);
         this.state = { imageIndex: 0 };

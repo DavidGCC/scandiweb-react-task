@@ -13,7 +13,7 @@ import {
 import CartModal from "./CartModal";
 import Overlay from "./CartModal/Overlay";
 
-class CartOverlay extends React.Component {
+class CartOverlay extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = { showModal: false };

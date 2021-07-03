@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import CartItem from "./CartItem";
 
@@ -6,7 +6,7 @@ import { CartContainer, CartLabel, CartItems } from "./cart.styles";
 
 import { StoreContext } from "context/Context";
 
-export default class Cart extends Component {
+export default class Cart extends PureComponent {
     render() {
         const cartItemIDs = Object.keys(this.context.cart);
         return (

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { AddToCartButton } from "./listings.styles";
 
-export default class AddToCart extends Component {
+export default class AddToCart extends PureComponent {
     render() {
         return (
             <AddToCartButton onClick={this.props.onClick}>

@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import getSumbolFromCurrency from "currency-symbol-map";
 
 import { StoreContext } from "context/Context";
 
-export default class Price extends Component {
+export default class Price extends PureComponent {
     render() {
         const price = this.props.prices.find(i => i.currency === this.context.currency);
         return (

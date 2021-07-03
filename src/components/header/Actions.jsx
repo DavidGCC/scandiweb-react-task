@@ -5,7 +5,7 @@ import CartOverlay from "./CartOverlay";
 
 import { ActionContainer } from "./header.styles";
 
-class Actions extends React.Component {
+class Actions extends React.PureComponent {
 
     render() {
         return(

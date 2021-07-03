@@ -3,7 +3,7 @@ import React from "react";
 import { StoreContext } from "context/Context";
 import { NavContainer, StyledNavLink } from "./header.styles";
 
-class Navbar extends React.Component {
+class Navbar extends React.PureComponent {
     render() {
         const { categories } = this.context;
         return (

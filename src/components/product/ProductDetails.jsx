@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { StoreContext } from "context/Context";
 
@@ -25,7 +25,7 @@ import {
     AttributeButton,
 } from "components/shared/shared.styles";
 
-export default class ProductDetails extends Component {
+export default class ProductDetails extends PureComponent {
     
     constructor(props) {
         super(props);

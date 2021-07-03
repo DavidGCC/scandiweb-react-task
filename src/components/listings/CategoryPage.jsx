@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import ProductList from "./ProductsList";
 
 import { CategoryPageContainer, CategoryName, ItemsContainer } from "./listings.styles";
 
-export default class CategoryPage extends Component {
+export default class CategoryPage extends PureComponent {
     render() {
         return (
             <CategoryPageContainer>

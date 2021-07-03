@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import { LogoContainer } from "./header.styles";
-class Logo extends React.Component {
+class Logo extends React.PureComponent {
     render() {
         return (
             <LogoContainer id="logo-container">

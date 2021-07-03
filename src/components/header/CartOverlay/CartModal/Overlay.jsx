@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Overlay as StyledOverlay } from "./modal.styles";
 
-export default class Overlay extends Component {
+export default class Overlay extends PureComponent {
     constructor(props) {
         super(props);
         this.state = { scroll: 0 };

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import { SLink, Container, Item } from "./home.styles"
 
 import { StoreContext } from "context/Context";
 
-export default class Home extends Component {
+export default class Home extends PureComponent {
     render() {
         return (
             <StoreContext.Consumer>

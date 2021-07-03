@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { StoreContext } from "context/Context";
 import Attributes from "components/shared/Attributes";
@@ -8,7 +8,7 @@ import { AttributesContainer, AttributeGroup, AttrButton, AttributeGroupName } f
 
 
 import Price from "components/shared/Price";
-export default class ModalItem extends Component {
+export default class ModalItem extends PureComponent {
     constructor(props) {
         super(props);
         this.state = { cartItem: {} }
