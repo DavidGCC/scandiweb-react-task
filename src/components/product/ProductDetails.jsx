@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import DOMPurify from "dompurify";
 
 import { StoreContext } from "context/Context";
 
@@ -121,7 +122,7 @@ export default class ProductDetails extends PureComponent {
                         </AddToCartButton>
                         <div
                             dangerouslySetInnerHTML={{
-                                __html: this.props.item.description,
+                                __html: DOMPurify.sanitize(this.props.item.description),
                             }}></div>
                     </ProductDetailsContainer>
                 </DetailsContainer>

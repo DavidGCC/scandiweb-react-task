@@ -20,6 +20,7 @@ class Listings extends React.PureComponent {
             query: getItemsByCategory, variables: { title: category }
         }).then(response => {
             this.setState({ items: response.data.category.products });
+            this.context.setItems(response.data.category.products);
         })
     }
 
@@ -47,7 +48,7 @@ class Listings extends React.PureComponent {
         const { selectedCategory } = this.context;
         return (
             <CategoryPage
-                items={this.state.items.filter((item) => selectedCategory === item.category)}
+                items={this.state.items}
                 selectedCategory={selectedCategory}
             />
         );

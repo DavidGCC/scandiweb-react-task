@@ -10,5 +10,7 @@ export const StoreContext = React.createContext({
     categories: [],
     selectedCategory: "",
     setSelectedCategory: () => {},
+    items: [],
+    setItems: () => {}
 });
 

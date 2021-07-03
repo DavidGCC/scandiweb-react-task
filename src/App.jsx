@@ -36,6 +36,7 @@ class App extends React.Component {
         this.removeFromCart = this.removeFromCart.bind(this);
         this.addAttribute = this.addAttribute.bind(this);
         this.increaseCount = this.increaseCount.bind(this);
+        this.setItems = this.setItems.bind(this);
     }
     
     setSelectedCategory(category) {
@@ -111,6 +112,10 @@ class App extends React.Component {
         this.setState({ currency: curr });
     }
 
+    setItems(items) {
+        this.setState({ items });
+    }
+
     componentDidMount() {
         client
             .query({
@@ -140,7 +145,8 @@ class App extends React.Component {
                     setSelectedCategory: this.setSelectedCategory,
                     removeFromCart: this.removeFromCart,
                     addAttribute: this.addAttribute,
-                    increaseCount: this.increaseCount
+                    increaseCount: this.increaseCount,
+                    setItems: this.setItems
                 }}>
                 <Router>
                     <Header />
