@@ -113,7 +113,16 @@ class App extends React.Component {
     }
 
     setItems(items) {
-        this.setState({ items });
+        const availableItems = [ ...this.state.items, ...items ];
+        const finalItems = [];
+        const map = new Map();
+        availableItems.forEach(item => {
+            if (!map.has(item.name)) {
+                map.set(item.name, true);
+                finalItems.push(item)
+            }
+        });
+        this.setState({ items: finalItems });
     }
 
     componentDidMount() {
