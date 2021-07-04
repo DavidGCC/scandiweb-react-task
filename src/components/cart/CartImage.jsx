@@ -2,6 +2,9 @@ import React, { PureComponent } from "react";
 
 import { CartItemImageContainer, CartArrowNext, CartArrowPrevious } from "./cart.styles";
 
+import { ReactComponent as Next } from "./svgs/Next.svg";
+import { ReactComponent as Previous } from "./svgs/Previous.svg";
+
 
 export default class CartImage extends PureComponent {
     constructor(props) {
@@ -24,37 +27,11 @@ export default class CartImage extends PureComponent {
         return (
             <CartItemImageContainer>
                 <CartArrowPrevious onClick={() => this.changeImage(-1)} >
-                    <svg
-                        width="8"
-                        height="14"
-                        viewBox="0 0 8 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M7 13L1 7L7 1"
-                            stroke="white"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
+                    <Previous />
                 </CartArrowPrevious>
                 <img src={this.props.images[this.state.imageIndex]} alt="item" />
                 <CartArrowNext onClick={() => this.changeImage(1)}>
-                    <svg
-                        width="8"
-                        height="14"
-                        viewBox="0 0 8 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1 13L7 7L1 1"
-                            stroke="white"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
+                    <Next />
                 </CartArrowNext>
             </CartItemImageContainer>
         );
