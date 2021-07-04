@@ -7,6 +7,9 @@ import { getCurrencies } from "graphql/queries";
 
 import { CurrencySelect } from "./header.styles";
 
+import { ReactComponent as DownArrow } from "./svgs/DownArrow.svg";
+import { ReactComponent as UpArrow } from "./svgs/UpArrow.svg";
+
 class CurrencySelector extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -43,7 +46,13 @@ class CurrencySelector extends React.PureComponent {
     render() {
         return (
             <CurrencySelect onClick={this.toggleOptions} ref={this.ref} active={this.state.showOptions}>
-                <span id="selected">{getSymbolFromCurrency(this.context.currency)}</span>
+                <span id="selected">{getSymbolFromCurrency(this.context.currency)}
+                    <span id="arrow">
+                        {
+                            this.state.showOptions ? <UpArrow /> : <DownArrow />
+                        }
+                    </span>
+                </span>
                 {this.state.showOptions && (
                     <div id="options">
                         {this.state.currencies.map((curr) => {
