@@ -46,7 +46,7 @@ export default class CartItem extends PureComponent {
             <CartItemContainer>
                 <CartItemDetailsContainer>
                     <ItemNameLink to={`/product/${cartItem.item.name}`}>
-                        <CartItemName>{cartItem.item.name}</CartItemName>
+                        <CartItemName id="cart-item-name">{cartItem.item.name}</CartItemName>
                     </ItemNameLink>
                     <Price prices={cartItem.item.prices}>
                         {(symbol, amount) => (

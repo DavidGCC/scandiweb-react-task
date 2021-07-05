@@ -42,7 +42,7 @@ export default class ModalItem extends PureComponent {
             <ItemContainer>
                 <NameAndPrice>
                     <ItemNameLink to={`/product/${cartItem.item.name}`} onClick={() => this.props.setModal(false)}>
-                        <ItemName>{cartItem.item.name}</ItemName>
+                        <ItemName id="modal-item-name">{cartItem.item.name}</ItemName>
                     </ItemNameLink>
                     <Price prices={cartItem.item.prices}>
                         {

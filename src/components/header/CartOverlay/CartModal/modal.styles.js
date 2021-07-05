@@ -38,6 +38,9 @@ export const ItemContainer = styled.div`
         "name actions img"
         "attrs actions img ";
     margin: 20px 0;
+    &:hover #modal-item-name {
+        text-decoration: underline;
+    }
 `;
 
 export const ButtonCommon = styled.button`

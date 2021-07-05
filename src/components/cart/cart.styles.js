@@ -33,6 +33,9 @@ export const CartItemContainer = styled.div`
     display: flex;
     flex-direction: row;
     margin: 20px 0;
+    &:hover #cart-item-name {
+        text-decoration: underline;
+    }
 `;
 
 export const CartItemDetailsContainer = styled.div`
@@ -56,7 +59,7 @@ export const CartItemName = styled.span`
     }
     font-size: 30px;
     margin: 20px 0 55px 0;
-    width: 20vw;
+    /* width: 20vw; */
     height: 27px;
     font-weight: 400;
     color: var(--black);
@@ -68,6 +71,7 @@ export const CartItemName = styled.span`
 
 export const ItemNameLink = styled(Link)`
     text-decoration: none;
+    display: inline-block;
 `;
 
 export const CartItemPrice = styled.span`

@@ -5,14 +5,16 @@ export const Container = styled.div`
     display: flex;
     width: 60%;
     height: 100%;
-    margin: 1rem 2rem;
     margin: auto;
+    margin-top: 80px;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
 `;
 
 export const Item = styled.div`
-    width: 300px;
-    height: 30vh;
+    width: 15vw;
+    height: 200px;
     font-size: 1.5rem;
     font-weight: 600;
     text-transform: capitalize;
