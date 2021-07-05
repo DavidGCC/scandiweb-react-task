@@ -153,7 +153,8 @@ export const ItemName = styled.span`
     line-height: 26px;
     letter-spacing: 0px;
     text-align: left;
-    `;
+    color: var(--black);
+`;
 
 export const ItemNameLink = styled(Link)`
     text-decoration: none;
