@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 import { SLink } from "./listings.styles";
 import Item from "./Item";
@@ -12,3 +13,7 @@ export default class ProductsList extends PureComponent {
         ));
     }
 }
+
+ProductsList.propTypes = {
+    items: PropTypes.array
+};

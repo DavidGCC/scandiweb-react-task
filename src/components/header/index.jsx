@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Navbar from "./Navbar";
 import Logo from "./Logo";
@@ -17,5 +18,10 @@ class Header extends React.PureComponent {
         );
     }
 }
+
+Header.propTypes = {
+    selectedCurrency: PropTypes.string,
+    handleCurrencyChange: PropTypes.func
+};
 
 export default Header;

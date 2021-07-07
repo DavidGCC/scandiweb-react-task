@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-
+import PropTypes from "prop-types";
 
 import { ImageListContainer, ListImage } from "./product.styles";
 
@@ -18,3 +18,8 @@ export default class ImageGallery extends PureComponent {
         );
     }
 }
+
+ImageGallery.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string),
+    makeActive: PropTypes.func.isRequired
+};

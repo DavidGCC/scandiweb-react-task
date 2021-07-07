@@ -48,7 +48,7 @@ class App extends React.Component {
     }
     
     addToCart(item, attrs = null) {
-        const cart = this.state.cart;
+        const {cart} = this.state;
         const attributes = attrs ? attrs : item.attributes.reduce((res, curr) => {
             res = [
                 ...res,
@@ -71,20 +71,20 @@ class App extends React.Component {
         const id = genID();
         cart[id] = {
             item, count: 1, chosenAttributes: attributes
-        }
+        };
         console.log(cart);
         this.setState({ cart });
     }
     
     increaseCount(itemID) {
-        const cart = this.state.cart;
+        const {cart} = this.state;
         cart[itemID].count++;
         this.setState({ cart });
     }
     
     addAttribute(itemID, attribute) {
-        const cart = this.state.cart;
-        const chosenAttributes = cart[itemID].chosenAttributes;
+        const {cart} = this.state;
+        const {chosenAttributes} = cart[itemID];
         const newChosenAttributes = chosenAttributes.map((i) => {
             if (i.id === attribute.id) {
                 return {
@@ -99,7 +99,7 @@ class App extends React.Component {
     }
     
     removeFromCart(itemID) {
-        const cart = this.state.cart;
+        const {cart} = this.state;
         if (cart[itemID].count > 1) {
             cart[itemID].count--;
         } else {
@@ -119,7 +119,7 @@ class App extends React.Component {
         availableItems.forEach(item => {
             if (!map.has(item.name)) {
                 map.set(item.name, true);
-                finalItems.push(item)
+                finalItems.push(item);
             }
         });
         this.setState({ items: finalItems });

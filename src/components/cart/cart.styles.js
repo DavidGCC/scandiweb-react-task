@@ -158,7 +158,7 @@ export const TotalPriceContainer = styled.div`
 export const TotalPriceLabel = styled.span`
     margin-right: 15px;
     font-family: "Roboto", sans-serif;
-`
+`;
 
 export const TotalPriceNumber = styled.span`
     font-family: "Raleway", sans-serif;

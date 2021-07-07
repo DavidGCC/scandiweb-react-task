@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { StoreContext } from "context/Context";
 import {
@@ -67,5 +68,9 @@ class Item extends React.PureComponent {
     }
 }
 Item.contextType = StoreContext;
+
+Item.propTypes = {
+    item: PropTypes.object
+};
 
 export default Item;

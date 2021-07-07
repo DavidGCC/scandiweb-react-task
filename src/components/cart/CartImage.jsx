@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 import { CartItemImageContainer, CartArrowNext, CartArrowPrevious } from "./cart.styles";
 
@@ -17,10 +18,10 @@ export default class CartImage extends PureComponent {
         const len = this.props.images.length;
         this.setState(ps => {
             if (ps.imageIndex + dir < 0) {
-                return { imageIndex: len - 1 }
+                return { imageIndex: len - 1 };
             }
-            return { imageIndex: (ps.imageIndex + dir) % len }
-        })
+            return { imageIndex: (ps.imageIndex + dir) % len };
+        });
     }
     
     render() {
@@ -37,3 +38,7 @@ export default class CartImage extends PureComponent {
         );
     }
 }
+
+CartImage.propTypes = {
+    images: PropTypes.string.isRequired
+};

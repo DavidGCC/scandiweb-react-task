@@ -26,7 +26,7 @@ class CartOverlay extends React.PureComponent {
     }
 
     setModal(bool) {
-        this.setState({ showModal: bool })
+        this.setState({ showModal: bool });
     }
 
     handleLeave() {
@@ -44,8 +44,15 @@ class CartOverlay extends React.PureComponent {
         }
     }
 
+    totalItemCount(cart) {
+        return Object.values(cart).reduce((total, curr) => {
+            total += curr.count;
+            return total;
+        }, 0);
+    }
+
     render() {
-        const cartItems = Object.entries(this.context.cart).length;
+        const cartItemCount = this.totalItemCount(this.context.cart);
         return (
             <div style={{ position: "relative" }}>
                 <CartIconContainer
@@ -53,10 +60,10 @@ class CartOverlay extends React.PureComponent {
                     onMouseLeave={this.handleLeave}>
                     <CartLink to="/cart">
                         <CartIcon />
-                        {cartItems > 0 ? (
+                        {cartItemCount > 0 ? (
                             <CartItemCountShape>
                                 <CartItemCountContent>
-                                    {cartItems}
+                                    {cartItemCount}
                                 </CartItemCountContent>
                             </CartItemCountShape>
                         ) : null}

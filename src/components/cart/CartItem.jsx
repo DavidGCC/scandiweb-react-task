@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 import {
     CartItemContainer,
@@ -80,3 +81,7 @@ export default class CartItem extends PureComponent {
 }
 
 CartItem.contextType = StoreContext;
+
+CartItem.propTypes = {
+    cartItemID: PropTypes.string.isRequired
+};
