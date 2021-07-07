@@ -26,7 +26,7 @@ class CartOverlay extends React.PureComponent {
     }
 
     setModal(bool) {
-        this.setState({ showModal: bool })
+        this.setState({ showModal: bool });
     }
 
     handleLeave() {

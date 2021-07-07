@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import DOMPurify from "dompurify";
+import PropTypes from "prop-types";
 
 import { StoreContext } from "context/Context";
 
@@ -62,7 +63,7 @@ export default class ProductDetails extends PureComponent {
 
     componentDidUpdate(prevProps) {
         if (prevProps.item.name !== this.props.item.name) {
-            this.setState({ chosenImage: this.props.item.gallery[0] })
+            this.setState({ chosenImage: this.props.item.gallery[0] });
         }
     }
 
@@ -138,3 +139,7 @@ export default class ProductDetails extends PureComponent {
 }
 
 ProductDetails.contextType = StoreContext;
+
+ProductDetails.propTypes = {
+    item: PropTypes.object.isRequired
+};

@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 import { AddToCartButton } from "./listings.styles";
 
@@ -13,3 +14,7 @@ export default class AddToCart extends PureComponent {
         );
     }
 }
+
+AddToCart.propTypes = {
+    onClick: PropTypes.func
+};

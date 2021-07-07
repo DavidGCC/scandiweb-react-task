@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
-import ProductList from "./ProductsList";
+import PropTypes from "prop-types";
 
+import ProductList from "./ProductsList";
 import { CategoryPageContainer, CategoryName, ItemsContainer } from "./listings.styles";
 
 export default class CategoryPage extends PureComponent {
@@ -22,3 +23,8 @@ export default class CategoryPage extends PureComponent {
         );
     }
 }
+
+CategoryPage.propTypes = {
+    selectedCategory: PropTypes.string,
+    items: PropTypes.array
+};

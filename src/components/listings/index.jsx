@@ -1,5 +1,6 @@
 import React from "react";
 import qs from "query-string";
+import PropTypes from "prop-types";
 
 import { StoreContext } from "context/Context.js";
 import CategoryPage from "./CategoryPage";
@@ -11,7 +12,7 @@ class Listings extends React.PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = { items: [] }
+        this.state = { items: [] };
         this.fetchItems = this.fetchItems.bind(this);
     }
 
@@ -21,7 +22,7 @@ class Listings extends React.PureComponent {
         }).then(response => {
             this.setState({ items: response.data.category.products });
             this.context.setItems(response.data.category.products);
-        })
+        });
     }
 
     componentDidMount() {
@@ -54,6 +55,11 @@ class Listings extends React.PureComponent {
         );
     }
 }
+
 Listings.contextType = StoreContext;
+
+Listings.propTypes = {
+    location: PropTypes.object
+};
 
 export default Listings;

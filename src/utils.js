@@ -10,4 +10,4 @@ export const getTotalPrice = (cart, selectedCurrency) => {
         return total;
     }, 0);
     return Math.round(totalPrice * 100) / 100;
-}
+};

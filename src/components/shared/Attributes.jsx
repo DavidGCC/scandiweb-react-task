@@ -1,4 +1,6 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+
 
 import { StoreContext } from "context/Context";
 
@@ -82,3 +84,14 @@ export default class Attributes extends PureComponent {
 }
 
 Attributes.contextType = StoreContext;
+
+Attributes.propTypes = {
+    container: PropTypes.node.isRequired,
+    group: PropTypes.node.isRequired,
+    button: PropTypes.node.isRequired,
+    groupName: PropTypes.node.isRequired,
+    item: PropTypes.object.isRequired,
+    handleClick: PropTypes.func,
+    itemID: PropTypes.string,
+    chosenAttributes: PropTypes.object
+};

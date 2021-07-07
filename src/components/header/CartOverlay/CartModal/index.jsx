@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 import { StoreContext } from "context/Context";
 import ModalItem from "./ModalItem";
@@ -37,3 +38,7 @@ export default class CartModal extends PureComponent {
 }
 
 CartModal.contextType = StoreContext;
+
+CartModal.propTypes = {
+    setModal: PropTypes.func
+};

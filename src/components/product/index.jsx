@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 import { StoreContext } from "context/Context";
 
@@ -16,8 +17,12 @@ export default class Product extends PureComponent {
             <div>
                 <ProductDetails item={item} />
             </div>
-        )
+        );
     }
 }
 
 Product.contextType = StoreContext;
+
+Product.propTypes = {
+    match: PropTypes.object
+};

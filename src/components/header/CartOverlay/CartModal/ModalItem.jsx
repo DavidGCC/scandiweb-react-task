@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 import { StoreContext } from "context/Context";
 import Attributes from "components/shared/Attributes";
@@ -22,7 +23,7 @@ import Price from "components/shared/Price";
 export default class ModalItem extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = { cartItem: {} }
+        this.state = { cartItem: {} };
         this.handleAdd = this.handleAdd.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
     }
@@ -72,3 +73,8 @@ export default class ModalItem extends PureComponent {
 }
 
 ModalItem.contextType = StoreContext;
+
+ModalItem.propTypes = {
+    itemID: PropTypes.string.isRequired,
+    setModal: PropTypes.func
+};
