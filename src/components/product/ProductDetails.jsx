@@ -28,19 +28,21 @@ import {
 } from "components/shared/shared.styles";
 
 export default class ProductDetails extends PureComponent {
-    
+
     constructor(props) {
         super(props);
         this.state = {
             chosenImage: this.props.item.gallery[0],
             savedAttributes: [],
+            error: false
         };
+        this.errorTimeout = null;
         this.makeActive = this.makeActive.bind(this);
         this.saveAttribute = this.saveAttribute.bind(this);
         this.isAttrActive = this.isAttrActive.bind(this);
         this.handleAddToCart = this.handleAddToCart.bind(this);
     }
-    
+
     makeActive(img) {
         if (this.state.chosenImage !== img) {
             this.setState({ chosenImage: img });
@@ -77,9 +79,10 @@ export default class ProductDetails extends PureComponent {
             }
             return { ...i };
         });
-        this.setState({ savedAttributes: attributes });
+        const error = typeof this.state.error !== "boolean" ? this.state.error.filter(i => i !== attr.id) : false;
+        this.setState({ savedAttributes: attributes, error });
     }
-    
+
     isAttrActive(attr) {
         const isActive = this.state.savedAttributes.find(
             (savedAttr) =>
@@ -87,11 +90,21 @@ export default class ProductDetails extends PureComponent {
         );
         return Boolean(isActive);
     }
-    
+
     handleAddToCart() {
-        if (this.props.item.inStock) this.context.addToCart(this.props.item, this.state.savedAttributes);
+        if (this.props.item.inStock) {
+            const attriutesAreSelected = this.state.savedAttributes.every(i => i.item !== null);
+            if (attriutesAreSelected) {
+                this.context.addToCart(this.props.item, this.state.savedAttributes);
+            } else {
+                clearTimeout(this.errorTimeout);
+                const nullAttrs = this.state.savedAttributes.flatMap(i => i.item === null ? i.id : []);
+                this.setState({ error: nullAttrs });
+                this.errorTimeout = setTimeout(() => this.setState({ error: false }), 4000);
+            }
+        }
     }
-    
+
     render() {
         return (
             <ProductContainer>
@@ -113,6 +126,7 @@ export default class ProductDetails extends PureComponent {
                             group={AttributeGroup}
                             button={AttributeButton}
                             groupName={AttributeGroupName}
+                            error={this.state.error}
                         />
                         <ProductPriceLabel>price:</ProductPriceLabel>
                         <Price prices={this.props.item.prices}>

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { StoreContext } from "context/Context";
 
 export default class Attributes extends PureComponent {
-    
+
     constructor(props) {
         super(props);
         this.defaultHandleClick = this.defaultHandleClick.bind(this);
@@ -29,7 +29,8 @@ export default class Attributes extends PureComponent {
             group: Group,
             button: Button,
             groupName: GroupName,
-            item
+            item,
+            error
         } = this.props;
         const clickHandler = item.inStock ? (this.props.handleClick || this.defaultHandleClick) : () => null;
         const chosenAttributes =
@@ -67,7 +68,8 @@ export default class Attributes extends PureComponent {
                                             active={this.isAttrActive(
                                                 attrToSaveObj,
                                                 chosenAttributes
-                                            )}>
+                                            )}
+                                            error={error ? error.some(i => i === attrType.id) : false}>
                                             {attrType.type !== "swatch" &&
                                                 attr.value}
                                         </Button>
@@ -85,12 +87,13 @@ export default class Attributes extends PureComponent {
 Attributes.contextType = StoreContext;
 
 Attributes.propTypes = {
-    container: PropTypes.node.isRequired,
-    group: PropTypes.node.isRequired,
-    button: PropTypes.node.isRequired,
-    groupName: PropTypes.node.isRequired,
+    container: PropTypes.object.isRequired,
+    group: PropTypes.object.isRequired,
+    button: PropTypes.object.isRequired,
+    groupName: PropTypes.object.isRequired,
     item: PropTypes.object.isRequired,
     handleClick: PropTypes.func,
     itemID: PropTypes.string,
-    chosenAttributes: PropTypes.object
+    chosenAttributes: PropTypes.array,
+    error: PropTypes.oneOfType([PropTypes.bool, PropTypes.array])
 };

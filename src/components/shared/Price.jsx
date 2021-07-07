@@ -22,5 +22,5 @@ Price.contextType = StoreContext;
 
 Price.propTypes = {
     prices: PropTypes.array.isRequired,
-    children: PropTypes.node
+    children: PropTypes.func
 };

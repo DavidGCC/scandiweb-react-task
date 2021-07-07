@@ -17,10 +17,6 @@ import {
 import Price from "../shared/Price";
 
 class Item extends React.PureComponent {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <ItemContainer>
