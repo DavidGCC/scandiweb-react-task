@@ -32,7 +32,6 @@ export default class Attributes extends PureComponent {
             item
         } = this.props;
         const clickHandler = item.inStock ? (this.props.handleClick || this.defaultHandleClick) : () => null;
-        console.log(this.context.cart[this.props.itemID]);
         const chosenAttributes =
             this.props.chosenAttributes || this.context.cart[this.props.itemID].chosenAttributes;
         return (

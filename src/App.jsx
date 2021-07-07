@@ -72,7 +72,6 @@ class App extends React.PureComponent {
         cart[id] = {
             item, count: 1, chosenAttributes: attributes
         };
-        console.log(cart);
         this.setState({ cart });
     }
     
