@@ -19,7 +19,7 @@ import { StoreContext } from "./context/Context";
 import { genID } from "./utils";
 
 
-class App extends React.PureComponent {
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -123,6 +123,7 @@ class App extends React.PureComponent {
         });
         this.setState({ items: finalItems });
     }
+
 
     componentDidMount() {
         client
