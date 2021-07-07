@@ -13,21 +13,17 @@ import {
     OutOfStockText,
     ItemImageContainer
 } from "./listings.styles";
-import AddToCart from "./AddToCart";
 
 import Price from "../shared/Price";
 
 class Item extends React.PureComponent {
     constructor(props) {
         super(props);
-        this.state = { isHovering: false };
     }
 
     render() {
         return (
-            <ItemContainer
-                onMouseOver={() => this.setState({ isHovering: true })}
-                onMouseLeave={() => this.setState({ isHovering: false })}>
+            <ItemContainer>
                 <ItemTop>
                     <ItemImageContainer>
                         <ItemImage
@@ -37,14 +33,6 @@ class Item extends React.PureComponent {
                             height="330px"
                         />
                     </ItemImageContainer>
-                    {this.state.isHovering && this.props.item.inStock && (
-                        <AddToCart
-                            onClick={(e) => {
-                                e.preventDefault();
-                                this.context.addToCart(this.props.item);
-                            }}
-                        />
-                    )}
                     {
                         !this.props.item.inStock && (
                             <OutOfStockOverlay>
