@@ -91,7 +91,8 @@ export const CartLink = styled(NavLink)`
 
 export const CartItemCountShape = styled.div`
     display: block;
-    width: 20px;
+    padding: 2px;
+    min-width: 20px;
     height: 20px;
     background-color: var(--black);
     display: flex;
