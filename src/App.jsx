@@ -6,7 +6,7 @@ import "scss/style.scss";
 // COMPONENT IMPORTS
 import Header from "components/header";
 import Listings from "components/listings";
-import Home from "components/home/";
+import Home from "components/home";
 import Product from "components/product/";
 import Cart from "components/cart/";
 //
@@ -19,7 +19,7 @@ import { StoreContext } from "./context/Context";
 import { genID } from "./utils";
 
 
-class App extends React.Component {
+class App extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
