@@ -40,5 +40,5 @@ export default class CartImage extends PureComponent {
 }
 
 CartImage.propTypes = {
-    images: PropTypes.string.isRequired
+    images: PropTypes.arrayOf(PropTypes.string).isRequired
 };
