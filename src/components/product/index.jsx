@@ -9,6 +9,7 @@ export default class Product extends PureComponent {
     render() {
         const { itemname } = this.props.match.params;
         const { items } = this.context;
+        
         const item = items.find(
             (item) => item.name === itemname
         );

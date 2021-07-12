@@ -94,6 +94,7 @@ export const CartCountButton = styled.button`
     height: 45px;
     font-size: 1.5rem;
     user-select: none;
+    cursor: pointer;
 `;
 
 export const CartItemCount = styled.span`

@@ -12,6 +12,8 @@ export default class CartImage extends PureComponent {
         super(props);
         this.state = { imageIndex: 0 };
         this.changeImage = this.changeImage.bind(this);
+        this.nextImage = this.nextImage.bind(this);
+        this.previousImage = this.previousImage.bind(this);
     }
 
     changeImage(dir) {
@@ -23,15 +25,37 @@ export default class CartImage extends PureComponent {
             return { imageIndex: (ps.imageIndex + dir) % len };
         });
     }
+
+    nextImage() {
+        const len = this.props.images.length;
+        const { imageIndex } = this.state;
+        if (imageIndex !== len - 1) {
+            this.setState({ imageIndex: imageIndex + 1 });
+        } else {
+            this.setState({ imageIndex: 0 });
+        }
+    }
+
+    previousImage() {
+        const len = this.props.images.length;
+        const { imageIndex } = this.state;
+        if (imageIndex !== 0) {
+            this.setState({ imageIndex: imageIndex - 1 });
+        } else {
+            this.setState({ imageIndex: len - 1 });
+        }
+    }
     
     render() {
+        const { images } = this.props;
+        const { imageIndex } = this.state;
         return (
             <CartItemImageContainer>
-                <CartArrowPrevious onClick={() => this.changeImage(-1)} >
+                <CartArrowPrevious onClick={this.previousImage} >
                     <Previous />
                 </CartArrowPrevious>
-                <img src={this.props.images[this.state.imageIndex]} alt="item" />
-                <CartArrowNext onClick={() => this.changeImage(1)}>
+                <img src={images[imageIndex]} alt="item" />
+                <CartArrowNext onClick={this.nextImage}>
                     <Next />
                 </CartArrowNext>
             </CartItemImageContainer>
