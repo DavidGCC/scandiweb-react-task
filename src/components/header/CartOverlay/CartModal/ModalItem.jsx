@@ -37,15 +37,16 @@ export default class ModalItem extends PureComponent {
     }
 
     render() {
-        const cartItem = this.context.cart[this.props.itemID];
         const { itemID } = this.props;
+        const { cart } = this.context;
+        const { item, count } = cart[itemID];
         return (
             <ItemContainer>
                 <NameAndPrice>
-                    <ItemNameLink to={`/product/${cartItem.item.name}`} onClick={() => this.props.setModal(false)}>
-                        <ItemName id="modal-item-name">{cartItem.item.name}</ItemName>
+                    <ItemNameLink to={`/product/${item.name}`} onClick={() => this.props.setModal(false)}>
+                        <ItemName id="modal-item-name">{item.name}</ItemName>
                     </ItemNameLink>
-                    <Price prices={cartItem.item.prices}>
+                    <Price prices={item.prices}>
                         {
                             (symbol, amount) => (
                                 <ItemPrice>{symbol}{amount}</ItemPrice>
@@ -57,16 +58,16 @@ export default class ModalItem extends PureComponent {
                     <CountControl onClick={this.handleAdd}>
                         +
                     </CountControl>
-                    <ItemNumbers>{cartItem.count}</ItemNumbers>
+                    <ItemNumbers>{count}</ItemNumbers>
                     <CountControl
                         onClick={this.handleRemove}>
                         -
                     </CountControl>
                 </Actions>
                 <ImageContainer>
-                    <ItemImage src={cartItem.item.gallery[0]} />
+                    <ItemImage src={item.gallery[0]} />
                 </ImageContainer>
-                <Attributes itemID={itemID} item={cartItem.item} container={AttributesContainer} group={AttributeGroup} button={AttrButton} groupName={AttributeGroupName} />
+                <Attributes itemID={itemID} item={item} container={AttributesContainer} group={AttributeGroup} button={AttrButton} groupName={AttributeGroupName} />
             </ItemContainer>
         );
     }

@@ -7,8 +7,10 @@ import ProductDetails from "./ProductDetails";
 
 export default class Product extends PureComponent {
     render() {
-        const item = this.context.items.find(
-            (item) => item.name === this.props.match.params.itemname
+        const { itemname } = this.props.match.params;
+        const { items } = this.context;
+        const item = items.find(
+            (item) => item.name === itemname
         );
         if (!item) {
             return <h2>Unknown Item</h2>;

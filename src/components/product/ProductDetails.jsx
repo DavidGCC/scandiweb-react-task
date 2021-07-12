@@ -79,7 +79,9 @@ export default class ProductDetails extends PureComponent {
             }
             return { ...i };
         });
-        const error = typeof this.state.error !== "boolean" ? this.state.error.filter(i => i !== attr.id) : false;
+        const error = typeof this.state.error !== "boolean" 
+            ? this.state.error.filter(i => i !== attr.id) 
+            : false;
         this.setState({ savedAttributes: attributes, error });
     }
 
@@ -106,30 +108,32 @@ export default class ProductDetails extends PureComponent {
     }
 
     render() {
+        const { item } = this.props;
+        const { chosenImage, error, savedAttributes } = this.state;
         return (
             <ProductContainer>
                 <div>
                     <ImageGallery
-                        images={this.props.item.gallery}
+                        images={item.gallery}
                         makeActive={this.makeActive}
                     />
                 </div>
                 <DetailsContainer>
-                    <ProductImage src={this.state.chosenImage} />
+                    <ProductImage src={chosenImage} />
                     <ProductDetailsContainer>
-                        <ProductName>{this.props.item.name}</ProductName>
+                        <ProductName>{item.name}</ProductName>
                         <Attributes
-                            item={this.props.item}
-                            chosenAttributes={this.state.savedAttributes}
+                            item={item}
+                            chosenAttributes={savedAttributes}
                             handleClick={this.saveAttribute}
                             container={AttributesContainer}
                             group={AttributeGroup}
                             button={AttributeButton}
                             groupName={AttributeGroupName}
-                            error={this.state.error}
+                            error={error}
                         />
                         <ProductPriceLabel>price:</ProductPriceLabel>
-                        <Price prices={this.props.item.prices}>
+                        <Price prices={item.prices}>
                             {(symbol, amount) => {
                                 return (
                                     <ProductPrice>{`${symbol}${amount}`}</ProductPrice>
@@ -138,12 +142,12 @@ export default class ProductDetails extends PureComponent {
                         </Price>
                         <AddToCartButton
                             onClick={this.handleAddToCart}
-                            inStock={this.props.item.inStock}>
-                            {this.props.item.inStock ? "add to cart" : "out of stock"}
+                            inStock={item.inStock}>
+                            {item.inStock ? "add to cart" : "out of stock"}
                         </AddToCartButton>
                         <div
                             dangerouslySetInnerHTML={{
-                                __html: DOMPurify.sanitize(this.props.item.description),
+                                __html: DOMPurify.sanitize(item.description),
                             }}></div>
                     </ProductDetailsContainer>
                 </DetailsContainer>
