@@ -18,7 +18,7 @@ class Listings extends React.PureComponent {
 
     fetchItems(category) {
         client.query({
-            query: getItemsByCategory, variables: { title: category }
+            query: getItemsByCategory, variables: { title: category === "all" ? "" : category }, fetchPolicy: "cache-first"
         }).then(response => {
             this.setState({ items: response.data.category.products });
             this.context.setItems(response.data.category.products);

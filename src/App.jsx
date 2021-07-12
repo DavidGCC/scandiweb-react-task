@@ -140,7 +140,7 @@ class App extends React.Component {
                     },
                     []
                 );
-                this.setState({ categories });
+                this.setState({ categories: ["all", ...categories] });
             });
     }
 

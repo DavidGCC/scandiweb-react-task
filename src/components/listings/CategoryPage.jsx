@@ -9,7 +9,7 @@ export default class CategoryPage extends PureComponent {
         return (
             <CategoryPageContainer>
                 <CategoryName id="category-name">
-                    {this.props.selectedCategory === ""
+                    {this.props.selectedCategory === "all"
                         ? "All Categories"
                         : this.props.selectedCategory}
                 </CategoryName>
