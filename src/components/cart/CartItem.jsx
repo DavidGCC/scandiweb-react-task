@@ -42,7 +42,9 @@ export default class CartItem extends PureComponent {
     }
 
     render() {
-        const cartItem = this.context.cart[this.props.cartItemID];
+        const { cartItemID } = this.props;
+        const { cart } = this.context;
+        const cartItem = cart[cartItemID];
         return (
             <CartItemContainer>
                 <CartItemDetailsContainer>

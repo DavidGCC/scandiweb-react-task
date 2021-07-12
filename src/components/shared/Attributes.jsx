@@ -30,19 +30,19 @@ export default class Attributes extends PureComponent {
             button: Button,
             groupName: GroupName,
             item,
-            error
+            error,
+            itemID
         } = this.props;
+        const { cart } = this.context;
         const clickHandler = item.inStock ? (this.props.handleClick || this.defaultHandleClick) : () => null;
         const chosenAttributes =
-            this.props.chosenAttributes || this.context.cart[this.props.itemID].chosenAttributes;
+            this.props.chosenAttributes || cart[itemID].chosenAttributes;
         return (
             <Container>
                 {item.attributes.map((attrType) => {
                     return (
                         <div key={attrType.id}>
-                            {this.props.groupName ? (
-                                <GroupName>{attrType.name}:</GroupName>
-                            ) : null}
+                            <GroupName>{attrType.name}:</GroupName>
                             <Group key={attrType.id}>
                                 {attrType.items.map((attr) => {
                                     const attrToSaveObj = {
@@ -57,7 +57,7 @@ export default class Attributes extends PureComponent {
                                             inStock={item.inStock}
                                             onClick={() =>
                                                 clickHandler({
-                                                    item: this.props.itemID,
+                                                    item: itemID,
                                                     attr: attrToSaveObj,
                                                 })
                                             }

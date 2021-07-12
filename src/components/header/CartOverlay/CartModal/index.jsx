@@ -12,8 +12,9 @@ import { getTotalPrice } from "utils";
 
 export default class CartModal extends PureComponent {
     render() {
-        const cartEntries = Object.entries(this.context.cart);
-        const totalPrice = getTotalPrice(this.context.cart, this.context.currency);
+        const { cart, currency } = this.context;
+        const cartEntries = Object.entries(cart);
+        const totalPrice = getTotalPrice(cart, currency);
         return (
             <>
                 <ModalContainer>
@@ -21,7 +22,7 @@ export default class CartModal extends PureComponent {
                         <CartName>My Bag,</CartName>
                         &nbsp;
                         <ItemCount>
-                            {Object.keys(this.context.cart).length} items
+                            {Object.keys(cart).length} items
                         </ItemCount>
                     </div>
                     {cartEntries.map((item) => (
