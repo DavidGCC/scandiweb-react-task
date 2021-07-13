@@ -9,11 +9,12 @@ import { HeaderContainer } from "./header.styles";
 
 class Header extends React.PureComponent {
     render() {
+        const { selectedCurrency, handleCurrencyChange } = this.props;
         return (
             <HeaderContainer id="header">
                 <Navbar />
                 <Logo />
-                <Actions selectedCurrency={this.props.selectedCurrency} handleChange={this.props.handleCurrencyChange} />
+                <Actions selectedCurrency={selectedCurrency} handleChange={handleCurrencyChange} />
             </HeaderContainer>
         );
     }

@@ -67,9 +67,12 @@ export const AddToCartButton = styled.button`
     position: absolute;
     top: calc(100% - 26px);
     left: 80%;
-    transition: all .5s ease;
+    transition: all .2s ease;
     &:hover {
         transform: scale(1.2, 1.2);
+    }
+    &:active {
+        transform: scale(0.9, 0.9);
     }
     cursor: pointer;
 `;

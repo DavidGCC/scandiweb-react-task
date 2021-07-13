@@ -156,13 +156,13 @@ export const ItemName = styled.span`
     letter-spacing: 0px;
     text-align: left;
     color: var(--black);
+    &:hover {
+        color: var(--green);
+    }
 `;
 
 export const ItemNameLink = styled(Link)`
     text-decoration: none;
-    &:hover {
-        color: var(--green);
-    }
 `;
 
 export const ItemNumbers = styled.span`

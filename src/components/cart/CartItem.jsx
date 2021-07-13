@@ -61,7 +61,7 @@ export default class CartItem extends PureComponent {
                         group={AttributeGroup}
                         button={AttributeButton}
                         item={cartItem.item}
-                        itemID={this.props.cartItemID}
+                        itemID={cartItemID}
                         groupName={AttributeGroupName}
                     />
                 </CartItemDetailsContainer>

@@ -20,7 +20,9 @@ export default class Attributes extends PureComponent {
     }
 
     defaultHandleClick({ item, attr }) {
-        this.context.addAttribute(item, attr);
+        if (item.inStock) {
+            this.context.addAttribute(item, attr);
+        }
     }
 
     render() {
@@ -34,7 +36,10 @@ export default class Attributes extends PureComponent {
             itemID
         } = this.props;
         const { cart } = this.context;
-        const clickHandler = item.inStock ? (this.props.handleClick || this.defaultHandleClick) : () => null;
+
+        // if attributes dont require specific click handler default will just add attribute to cart item
+        const clickHandler = this.props.handleClick || this.defaultHandleClick;
+        
         const chosenAttributes =
             this.props.chosenAttributes || cart[itemID].chosenAttributes;
         return (

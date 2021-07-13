@@ -5,10 +5,11 @@ import { TotalPriceContainer, TotalPriceNumber, TotalPriceLabel } from "./cart.s
 
 export default class TotalPrice extends PureComponent {
     render() {
+        const { symbol, price } = this.props;
         return (
             <TotalPriceContainer>
                 <TotalPriceLabel>Total:</TotalPriceLabel>
-                <TotalPriceNumber>{this.props.symbol}{this.props.price}</TotalPriceNumber>
+                <TotalPriceNumber>{symbol}{price}</TotalPriceNumber>
             </TotalPriceContainer>
         );
     }

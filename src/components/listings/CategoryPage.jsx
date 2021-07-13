@@ -6,17 +6,18 @@ import { CategoryPageContainer, CategoryName, ItemsContainer } from "./listings.
 
 export default class CategoryPage extends PureComponent {
     render() {
+        const { selectedCategory, items } = this.props;
         return (
             <CategoryPageContainer>
                 <CategoryName id="category-name">
-                    {this.props.selectedCategory === "all"
+                    {selectedCategory === "all" || selectedCategory === ""
                         ? "All Categories"
-                        : this.props.selectedCategory}
+                        : selectedCategory}
                 </CategoryName>
                 <ItemsContainer>
                     <ProductList
-                        items={this.props.items}
-                        selectedCategory={this.props.selectedCategory}
+                        items={items}
+                        selectedCategory={selectedCategory}
                     />
                 </ItemsContainer>
             </CategoryPageContainer>
