@@ -126,10 +126,10 @@ export default class ProductDetails extends PureComponent {
                             item={item}
                             chosenAttributes={savedAttributes}
                             handleClick={this.saveAttribute}
-                            container={AttributesContainer}
-                            group={AttributeGroup}
-                            button={AttributeButton}
-                            groupName={AttributeGroupName}
+                            Container={AttributesContainer}
+                            Group={AttributeGroup}
+                            Button={AttributeButton}
+                            GroupName={AttributeGroupName}
                             error={error}
                         />
                         <ProductPriceLabel>price:</ProductPriceLabel>

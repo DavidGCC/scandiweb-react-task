@@ -57,12 +57,12 @@ export default class CartItem extends PureComponent {
                         )}
                     </Price>
                     <Attributes
-                        container={AttributesContainer}
-                        group={AttributeGroup}
-                        button={AttributeButton}
+                        Container={AttributesContainer}
+                        Group={AttributeGroup}
+                        Button={AttributeButton}
+                        GroupName={AttributeGroupName}
                         item={item}
                         itemID={cartItemID}
-                        groupName={AttributeGroupName}
                     />
                 </CartItemDetailsContainer>
                 <CartItemActionsContainer>

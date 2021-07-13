@@ -52,7 +52,8 @@ class CartOverlay extends React.PureComponent {
     }
 
     render() {
-        const cartItemCount = this.totalItemCount(this.context.cart);
+        const { cart } = this.context;
+        const cartItemCount = this.totalItemCount(cart);
         return (
             <div style={{ position: "relative" }}>
                 <CartIconContainer

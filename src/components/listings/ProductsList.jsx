@@ -6,7 +6,9 @@ import Item from "./Item";
 
 export default class ProductsList extends PureComponent {
     render() {
-        return this.props.items.map((item) => (
+        const { items } = this.props;
+        
+        return items.map((item) => (
             <SLink to={`/product/${encodeURI(item.name)}`} key={item.name}>
                 <Item item={item} />
             </SLink>

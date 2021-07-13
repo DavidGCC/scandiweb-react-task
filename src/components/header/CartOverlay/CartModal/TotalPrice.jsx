@@ -7,10 +7,12 @@ import { TotalPriceContainer, TotalPriceTotal, TotalPriceCost } from "./modal.st
 
 export default class TotalPrice extends PureComponent {
     render() {
+        const { currency } = this.context;
+        const { totalPrice } = this.props;
         return (
             <TotalPriceContainer>
                 <TotalPriceTotal>Total:</TotalPriceTotal>
-                <TotalPriceCost>{`${getSymbolFromCurrency(this.context.currency)}${this.props.totalPrice}`}</TotalPriceCost>
+                <TotalPriceCost>{`${getSymbolFromCurrency(currency)}${totalPrice}`}</TotalPriceCost>
             </TotalPriceContainer>
         );
     }

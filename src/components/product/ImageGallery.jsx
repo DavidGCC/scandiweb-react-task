@@ -5,13 +5,15 @@ import { ImageListContainer, ListImage } from "./product.styles";
 
 export default class ImageGallery extends PureComponent {
     render() {
+        const { images, makeActive } = this.props;
+
         return (
             <ImageListContainer>
-                {this.props.images.map((image) => (
+                {images.map((image) => (
                     <ListImage
                         src={image}
                         key={image}
-                        onClick={() => this.props.makeActive(image)}
+                        onClick={() => makeActive(image)}
                     />
                 ))}
             </ImageListContainer>

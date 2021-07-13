@@ -67,7 +67,13 @@ export default class ModalItem extends PureComponent {
                 <ImageContainer>
                     <ItemImage src={item.gallery[0]} />
                 </ImageContainer>
-                <Attributes itemID={itemID} item={item} container={AttributesContainer} group={AttributeGroup} button={AttrButton} groupName={AttributeGroupName} />
+                <Attributes 
+                    itemID={itemID} 
+                    item={item} 
+                    Container={AttributesContainer} 
+                    Group={AttributeGroup} 
+                    Button={AttrButton} 
+                    GroupName={AttributeGroupName} />
             </ItemContainer>
         );
     }

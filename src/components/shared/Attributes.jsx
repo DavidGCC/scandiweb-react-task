@@ -28,10 +28,10 @@ export default class Attributes extends PureComponent {
 
     render() {
         const {
-            container: Container,
-            group: Group,
-            button: Button,
-            groupName: GroupName,
+            Container,
+            Group,
+            Button,
+            GroupName,
             item,
             error,
             itemID
@@ -87,10 +87,10 @@ export default class Attributes extends PureComponent {
 Attributes.contextType = StoreContext;
 
 Attributes.propTypes = {
-    container: PropTypes.object.isRequired,
-    group: PropTypes.object.isRequired,
-    button: PropTypes.object.isRequired,
-    groupName: PropTypes.object.isRequired,
+    Container: PropTypes.object.isRequired,
+    Group: PropTypes.object.isRequired,
+    Button: PropTypes.object.isRequired,
+    GroupName: PropTypes.object.isRequired,
     item: PropTypes.object.isRequired,
     handleClick: PropTypes.func,
     itemID: PropTypes.string,

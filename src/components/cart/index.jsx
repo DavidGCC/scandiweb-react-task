@@ -11,7 +11,8 @@ import { getTotalPrice } from "utils";
 
 export default class Cart extends PureComponent {
     render() {
-        const cartItemIDs = Object.keys(this.context.cart);
+        const { cart, currency } = this.context;
+        const cartItemIDs = Object.keys(cart);
         return (
             <CartContainer>
                 <CartLabel>Cart</CartLabel>
@@ -22,7 +23,7 @@ export default class Cart extends PureComponent {
                         })
                     }
                 </CartItems>
-                <TotalPrice price={getTotalPrice(this.context.cart, this.context.currency)} symbol={getSymbolFromCurrency(this.context.currency)}/>
+                <TotalPrice price={getTotalPrice(cart, currency)} symbol={getSymbolFromCurrency(currency)}/>
             </CartContainer>
         );
     }
