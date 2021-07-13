@@ -19,9 +19,10 @@ export default class Attributes extends PureComponent {
         );
     }
 
-    defaultHandleClick({ item, attr }) {
+    defaultHandleClick({ itemID, attr }) {
+        const { item } = this.context.cart[itemID];
         if (item.inStock) {
-            this.context.addAttribute(item, attr);
+            this.context.addAttribute(itemID, attr);
         }
     }
 
@@ -39,44 +40,38 @@ export default class Attributes extends PureComponent {
 
         // if attributes dont require specific click handler default will just add attribute to cart item
         const clickHandler = this.props.handleClick || this.defaultHandleClick;
-        
-        const chosenAttributes =
-            this.props.chosenAttributes || cart[itemID].chosenAttributes;
+
+        const chosenAttributes = this.props.chosenAttributes || cart[itemID].chosenAttributes;
+
         return (
             <Container>
                 {item.attributes.map((attrType) => {
+                    const { id, name, type, items } = attrType;
                     return (
                         <div key={attrType.id}>
-                            <GroupName>{attrType.name}:</GroupName>
-                            <Group key={attrType.id}>
-                                {attrType.items.map((attr) => {
+                            <GroupName>{name}:</GroupName>
+                            <Group key={id}>
+                                {items.map((attr) => {
+                                    // create object to be saved as an item attribute
                                     const attrToSaveObj = {
-                                        id: attrType.id,
-                                        name: attrType.name,
-                                        type: attrType.type,
-                                        item: attr,
+                                        id,
+                                        name,
+                                        type,
+                                        item: attr
                                     };
+
                                     return (
                                         <Button
                                             key={attr.id}
                                             inStock={item.inStock}
-                                            onClick={() =>
-                                                clickHandler({
-                                                    item: itemID,
-                                                    attr: attrToSaveObj,
-                                                })
+                                            onClick={() => clickHandler({ itemID, attr: attrToSaveObj })}
+                                            bgColor={type === "swatch" && attr.value}
+                                            active={this.isAttrActive(attrToSaveObj, chosenAttributes)}
+                                            error={error ? error.some(i => i === id) : false}
+                                        >
+                                            {
+                                                type !== "swatch" && attr.value
                                             }
-                                            bgColor={
-                                                attrType.type === "swatch" &&
-                                                attr.value
-                                            }
-                                            active={this.isAttrActive(
-                                                attrToSaveObj,
-                                                chosenAttributes
-                                            )}
-                                            error={error ? error.some(i => i === attrType.id) : false}>
-                                            {attrType.type !== "swatch" &&
-                                                attr.value}
                                         </Button>
                                     );
                                 })}

@@ -18,6 +18,7 @@ class CurrencySelector extends React.PureComponent {
         this.toggleOptions = this.toggleOptions.bind(this);
         this.ref = React.createRef();
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
+        this.setCurrency = this.setCurrency.bind(this);
     }
 
     componentDidMount() {
@@ -44,6 +45,11 @@ class CurrencySelector extends React.PureComponent {
         this.setState({ showOptions: !this.state.showOptions });
     }
 
+    setCurrency({ target }) {
+        const { value } = target.dataset;
+        this.context.setCurrency(value);
+    }
+
     render() {
         return (
             <CurrencySelect onClick={this.toggleOptions} ref={this.ref} active={this.state.showOptions}>
@@ -60,11 +66,11 @@ class CurrencySelector extends React.PureComponent {
                             return (
                                 <span
                                     key={curr}
-                                    onClick={() =>
-                                        this.context.setCurrency(curr)
-                                    }>{`${getSymbolFromCurrency(
-                                        curr
-                                    )} ${curr}`}</span>
+                                    data-value={curr}
+                                    onClick={this.setCurrency}
+                                >
+                                    {`${getSymbolFromCurrency(curr)} ${curr}`}
+                                </span>
                             );
                         })}
                     </div>
