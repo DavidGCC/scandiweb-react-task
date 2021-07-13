@@ -44,23 +44,23 @@ export default class CartItem extends PureComponent {
     render() {
         const { cartItemID } = this.props;
         const { cart } = this.context;
-        const cartItem = cart[cartItemID];
+        const { item, count } = cart[cartItemID];
         return (
             <CartItemContainer>
                 <CartItemDetailsContainer>
-                    <ItemNameLink to={`/product/${cartItem.item.name}`}>
-                        <CartItemName id="cart-item-name">{cartItem.item.name}</CartItemName>
+                    <ItemNameLink to={`/product/${item.name}`}>
+                        <CartItemName id="cart-item-name">{item.name}</CartItemName>
                     </ItemNameLink>
-                    <Price prices={cartItem.item.prices}>
+                    <Price prices={item.prices} count={count}>
                         {(symbol, amount) => (
-                            <CartItemPrice>{`${symbol}${amount}`}</CartItemPrice>
+                            <CartItemPrice>{`${symbol}${amount * count}`}</CartItemPrice>
                         )}
                     </Price>
                     <Attributes
                         container={AttributesContainer}
                         group={AttributeGroup}
                         button={AttributeButton}
-                        item={cartItem.item}
+                        item={item}
                         itemID={cartItemID}
                         groupName={AttributeGroupName}
                     />
@@ -70,13 +70,13 @@ export default class CartItem extends PureComponent {
                         onClick={this.handleAdd}>
                         +
                     </CartCountButton>
-                    <CartItemCount>{cartItem.count}</CartItemCount>
+                    <CartItemCount>{count}</CartItemCount>
                     <CartCountButton
                         onClick={this.handleRemove}>
                         -
                     </CartCountButton>
                 </CartItemActionsContainer>
-                <CartImage images={cartItem.item.gallery} />
+                <CartImage images={item.gallery} />
             </CartItemContainer>
         );
     }

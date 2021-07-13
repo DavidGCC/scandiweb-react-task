@@ -46,7 +46,7 @@ export default class ModalItem extends PureComponent {
                     <ItemNameLink to={`/product/${item.name}`} onClick={() => this.props.setModal(false)}>
                         <ItemName id="modal-item-name">{item.name}</ItemName>
                     </ItemNameLink>
-                    <Price prices={item.prices}>
+                    <Price prices={item.prices} count={count}>
                         {
                             (symbol, amount) => (
                                 <ItemPrice>{symbol}{amount}</ItemPrice>
