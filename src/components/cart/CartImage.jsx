@@ -11,19 +11,8 @@ export default class CartImage extends PureComponent {
     constructor(props) {
         super(props);
         this.state = { imageIndex: 0 };
-        this.changeImage = this.changeImage.bind(this);
         this.nextImage = this.nextImage.bind(this);
         this.previousImage = this.previousImage.bind(this);
-    }
-
-    changeImage(dir) {
-        const len = this.props.images.length;
-        this.setState(ps => {
-            if (ps.imageIndex + dir < 0) {
-                return { imageIndex: len - 1 };
-            }
-            return { imageIndex: (ps.imageIndex + dir) % len };
-        });
     }
 
     nextImage() {
